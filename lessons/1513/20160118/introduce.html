@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>introduce</title>
+	<link rel="stylesheet" href="../../phoeon_qf_tpl/content.css" type="text/css">
+</head>
+<body>
+<pre spellcheck="false">
+		
+		
+
+	<h1 class="toggle">1 Dom 基础 （学习要点）</h1><div class="quote">
+		<label class="toggle">1.1 DOM 介绍</label>
+			<div class="code hidden">
+<blockquote>	 	<b>1.1.1 DOM 中的三个字母，D（文档）可以理解为整个Web 加载的网页文档；O（对象）可
+	以理解为类似window 对象之类的东西，可以调用属性和方法，这里我们说的是document
+	对象；M（模型）可以理解为网页文档的树型结构。</b>
+</blockquote><blockquote style="color:#ccc">		1.1.2 DOM 有三个等级，分别是DOM1、DOM2、DOM3，并且DOM1 在1998 年10 月成为W3C 标准。
+	DOM1所支持的浏览器包括IE6+、Firefox、Safari、Chrome 和Opera1.7+。
+</blockquote><blockquote  style="color:#ccc">		1.1.3 PS：IE 中的所有DOM 对象都是以COM 对象的形式实现的，
+	这意味着IE 中的DOM可能会和其他浏览器有一定的差异。				
+</blockquote><blockquote>		<b>1.1.4 节点:</b>
+
+ 	<img src="./imgs/htmltree.gif"/>
+ </blockquote>
+			</div>
+		<label class="toggle">1.2 查找元素</label>
+			<div class="code hidden">
+
+			W3C 提供了比较方便简单的定位节点的方法和属性，
+			以便我们快速的对节点进行操作。分别为：
+
+			1.2.1 getElementById() 				获取特定ID 元素的节点
+
+			1.2.2 getElementsByTagName() 			获取相同元素的节点列表
+
+			1.2.3 getElementsByName() 			获取相同名称的节点列表
+
+			1.2.4 getAttribute() 				获取特定元素节点属性的值
+
+			1.2.5 setAttribute() 				设置特定元素节点属性的值
+
+			1.2.6 removeAttribute() 			移除特定元素节点属性
+
+			</div>
+		<label class="toggle">1.3 DOM 节点</label>
+			<div class="code hidden">
+				
+				节点可以分为元素节点、属性节点和文本节点，而这些节点又有三个非常有用的属性，
+				分别为：nodeName、nodeType 和nodeValue。
+
+				<b>1.3.1 信息节点属性</b>
+				----------------------------------
+
+				节点类型	nodeName 	nodeType 	nodeValue
+
+				元素		元素名称	1 		null
+
+				属性		属性名称	2 		属性值
+
+				文本		#text 		3 		文本内容(不包含html)
+								
+				<b>1.3.2 层次关系</b>
+				----------------------------------
+
+				属性			说明
+
+				childNodes 		获取当前元素节点的所有子节点
+
+				firstChild 		获取当前元素节点的第一个子节点
+
+				lastChild 		获取当前元素节点的最后一个子节点
+
+				ownerDocument 		获取该节点的文档根节点，相当与document
+
+				parentNode 		获取当前节点的父节点
+
+				previousSibling 	获取当前节点的前一个同级节点
+
+				nextSibling 		获取当前节点的后一个同级节点
+
+				attributes 		获取当前元素节点的所有属性节点集合
+
+
+			</div>
+		<label class="toggle">1.4 节点操作</label>
+			<div class="code hidden">
+				DOM 不单单可以查找节点，也可以创建节点、复制节点、插入节点、删除节点和替换
+				节点。
+
+				<b>1.4.1 节点操作方法</b>
+				----------------------------------						
+
+				方法			说明
+
+				write() 		这个方法可以把任意字符串插入到文档中
+
+				createElement() 	创建一个元素节点
+
+				appendChild() 		将新节点追加到子节点列表的末尾
+
+				createTextNode() 	创建一个文件节点
+
+				insertBefore() 		将新节点插入在前面
+
+				repalceChild() 		将新节点替换旧节点
+
+				cloneNode() 		复制节点
+
+				removeChild() 		移除节点
+
+			</div>
+		</div><h1 class="toggle">2 Dom 进阶 （学习要点）</h1><div class="quote hidden">
+		<label class="toggle">2.1 DOM 类型</label>
+			<div class="code hidden">
+				
+				DOM 自身存在很多类型，在DOM 基础课程中大部分都有所接触，
+				比如Element 类型：
+				表示的是元素节点，再比如Text 类型：表示的是文本节点。
+				DOM 也提供了一些扩展功能。
+
+				<b>2.1.1 DOM 类型</b>
+
+				类型名				说明
+
+				Node				表示所有类型值的统一接口，IE 不支持
+
+				Document 			表示文档类型
+
+				Element 			表示元素节点类型
+
+				Text 				表示文本节点类型
+
+				Comment 			表示文档中的注释类型
+
+				CDATASection 			表示CDATA 区域类型
+
+				DocumentType 			表示文档声明类型
+
+				DocumentFragment 		表示文档片段类型
+
+				Attr 				表示属性节点类型
+
+				<b>2.1.2 Node 的常量</b>
+
+				常量名					说明			nodeType值
+
+				ELEMENT_NODE 				元素			1
+
+				ATTRIBUTE_NODE 				属性			2
+
+				TEXT_NODE 				文本			3
+
+				CDATA_SECTION_NODE 			CDATA 			4
+
+				ENTITY_REFERENCE_NODE 			实体参考		5
+
+				ENTITY_NODE 				实体			6
+
+				PROCESSING_INSTRUCETION_NODE 		处理指令		7
+
+				COMMENT_NODE 				注释			8
+
+				DOCUMENT_NODE 				文档根			9
+
+				DOCUMENT_TYPE_NODE 			doctype 		10
+
+				DOCUMENT_FRAGMENT_NODE 			文档片段		11
+
+				NOTATION_NODE 				符号			12
+
+			</div>
+		<label class="toggle">2.2 DOM 扩展</label>
+			<div class="code hidden">
+
+				2.2.1 呈现模式
+					
+					标准模式 | 怪异模式
+
+				2.2.2 scrollIntoView
+					
+					document.getElementById('box').scrollIntoView(); //设置指定可见
+
+				2.2.3 children
+
+					过滤空白文本元素
+
+				2.2.4 contains
+
+					判断一个节点是不是另一个节点的后代
+
+					document.contains(document.body)  //true
+
+			</div>
+		<label class="toggle">2.3 DOM 操作内容</label>
+			<div class="code hidden">
+
+			2.3.1 innerText(textContent)
+
+			2.3.2 innerHTML 
+
+			2.3.3 outerText
+
+			2.3.4 outerHTML 
+
+			</div>
+	</div>
+</pre>
+</body>
+<script src="../../phoeon_qf_tpl/content.js"></script>
+</html>
