@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/chess.css" type="text/css">
+</head>
+<body>
+	<div class="tray-wrap">
+		<div class="tray-box">
+			<div class="tray-mask"></div>
+			<div class="tray">
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	(function(){
+		var SIZE = 24;//每行单元格数
+		var GAME_STATE = 0;//可以开始  1 已经结束
+		// 初始化棋盘
+		function initChess(){
+			var htmlArr = [];
+			for(var i=0;i<SIZE*SIZE;i++)htmlArr.push("<div class='cell' id='"+i+"'></div>");
+			document.querySelector(".tray").innerHTML=htmlArr.join("");
+		}
+
+		initChess();
+
+		// 绑定事件
+		var firstGo = "black" ;
+		document.onclick=function(e){
+			var target = e.target;
+			if(target.className==="cell"&&!GAME_STATE){
+				target.className+= " "+firstGo;
+				firstGo = firstGo==="black"?"white":"black";
+				getResult(target);
+			}
+		}
+
+		// 计算输赢
+		function getResult(t){
+			var id = t.id;
+			var count = 1;
+			var color = t.className.replace("cell ","");
+			// left
+			for(var i=0;i<Math.min(4,id%SIZE);i++){
+				var cell = document.getElementById(id-i-1);
+				if(cell.className===t.className){
+					count++;
+					if(count==5) {
+						GAME_STATE = 1;
+						alert(color+"获胜");return;
+					}
+				}else break;
+			}
+		}
+	})();
+</script>
+</html>
