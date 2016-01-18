@@ -1,12 +1,14 @@
 html,body{width:100%;height:100%;font-size:62.5%;}
 body{margin:0;position:relative}
-.box{height:100%;}
-.table{width:80%;box-sizing:border-box;margin:3rem auto 0rem auto;table-layout:fixed;border:1px solid #ccc;border-collapse:collapse;border-radius:0.5rem;color:#666;}
-.caption{overflow:hidden;border-top-left-radius:0.4rem;border-top-right-radius:0.4rem;background:-webkit-linear-gradient(top,#ddd,#eee);border:1px solid #aaa;border-bottom-width:0;text-align:left;text-indent:2rem;line-height:2.5rem;font-weight:bold;}
+.box{overflow:hidden;height:60%;position:relative;width:80%;top:50%;left:50%;transform:translate(-50%,-50%);transition:all 0.5s;color: #666;}
+.box.max{width:100%;height:100%;}
+.table-wrap{width: 100%;max-height: calc(100% - 3.5rem);overflow: auto;}
+.table{width:100%;box-sizing:border-box;table-layout:fixed;border:0.1rem solid #ccc;border-collapse:collapse;border-radius:0.5rem;}
+.caption{overflow:hidden;border-top-left-radius:0.4rem;border-top-right-radius:0.4rem;background:-webkit-linear-gradient(top,#ddd,#eee);border:0.1rem solid #aaa;border-bottom-width:0;text-align:left;text-indent:2rem;line-height:2.5rem;font-weight:bold;}
 .btn{float:right;text-indent:0rem;text-align:center;line-height:2.5rem;padding:0rem 1rem;cursor:pointer;font-weight:100;background-color:rgba(255,255,255,0.5);}
 .btn:hover{background-color:rgba(255,255,255,0.8);color:#6c6;font-weight:bold;}
-#add{border-left:1px solid #fff;border-right:1px solid #fff;}
-.th,td{line-height:2rem;border:1px dotted #999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#add{border-left:0.1rem solid #fff;border-right:0.1rem solid #fff;}
+.th,td{line-height:2rem;border:0.1rem dotted #999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 thead tr{background:-webkit-linear-gradient(top,#eee,#ddd);}
 tbody tr:nth-child(3n){background-color:#eee;}
 tbody tr:hover{background-color:#ffc;}
@@ -15,15 +17,15 @@ tbody tr:hover{background-color:#ffc;}
 .oper,.index{width:3rem;text-align:center;text-indent:0;}
 tbody .oper:hover{color:#963;font-weight:bold;cursor:pointer;}
 tbody{height:2rem;overflow:auto;}
-.btn-group{padding:0.5rem;background:-webkit-linear-gradient(top,#ddd,#eee);    border-top: 1px solid #ccc;}
+.btn-group{padding:0.5rem;background:-webkit-linear-gradient(top,#eee,#ddd);border:0.1rem solid #ccc;overflow:hidden;border-bottom-left-radius:0.3rem;border-bottom-right-radius:0.3rem;box-sizing:border-box;}
 .btn-group .btn{}
 .caption .btn{line-height:2rem;position:relative;width:1rem;height:2rem;}
 .caption .cs{width:auto;border-bottom-left-radius:0.5rem;}
-.caption .max{border-left:1px solid #fff;border-right:1px solid #fff;}
+.caption .max{border-left:0.1rem solid #fff;border-right:0.1rem solid #fff;}
 .caption .max:before{content:"\200B";background:#000;left:30%;top:30%;width:40%;height:40%;position:absolute;}
 .caption .max:hover:before{background:#6c6;}
 .caption .max:after{content:"\200B";background:#eee;left:40%;top:37%;width:20%;height:20%;position:absolute;}
-.caption .min{border-left:1px solid #fff;}
+.caption .min{border-left:0.1rem solid #fff;}
 .caption .min:before{content:"\200B";background:#000;left:40%;top:45%;width:30%;height:10%;position:absolute;}
 .caption .min:hover:before{background:#6c6;}
 .caption .close{}

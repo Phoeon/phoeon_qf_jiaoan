@@ -1,5 +1,6 @@
 @import url("./reset.css");
-.table{border-color:rgba(51,102,170,0.5);color:rgb(51,102,170);}
+.box{color:rgb(51,102,170);}
+.table{border-color:rgba(51,102,170,0.5);}
 .table .caption{border-color:rgba(51,102,170,0.5);background:-webkit-linear-gradient(top,rgba(51,102,170,0.1),#eee);}
 .table .th,.table .td{border-color:rgba(51,102,170,0.5);}
 .table thead tr{background:-webkit-linear-gradient(top,#eee,rgba(51,102,170,0.1));}
@@ -7,3 +8,7 @@
 .table .th{border-color:rgba(51,102,170,0.3);}
 
 .btn-group{background:-webkit-linear-gradient(top,#eee,rgba(51,102,170,0.1));    border-top: 1px solid rgba(51,102,170,0.5);}
+
+.caption .max:before{background:rgb(51,102,170);}
+.caption .max:after{background:#eee;}
+.caption .min:before{background:rgb(51,102,170);}

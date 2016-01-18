@@ -189,16 +189,17 @@
     			tbody.removeChild(target.parentNode);
 
             // 最大化
-    		}else if(target.id==="max"){
-                document.getElementsByClassName("box")[0].className="box max";
-            // 还原
-            }else if(target.id==="min"){
-                document.getElementsByClassName("box")[0].className="box";
-            // 收起来
-            }else if(target.id==="close"){
-                var box=document.getElementsByClassName("box")[0];
-                box.parentNode.removeChild(box);
-            }
+    		}
+            // else if(target.id==="max"){
+            //     document.getElementsByClassName("box")[0].className="box max";
+            // // 还原
+            // }else if(target.id==="min"){
+            //     document.getElementsByClassName("box")[0].className="box";
+            // // 收起来
+            // }else if(target.id==="close"){
+            //     var box=document.getElementsByClassName("box")[0];
+            //     box.parentNode.removeChild(box);
+            // }
     	},false)
 
 		//双击编辑
