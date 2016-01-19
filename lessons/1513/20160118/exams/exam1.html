@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>change skin</title>
+    <link rel="stylesheet" href="./css/grey.css" type="text/css">
+    <style>
+
+    </style>
+    <script>
+    	window.onload=function(){
+    		// 换肤
+    		var cs = document.getElementById("cs");
+    		cs.onclick=changeSkin;
+    		// 换肤
+    		function changeSkin(e){
+    			e||(e=window.event);
+
+    			var basePath = "./css/",
+    				link = document.getElementsByTagName("link")[0],
+    				href = link.href,
+    				path = href.substr(-8,4);
+
+    			link.href = basePath+(path=="grey"?"blue":"grey")+".css";
+    		}
+    		// 单条记录删除
+    		var delTds = document.getElementsByClassName("td oper");
+    		for(var i=0;i<delTds.length;i++){
+    			delTds[i].onclick = recordSingleDel;
+    		}
+    		function recordSingleDel(e){
+					e=e||window.event;
+    				// e  clientX clientY  target  type
+    				var curTd = e.target ;
+    				var tr = curTd.parentNode;
+    				var tbody = tr.parentNode;
+    				tbody.removeChild(tr);
+    		}
+    		// 批量删除
+    		function delBatch(e){
+
+    		}
+
+    		var addBtn = document.getElementById("add");
+    		addBtn.onclick=create ;
+
+    		function create(){
+    			// var td = document.createElement("td");
+    			// 	td.innerHTML = "I AM NEW TD";
+    			// 	td.className="td";
+    			// 	tr = document.createElement("tr");
+    			// 	tr.appendChild(td);
+    			// 	for(var i=0;i<7;i++){
+    			// 		tr.appendChild(td.cloneNode(true));
+    			// 	}
+
+    				// tr.className = "tr";
+    				var tr = document.getElementById("copy");
+    			var tbody = document.getElementsByTagName("tbody")[0];
+
+    			tbody.appendChild(tr.cloneNode(true));
+
+    		}
+
+    		// quanxuan
+    		var checkAll = document.getElementById("cka");
+    		checkAll.onchange= function(e){
+    			var t = e.target;
+    			var ips = document.getElementsByClassName("ck");
+    			for(var i=0;i<ips.length;i++){
+    				var curIp = ips[i];
+    				curIp.checked = t.checked;
+    			}
+    		}
+
+    		var batchBtn = document.getElementById("bdel");
+    		batchBtn.onclick=function(){
+    			var ips = document.getElementsByClassName("ck");
+    			for(var i=0;i<ips.length;i++){
+    				var curIp = ips[i];
+    				if(curIp.checked===true){
+    					var tbody = document.getElementsByTagName("tbody")[0];
+    					tbody.removeChild(curIp.parentNode.parentNode);
+    					i--;
+    				}
+    			}
+    		}
+    	}
+
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <table class="table">
+            <caption class="caption">
+                <label>班级名单：</label>
+                <label id="cs" class="btn">换肤</label>
+                <label id="add" class="btn">新增</label>
+                <label id="bdel" class="btn">批量删除</label>
+            </caption>
+            <thead>
+                <tr class="tr">
+                    <th class="th index">
+                        <input type="checkbox" id="cka"> </th>
+                    <th class="th index">编号</th>
+                    <th class="th">姓名</th>
+                    <th class="th">性别</th>
+                    <th class="th">兴趣爱好</th>
+                    <th class="th">最高学历</th>
+                    <th class="th">所处职位</th>
+                    <th class="th oper">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<tr class="tr" id="copy">
+                    <td class="td index">
+                        <input name="del" type="checkbox" class="ck"> </td>
+                    <td class="td index">1001</td>
+                    <td class="td">姓名</td>
+                    <td class="td">性别</td>
+                    <td class="td">兴趣爱好</td>
+                    <td class="td">最高学历</td>
+                    <td class="td">所处职位</td>
+                    <td class="td oper">删除</td>
+                </tr>
+                <tr class="tr">
+                    <td class="td index">
+                        <input name="del" type="checkbox" class="ck"> </td>
+                    <td class="td index">1001</td>
+                    <td class="td">姓名</td>
+                    <td class="td">性别</td>
+                    <td class="td">兴趣爱好</td>
+                    <td class="td">最高学历</td>
+                    <td class="td">所处职位</td>
+                    <td class="td oper">删除</td>
+                </tr>
+                <tr class="tr">
+                    <td class="td index">
+                        <input name="del" type="checkbox" class="ck"> </td>
+                    <td class="td index">1001</td>
+                    <td class="td">姓名</td>
+                    <td class="td">性别</td>
+                    <td class="td">兴趣爱好</td>
+                    <td class="td">最高学历</td>
+                    <td class="td">所处职位</td>
+                    <td class="td oper">删除</td>
+                </tr>
+                <tr class="tr">
+                    <td class="td index">
+                        <input name="del" type="checkbox" class="ck"> </td>
+                    <td class="td index">1001</td>
+                    <td class="td">姓名</td>
+                    <td class="td">性别</td>
+                    <td class="td">兴趣爱好</td>
+                    <td class="td">最高学历</td>
+                    <td class="td">所处职位</td>
+                    <td class="td oper">删除</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+
+</html>

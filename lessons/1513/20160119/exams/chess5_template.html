@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/chess.css" type="text/css">
+</head>
+<body>
+	<div class="tray-wrap">
+		<div class="tray-box">
+			<div class="tray-mask"></div>
+			<div class="tray">
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	(function(){
+		var SIZE = 24;//每行单元格数
+		var GAME_STATE = 0;//可以开始  1 已经结束
+		var cells ;
+		// 初始化棋盘
+		function initMaskChess(){
+			var htmlArr = [];
+			for(var i=0;i<25*25;i++)htmlArr.push("<div class='cell' id='"+i+"'></div>");
+			document.querySelector(".tray-mask").innerHTML=htmlArr.join("");
+			cells = document.querySelectorAll(".cell");
+		}
+		function initChess(){
+			var htmlArr = [];
+			for(var i=0;i<SIZE*SIZE;i++)htmlArr.push("<div class='cell' id='"+i+"'></div>");
+			document.querySelector(".tray").innerHTML=htmlArr.join("");
+			cells = document.querySelectorAll(".cell");
+		}
+		initMaskChess();
+		initChess();
+
+		// 绑定事件
+		var firstGo = "black" ;
+		
+	})();
+</script>
+</html>

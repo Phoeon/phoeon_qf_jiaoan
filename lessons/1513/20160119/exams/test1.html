@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table style="width:100px">
+		<caption>biaoti</caption>
+		<thead>
+			<tr>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             </tr>
+		</thead>
+		<tbody>
+             <tr>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             </tr>
+             <tr>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             </tr>
+             <tr>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             </tr>
+             <tr>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             </tr>
+             <tr>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+
+             </tr>
+		</tbody>
+		<tfoot>
+			<tr>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             	<td>i am td</td>
+             </tr>
+		</tfoot>
+	</table>
+</body>
+<script>
+	var t = document.getElementsByTagName("table")[0];
+
+	var style = window.getComputedStyle(t)||t.currentStyle||t.style;
+
+	console.log(style.width,style.height);
+</script>
+</html>

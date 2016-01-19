@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+ul {}
+ul li{
+    display:inline-block;
+    background:#69f;
+}
+li.active{
+    background:#ff0;
+}
+
+.container {
+    display:none;
+}
+.container.active{
+    display:block;
+}
+	</style>
+</head>
+<body>
+	<ul id="tablist">
+		<li class="active">Tab 1</li>
+		<li>Tab 2</li>
+		<li>Tab 3</li>
+		<li>Tab 4</li>
+		<li>Tab 5</li>
+	</ul>
+	<div class="wrap">
+		<div class="container active">content 1</div>
+		<div class="container">content 2</div>
+		<div class="container">content 3</div>
+		<div class="container">content 4</div>
+		<div class="container">content 5</div>
+	</div>
+</body>
+<script>
+	var ul = document.getElementById("tablist"); 
+	var tabs = ul.getElementsByTagName("li");
+	var containers = document.getElementsByClassName("container");
+	var len = tabs.length;
+	for(var i=0;i<len;i++){
+		var tab = tabs[i];
+		tab.index = i;
+		tab.onclick = function(e){
+			e||(e=window.event);
+
+			// 当前点击的li dom 对象
+ 			var target = this;
+ 			// 之前激活的li dom 对象
+
+ 			var activeLi = ul.getElementsByClassName("active")[0];
+ 			// 移除之前li的激活样式
+ 			activeLi.className="";
+ 			// 隐藏之前的内容区
+ 			containers[activeLi.index].className = "container";
+
+ 			// 激活当前li的激活样式
+ 			target.className += "active";
+ 			// 隐藏之前的内容区
+ 			containers[target.index].className = "container active"
+		}
+	}
+
+	// for(var i=0;i<tabs.length;i++){
+	// 	var tab = tabs[i];
+
+	// 	tab.onclick = function(e){
+	// 		// 当前点击的lidom对象
+ // 			var target = e.target;
+ // 			var index = target.getAttribute("index");
+ // 			// 激活tab
+ // 			activeTab(target)
+ // 			// 激活内容区
+ // 			activeContainer(index);
+	// 	}
+	// }
+	// function activeTab(target){
+	// 	for(var j=0;j<tabs.length;j++){
+ // 				// 如果相等，就表示是当前所点击的对象，添加激活样式active
+ // 				if(j==target.getAttribute("index")){
+ // 					target.className = "active";
+ // 				}else {
+ // 					// 否则，移除active
+ // 					tabs[j].className = "";
+ // 				}
+ // 			}
+	// }
+	// function activeContainer(index){
+	// 	for(var k=0;k<tabs.length;k++){
+ // 				if(k==index){
+ // 					containers[k].className += " active";
+ // 				}else containers[k].className = "container";
+ // 			}
+	// }
+</script>
+</html>

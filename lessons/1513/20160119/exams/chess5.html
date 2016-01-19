@@ -18,13 +18,21 @@
 	(function(){
 		var SIZE = 24;//每行单元格数
 		var GAME_STATE = 0;//可以开始  1 已经结束
+		var cells ;
 		// 初始化棋盘
+		function initMaskChess(){
+			var htmlArr = [];
+			for(var i=0;i<23*23;i++)htmlArr.push("<div class='cell1' id='"+i+"'></div>");
+			document.querySelector(".tray-mask").innerHTML=htmlArr.join("");
+			cells = document.querySelectorAll(".cell");
+		}
 		function initChess(){
 			var htmlArr = [];
 			for(var i=0;i<SIZE*SIZE;i++)htmlArr.push("<div class='cell' id='"+i+"'></div>");
 			document.querySelector(".tray").innerHTML=htmlArr.join("");
+			cells = document.querySelectorAll(".cell");
 		}
-
+		initMaskChess();
 		initChess();
 
 		// 绑定事件
@@ -45,7 +53,7 @@
 			var color = t.className.replace("cell ","");
 			// left
 			for(var i=0;i<Math.min(4,id%SIZE);i++){
-				var cell = document.getElementById(id-i-1);
+				var cell = cells[id-i-1];
 				if(cell.className===t.className){
 					count++;
 					if(count==5) {
@@ -54,6 +62,60 @@
 					}
 				}else break;
 			}
+
+			// right
+			for(var i=0;i<Math.min(4,SIZE-id%SIZE);i++){
+				var cell = cells[+id+i+1];
+				if(cell.className===t.className){
+					count++;
+					if(count==5) {
+						GAME_STATE = 1;
+						alert(color+"获胜");return;
+					}
+				}else{
+					count=1;
+					break;
+				} 
+			}
+
+			// top
+			for(var i=0;i<Math.min(4,Math.floor(id/SIZE));i++){
+				var cell = cells[+id-(i+1)*SIZE];
+				if(cell.className===t.className){
+					count++;
+					if(count==5) {
+						GAME_STATE = 1;
+						alert(color+"获胜");return;
+					}
+				}else{
+					// count=1;
+					break;
+				} 
+			}
+
+			// bottom
+			for(var i=0;i<Math.min(4,Math.floor(id/SIZE));i++){
+				var cell = cells[+id+(i+1)*SIZE];
+				if(cell.className===t.className){
+					count++;
+					if(count==5) {
+						GAME_STATE = 1;
+						alert(color+"获胜");return;
+					}
+				}else{
+					count=1;
+					break;
+				} 
+			}
+
+			// left top
+
+			// right bottom
+
+			// right top
+
+			// left bottom
+
 		}
 	})();
 </script>
