@@ -139,12 +139,14 @@
     		var target = e.target ;
     		// 换肤
     		if(target.id==="cs"){
+                console.log(e.currentTarget,target)
 
     			var link = document.getElementsByTagName("link")[0];
     			var name = link.href.substr(-8,4);
     			link.href = "./css/"+(name==="grey"?"blue":"grey")+".css";		
     		// 添加一行
     		}else if(target.id==="add"){
+                console.log(e.currentTarget,target)
 
     			var tbody = document.getElementsByClassName("table")[0].tBodies[0];
     			var newTr = tbody.children[0];
@@ -168,6 +170,7 @@
 
     		// 批量删除
     		}else if(target.id==="bdel"){
+                console.log(e.currentTarget,target)
 
     			var tbody = document.getElementsByClassName("table")[0].tBodies[0];
     			var inputs = document.getElementsByName("del");
@@ -190,12 +193,15 @@
 
             // 最大化
     		}else if(target.id==="max"){
+                console.log(e.currentTarget,target)
                 document.getElementsByClassName("box")[0].className="box max";
             // 还原
             }else if(target.id==="min"){
+                console.log(e.currentTarget,target)
                 document.getElementsByClassName("box")[0].className="box";
             // 收起来
             }else if(target.id==="close"){
+                console.log(e.currentTarget,target)
                 var box=document.getElementsByClassName("box")[0];
                 box.parentNode.removeChild(box);
             }

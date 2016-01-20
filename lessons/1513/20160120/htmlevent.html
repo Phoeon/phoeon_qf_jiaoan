@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="selTest"/>
+
+</body>
+<script>
+   var ip = document.getElementById("selTest");
+
+   ip.onselect = function(){
+      alert("select")
+   }
+   ip.onfocus = function(){
+   	// alert("focus")
+   	console.log("focus"+Math.random())
+   }
+   ip.onblur = function(){
+   	  console.log("blur"+Math.random())
+   }
+   window.onresize = function(){
+   	 console.log("resize"+Math.random())
+   }
+   window.onscroll = function(){
+   	 console.log("scroll"+Math.random())
+   }
+</script>
+</html>

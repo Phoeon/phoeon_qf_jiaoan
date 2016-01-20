@@ -1,0 +1,16 @@
+事件发生阶段
+
+capture捕获
+目标
+冒泡
+
+用于阻止事件向上冒泡
+ e.cancleBubble = true ;
+ e.stopPropagation() ;
+
+//阻止浏览器的默认行为
+e.returnValue = false ;
+e.preventDefault();
+
+目标对象的事件顺序跟代码顺序有关
+父元素的是按照先 捕获 目标 后冒泡

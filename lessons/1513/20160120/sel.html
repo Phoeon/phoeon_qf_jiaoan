@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<select name="" value="10005" id="sel">
+		<option value="10001" >option 1</option>
+		<option value="10002" >option 2</option>
+		<option value="10003" >option 3</option>
+		<option value="10004"> option 4</option>
+		<option value="10005"> option 5</option>
+	</select>
+</body>
+<script>
+ var sel = document.getElementById("sel");
+ sel.addEventListener("change",fn);
+
+  function fn(){
+ 	// v sel.value||this.value
+    var v = sel.value;
+    var options = sel.getElementsByTagName("option");
+    var index ;
+
+    for(var i=0;i<options.length;i++){
+    	if(options[i].value === sel.value){
+    		index = i;
+    	}
+    }
+    
+    alert(index);
+
+ }
+
+ var arr = [];
+ for(var key in window){
+ 	console.log(key)
+ }
+</script>
+</html>

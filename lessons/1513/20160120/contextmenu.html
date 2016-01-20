@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+    div#cxtmenu {
+	    height:100px;
+	    width:100px;
+	    background:red;
+	    display : none;
+	    position:absolute;
+	}
+	body{
+		height: 1000px;
+	}
+	</style>
+</head>
+<body >
+    <div id="cxtmenu"></div>
+	<script>
+	  var menu = document.getElementById("cxtmenu");
+      document.body.oncontextmenu = function(e){
+      	e||(e=event);
+          e.preventDefault();
+          e.returnValue = false;
+          
+          menu.style.display="block";
+          menu.style.left = e.clientX+"px";
+          menu.style.top = e.clientY+"px";
+      }
+	</script>
+</body>
+</html>

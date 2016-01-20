@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select name="" id="sel1" class="sel1"></select>
+	<select name="" id="sel2" class="sel2"></select>
+	<select name="" id="sel3" class="sel3"></select>
+</body>
+<script>
+	var shens = ["shens1","shens2","shens3"];
+	var shis  = [["s1shi1","s1shi2","s1shi3"],["s2shi1","s2shi2","s2shi3"],["s3shi1","s3shi2","s3shi3"]];
+	var zhens = [
+			[
+				["s1s1z1","s1s1z2","s1s1z3"],
+				["s1s2z1","s1s2z2","s1s2z3"],
+				["s1s3z1","s1s3z2","s1s3z3"]
+			],
+			[
+				["s2s1z1","s2s1z2","s2s1z3"],
+				["s2s2z1","s2s2z2","s2s2z3"],
+				["s2s3z1","s2s3z2","s2s3z3"]
+			],
+			[
+				["s3s1z1","s3s1z2","s3s1z3"],
+				["s3s2z1","s3s2z2","s3s2z3"],
+				["s3s3z1","s3s3z2","s3s3z3"]
+			]
+		]
+		var sel1 = document.getElementById("sel1");
+		var sel2 = document.getElementById("sel2");
+		var sel3 = document.getElementById("sel3");
+		// 初始化三级
+		initThird();	
+		// 身份变化事件
+		sel1.onchange = function(e){
+			e||(e=window.event);
+			var index = e.target.selectedIndex;
+			initSelect(shis[index],sel2);
+			initSelect(zhens[index][0],sel3);
+		}
+		// 市变化事件
+		sel2.onchange = function(e){
+			e||(e=window.event);
+			var index = e.target.selectedIndex;
+			initSelect(zhens[sel1.selectedIndex][index],sel3);
+		}
+		
+		function initThird(){
+			// 初始化省份
+			initSelect(shens,sel1);
+			// 初始化市
+			initSelect(shis[0],sel2);
+			// 初始化镇
+			initSelect(zhens[0][0],sel3);
+		}
+
+		function initSelect(arr,sel){
+			sel.length = 0 ;
+			for(var i=0;i<arr.length;i++){
+				var option = document.createElement("option");
+				option.innerHTML = arr[i];
+				option.value = arr[i];
+				if(i==0){
+					option.selected=true;
+				}
+				sel.appendChild(option);
+			}
+		}
+</script>
+</html>

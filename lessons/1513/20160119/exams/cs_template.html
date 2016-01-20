@@ -121,7 +121,7 @@
         </div>
     </div>
     <script>
-
+        
 
     	// 全选
 		document.querySelector("#cka").onchange = function(e) {
@@ -221,16 +221,36 @@
             box = document.getElementsByClassName("box")[0],
             initWidth ,
             initHeight ;
-            max.onclick = function(){
+
+            document.addEventListener("click",function(evt){
+                var target = evt.target;
+                if(target.id == "max"){
+                    dealMax();
+                }else if(target.id=="min"){
+                    dealMin();
+                }
+            },false)
+            
+            function dealMax(){
                 initWidth = box.offsetWidth;
                 initHeight = box.offsetHeight;
                 box.style.width="100%" ;
                 box.style.height="100%" ;
             }
-            min.onclick = function(){
+            function dealMin(){
                 box.style.width=initWidth + "px" ;
                 box.style.height=initHeight + "px" ;   
             }
+            // max.onclick = function(){
+            //     initWidth = box.offsetWidth;
+            //     initHeight = box.offsetHeight;
+            //     box.style.width="100%" ;
+            //     box.style.height="100%" ;
+            // }
+            // min.onclick = function(){
+            //     box.style.width=initWidth + "px" ;
+            //     box.style.height=initHeight + "px" ;   
+            // }
 
     </script>
 </body>

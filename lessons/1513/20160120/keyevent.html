@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			document.getElementById("ip1").addEventListener("keyup",function(e){
+				var ip2 = document.getElementById("ip2");
+				ip2.value = e.target.value;
+			});
+		}
+
+		window.onbeforeunload=function(){
+			alert(2323)
+		}
+
+	</script>
+</head>
+<body>
+	<input id="ip1"></input>
+	<input id="ip2"></input>
+</body>
+</html>

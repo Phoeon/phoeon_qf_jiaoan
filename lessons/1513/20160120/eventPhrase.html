@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//onclick 没有捕获阶段 
+
+		// addEventListener("ename",fn,true|false)
+		window.onload=function(){
+			// document.body.onclick = function(){
+			// 	console.log("im body")
+			// }
+
+			// document.body.getElementsByClassName("d1")[0].onclick = function(){
+			// 	console.log("im div d1")
+
+			// }
+
+			// document.body.getElementsByClassName("d2")[0].onclick = function(){
+			// 	console.log("im div d2")
+			// }
+
+			// document.body.getElementsByClassName("b3")[0].onclick = function(){
+			// 	console.log("im button b3")
+			// e.cancleBubble=true ;
+			// e.stopPropagation();
+			// }
+			// document.body.addEventListener("click",function(){
+			// 	console.log("im body")
+			// },true)
+			var div1 = document.body.getElementsByClassName("d1")[0];
+			var div2 = document.body.getElementsByClassName("d2")[0];
+			var btn  = document.body.getElementsByClassName("b3")[0];
+
+
+			btn.addEventListener("click",function(){
+				console.log("	mp im button b3")
+			},false)
+			btn.addEventListener("click",function(){
+				console.log("bh im button b3")
+			},true)
+
+
+
+			div1.addEventListener("click",function(){
+				console.log("	mp im div d1")
+			},false)
+			div1.addEventListener("click",function(){
+				console.log("bh im div d1")
+			},true)
+
+			div2.addEventListener("click",function(){
+				console.log("	mp im div d2")
+			},false)
+			div2.addEventListener("click",function(){
+				console.log("bh im div d2")
+			},true)
+
+
+			// document.body.addEventListener("mousewheel",function(e){
+			// 	e.returnValue = false;
+			// 	e.preventDefault();
+			// 	// e.returnValue = false;
+			// 	// return true;
+			// })
+		}
+	</script>
+</head>
+<!-- 
+事件阶段3
+
+1 捕捉
+2 目标
+3 冒泡
+
+ -->
+<body>
+	<div class="d1">
+		<div class="d2">
+			<button class="b3">button</button>
+		</div>
+	</div>
+</body>
+</html>
