@@ -3,8 +3,58 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		html,body{
+		    height:100%;
+		    width:100%;
+		}
+		body{
+		    margin:0;
+		}
+		.box {
+		    position:fixed;
+		    width:50%;
+		    height:30%;
+		    border:1px solid red;
+		}
+		.movebar{
+		    height:30px;
+		    background:red;
+		    cursor:move;
+		}
+	</style>
 </head>
 <body>
-	<script></script>
+	<div class="box">
+		<div class="movebar"></div>
+	</div>
+	<script>
+		var box = document.querySelector(".box");
+		var mbar = document.querySelector(".movebar");
+
+		mbar.addEventListener("mousedown",function(e){
+			var target = e.target;
+		  	var box = target.parentNode;
+		    box.pos = {
+		     x : e.clientX-box.offsetLeft,
+		     y : e.clientY-box.offsetTop
+		    }
+		    document.moveBox = box ;
+		},false);
+
+		document.addEventListener("mousemove",function(e){
+		  if(document.moveBox){
+		  	var box = document.moveBox;
+		    var pos = box.pos ;
+		    box.style.left = e.clientX-pos.x + "px";
+		    box.style.top  = e.clientY-pos.y + "px";
+		  }
+		},true);
+
+		document.addEventListener("mouseup",function(e){
+		  document.moveBox = null;
+		},true);
+
+	</script>
 </body>
 </html>
