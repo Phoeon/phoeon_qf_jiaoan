@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 100px;
+				height: 150px;
+				background: #ff0;
+				position: absolute;
+				top: 50px;
+				left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<input type="button" id="btn" value="按钮" />
+		<script type="text/javascript">
+		
+			var oBox = document.getElementById("box");
+			var oBtn = document.getElementById("btn");
+			
+			function fn(){
+				oBox.style.width = oBox.offsetWidth+3+'px';
+			}
+			
+			setInterval(fn,300)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+		</style>
+	</head>
+
+	
+	<body>
+		
+		
+		<div id="box"></div>
+		<textarea id="txt"></textarea>
+		<script type="text/javascript" src="js/hhl.js"></script>
+		<script type="text/javascript">
+		
+			$('#box').onclick = function(){
+				move(this, 'top', 501)
+			}
+				
+			function move(obj, attr, target) {
+				var speed = 0;
+				clearInterval( obj.timer );
+				obj.timer = setInterval(function(){
+					var iCur = parseInt(getStyle( obj, attr ));
+					
+					if( iCur > target ){
+						speed = Math.floor( (target-iCur)/10 );
+					}else{
+						speed = Math.ceil( (target-iCur)/10 );
+					}
+					//$('#txt').value += speed + '\n';
+					/*结束条件*/
+					if ( iCur == target ) {
+						clearInterval(obj.timer);
+					} else {
+						obj.style[attr] = iCur + speed + 'px';
+					}
+				}, 30)
+			}
+		</script>
+
+	</body>
+
+</html>

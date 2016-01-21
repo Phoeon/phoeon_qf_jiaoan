@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="box">
+			<p class="con"></p>
+			<p class="con"></p>
+			<p class="_con2 con con1"></p>
+			<p class="con"></p>
+			<p class="con"></p>
+			<div class=" con con2 ">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			/*
+			var cN = '123';
+			//var reg = /\b123\b/;
+			var reg = new RegExp('\\b'+cN+'\\b'); 
+			//alert( reg.test(cN) );
+			*/
+			var oBox = document.getElementById("box");
+			alert(getClass('con').length)
+			function getClass(cN , obj){
+				obj = obj || document;
+				if(obj.getElementsByClassName){
+					return obj.getElementsByClassName(cN);
+				}else{
+					var arr = []; 
+					var arrE = document.getElementsByTagName("*");
+					for(var i=0 ;i < arrE.length; i++){
+						var reg = new RegExp('\\b'+cN+'\\b');
+					//	var reg = /\bcN\b/;
+						if( reg.test( arrE[i].className ) ){
+							arr.push(arrE[i]);
+						}
+					}
+					return arr;
+				}
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

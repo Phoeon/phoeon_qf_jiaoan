@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+			<li>44</li>
+		</ul>
+		<script type="text/javascript">
+			/*
+				事件委托：
+					父元素代替子元素进行事件处理;
+				event:事件源 ：哪个东西触发这个事件，谁就是事件源
+				
+				IE：ev.srcElement    非IE   ev.target
+			*/
+			var oList = document.getElementById("list");
+			var oLi = oList.getElementsByTagName("li");
+			/*
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].onclick = function(){
+					alert('向泊修今天的内容写10遍')
+				}
+			}
+			oList.onclick = function(){
+				alert('向泊修今天的内容写10遍')
+			}
+			*/
+			/*
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].onmouseover = function(){
+					this.style.background = 'pink'
+				};
+				oLi[i].onmouseout = function(){
+					this.style.background = ''
+				}
+			}
+			*/
+			oList.onmouseover = function( ev ){
+				var ev = ev || event;
+				var This = ev.srcElement || ev.target;
+				if( This.nodeName.toLowerCase() == 'li' ){
+					This.style.background = 'pink'
+				}
+				
+			};
+			oList.onmouseout = function( ev ){
+				var ev = ev || event;
+				var This = ev.srcElement || ev.target;
+				if( This.nodeName.toLowerCase() == 'li' ){
+					This.style.background = ''
+				}
+				
+			}
+		</script>
+		
+	</body>
+</html>

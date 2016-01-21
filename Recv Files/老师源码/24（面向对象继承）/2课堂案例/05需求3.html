@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//小头爸爸和大头儿子牵着手吃饭,吃完饭后,（如果大头儿子的年龄大于18岁）小头爸爸背着大头儿子回家
+			//小头爸爸 大头儿子 饭
+			
+			function Preson(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			Preson.prototype = {
+				and : function(preson){
+					console.log(this.name + '和'+preson.name);
+				},
+				getHand : function(){
+					console.log('牵着手');
+				},
+				eat : function( rice ){
+					console.log(this.name+'吃'+rice.name);
+				},
+				carry : function(preson){
+					if(this.age>=18){
+						console.log(this.name + '背着' + preson.name);
+					}else{
+						console.error('年龄不够不能背');
+					}
+					
+				},
+				backHome : function(){
+					console.log('回家');
+				}
+			}
+			function Rice(name){
+				this.name = name;
+			}
+			var p1 = new Preson('小头爸爸',30);
+			var p2 = new Preson('大头儿子',5);
+			
+			p1.and(p2);
+			p1.getHand();
+			p1.eat(new Rice('泰国香米'));
+			p2.eat(new Rice('大葱卷饼'));
+			console.log('吃完饭后');
+			p2.carry(p1);
+			p1.backHome();
+		</script>
+		
+		
+	</body>
+</html>

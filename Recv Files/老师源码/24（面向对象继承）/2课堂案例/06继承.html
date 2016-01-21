@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+		
+			//小头爸爸和大头儿子牵着手吃饭,吃完饭后,小头爸爸背着大头儿子回家
+			//小头爸爸开始工作，大头儿子学习，大头儿子会学完之后看动画片，小头爸爸看足球比赛
+			//围裙妈妈哄着大头儿子睡觉
+			//小头爸爸 大头儿子 饭
+			
+			function Preson(name){
+				this.name = name;
+			}
+			Preson.prototype = {
+				and : function(preson){
+					console.log(this.name + '和'+preson.name);
+				},
+				getHand : function(){
+					console.log('牵着手');
+				},
+				eat : function( rice ){
+					console.log( this.name + '吃' + rice.name );
+				},
+				backHome : function(){
+					console.log('回家');
+				},
+				watchTv : function( jm ){
+					console.log( this.name+'完事之后看'+ jm.name )
+				},
+				sleep : function(preson){
+					console.log('睡觉');
+				}
+			}
+			
+			Function.prototype.extends = function( fn , action ){
+				for( var attr in fn.prototype ){
+					this.prototype[attr] = fn.prototype[attr];
+				}
+				for( var attr in action ){
+					this.prototype[attr] = action[attr];
+				}
+			}
+			
+			function Father(name){
+				this.name = name;
+			}
+			Father.extends(Preson,{
+				carry : function(preson){
+					console.log(this.name + '背着' + preson.name);
+				},
+				work : function(){
+					console.log(this.name + '开始工作');
+				}
+			});
+		
+			function Son(name){
+				this.name = name
+			}
+			
+			function Mother(name){
+				this.name = name
+			}
+			Mother.extends(Preson);
+			
+			//判断判断谁
+			Mother.prototype.care = function(preson){
+				if( Son ){
+					console.log(this.name + '哄着' + preson.name);
+				}else{
+					console.error('抱错人了')
+				}
+				
+			}
+	
+	
+			
+			function Jm(name){
+				this.name = name;
+			}
+			Son.extends(Preson);
+			Son.prototype.study = function(){
+				console.log(this.name+'学习')
+			}
+			function Rice(name){
+				this.name = name;
+			}
+			var p1 = new Father('小头爸爸');
+			var p2 = new Son('大头儿子');
+			var p3 = new Mother('围裙妈妈');
+			p1.and(p2);
+			p1.getHand();
+			p1.eat(new Rice('泰国香米'));
+			p2.eat(new Rice('大葱卷饼'));
+			console.log('吃完饭后');
+			p1.carry(p2);
+			p1.backHome();
+			p1.work();
+			p2.study();
+			p1.watchTv(new Jm('大人节目'));
+			p2.watchTv(new Jm('少儿节目'));
+			p3.care(p1);
+			p3.sleep();	
+		</script>
+		
+		
+	</body>
+</html>

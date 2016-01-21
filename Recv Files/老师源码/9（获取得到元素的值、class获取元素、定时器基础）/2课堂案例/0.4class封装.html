@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box header"></div>
+		<div id="xbx">
+			<p class="header" style="width: 100px;height: 100px;background: #0f0;"></p>
+		</div>
+		<script type="text/javascript" src="js/hhl.js"></script>
+		<script type="text/javascript">
+	
+	
+	
+	
+	$(function(){ 
+		$('.box')[0].style.background = '#ff0';
+	});
+	
+	
+	
+	
+	
+		//getClass( 'header',document.getElementById("xbx") )[0].style.background = '#ff0';
+		
+		/*
+		function getClass( cName,obj ){
+			obj = obj || document;
+			if( obj.getElementsByClassName ){
+				return obj.getElementsByClassName(cName);
+			}
+			var all = obj.getElementsByTagName('*');
+			var arrClass = [];
+			for(var i=0;i<all.length;i++){
+				var arr = all[i].className.split(' ');
+				for(var j=0;j<arr.length;j++){
+					if( arr[j] == cName ){
+						arrClass.push( all[i] );
+					}
+				}
+			}
+			return arrClass;
+		}
+			
+		*/
+		</script>
+	</body>
+</html>

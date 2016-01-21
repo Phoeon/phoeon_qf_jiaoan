@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			
+			function aaa(){  //只有从里面往外面去找，没有从外面往里面去找
+				alert(1)
+			}
+			aaa();
+			
+			
+			sum( 1 , 2 );
+			
+			function sum( a , b ){ //传递的参数没有个数限制，多个参数之间用逗号隔开
+				//var a = 1;   传递的参数相当于 声明的变量
+				//var b = 2; 
+				alert( a + b )				
+			}
+			
+			bbb(function(){alert(1)});
+			function bbb( hhl ){
+				//var hhl = function(){alert(1)}  相当于声明一个叫做hhl的变量，通过调用变量执行函数
+				hhl();
+				//alert(hhl) 在定义一个函数的时候你在alert 函数的话 会把函数原封不动的弹出来 
+			}
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

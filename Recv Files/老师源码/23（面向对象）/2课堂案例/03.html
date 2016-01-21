@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+		/*
+			//工厂模式： (面向过程) 普通函数
+			function getName( name ){
+				var obj = new Object(); //原料
+				obj.name = name; //加工
+				obj.nameWork = function(){ //加工
+					//alert( obj.name )
+					alert( this.name )
+				};
+				return obj;//出厂
+			}
+			var p1 = getName('向泊修');
+			var p2 = getName('大姐');
+			var p3 = getName('李成');
+			p1.nameWork();
+			p2.nameWork();
+			p3.nameWork();
+		*/	
+		
+		
+			//构造器函数
+			function GetName( name ){
+				//通过new出来的函数返回的值就是我们this的指向
+				this.name = name; 
+				this.nameWork = function(){ 
+					alert( this.name )
+				};
+			}
+			var p1 = new GetName('向泊修');   //var Object()
+			var p2 = new GetName('大姐');
+			var p3 = new GetName('李成');
+			p1.nameWork();
+			p2.nameWork();
+			p3.nameWork();
+		
+		</script>
+		
+	</body>
+</html>

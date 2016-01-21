@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="txt1" /> +
+		<input type="text" id="txt2" /> =
+		<input type="text" id="txt3" />
+		<input type="button" id="btn" value="按钮" />
+		<script type="text/javascript">
+//			$(function(){
+//
+//				$( 'btn' ).onclick = function(){
+//					$( 'txt3' ).value = Number($( 'txt1' ).value) + Number( $( 'txt2' ).value );
+//				}
+//				
+//				
+//			});
+//			
+//			function $( para ){
+//				if( typeof para == 'function' ){
+//					window.onload = para;
+//				}else if(  typeof para == 'string' ){
+//					return document.getElementById( para );
+//				}
+//				
+//			}
+
+
+
+	/*		第一种方法
+			window.onload = function(){
+				var oBtn = document.getElementById( 'btn' );
+				var oTxt1 = document.getElementById( 'txt1' );
+				var oTxt2 = document.getElementById( 'txt2' );
+				var oTxt3 = document.getElementById( 'txt3' );
+				oBtn.onclick = function(){
+				oTxt3.value	= Number(oTxt1.value) + Number(oTxt2.value);
+				}
+				
+			}
+		*/	
+		
+		
+		
+		/* 第二种方法
+			window.onload = function(){
+				getId( 'btn' ).onclick = function(){
+				getId( 'txt3' ).value	= Number(getId( 'txt1' ).value) + Number(getId( 'txt2' ).value);
+				}
+			}
+			function getId( id ){
+				return document.getElementById( id );
+			}
+		*/	
+		//第三种方式 
+		 $(function(){
+		 	$( 'btn' ).onclick = function(){
+		 		$( 'txt3' ).value = Number($( 'txt1' ).value) + Number($( 'txt2').value);
+		 	}
+		 });
+		 
+		function $( para ){
+			if( typeof para == 'function' ){
+				window.onload = para;
+			}else if(typeof para == 'string'){
+				return document.getElementById( para );
+			}
+		}
+		
+		</script>
+		
+	</body>
+</html>

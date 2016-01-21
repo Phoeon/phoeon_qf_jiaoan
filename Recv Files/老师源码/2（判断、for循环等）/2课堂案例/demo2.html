@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="text" />
+		<input type="button" value="button" id="btn"/>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oText = document.getElementById("text");
+				var oBtn = document.getElementById("btn");
+				
+				
+				//< > == !=（不等于）===（全等，不管是值还是类型全等） >= <=
+				//!非 &与 ||或
+				oBtn.onclick = function(){
+				var val = oText.value;
+				/*
+				if( '222'==222 ){
+					alert("'222'==222 是真")
+				}else {
+					alert("'222'==222 是假")
+				}
+				*/
+				if( val == '1234567' ){
+					alert('恭喜您登陆成功')
+				}else if( val == '' ){
+					alert('请输入密码')
+				}
+				else{
+					alert('哥们 再想想密码')
+				}
+				}
+			
+			
+			
+			}
+		</script>
+	</body>
+</html>

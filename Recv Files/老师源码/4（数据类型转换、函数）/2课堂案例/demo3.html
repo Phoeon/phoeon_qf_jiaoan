@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			var a = 10 + '2';
+			//var a = [1] + '2';
+			//var a = 10 - '2';
+			//var a = '10' - '2';
+			//var a = '10' / '2';
+			//var a = 'abc' - '2'; NaN 字符类型是number
+			//var a = '  +500' - '  -200';
+			//var a = '500' % 2;
+			/*
+			var a = '500';
+			a++;
+			*/
+			alert(typeof a);
+			alert( a );
+			/*
+			var a = 3;
+			var b = 4;
+			alert( a < b );
+			
+			
+			var a = '3';
+			var a = '20';
+			alert( a < b ); //字符串比位数 第一位和第一位比   
+			alert( '2' < '2000') //如果第一位和第二位相等 那么比较第二位
+			*/
+			
+			//alert( 1 == '1');
+			var a = null;
+			if( a ){ //强制转换成布尔值时： 0 '' null undefined NaN是假
+				alert('真')
+			}else{
+				alert('假')
+			};
+		</script>
+		
+	</body>
+</html>

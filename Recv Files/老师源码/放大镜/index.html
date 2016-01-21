@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>放大镜</title>
+<style type="text/css">
+#div{ width:400px; height:260px; border: 2px solid #cccccc; position:relative;}
+#small{ width: 400px; height:260px; position:relative;}
+#mark{ width:100%;height:100%; position:absolute; z-index: 10; left:0; top:0; background:red; filter:alpha(opacity:0); opacity:0 }
+#float{ width:40px; height:40px; border:1px solid #cccccc; background:#CF6; filter:alpha(opacity:60);opacity:0.6; position:absolute;display:none;}
+#big{ width:500px; height:300px; position:absolute; left:415px; top:0;  overflow:hidden; border: 1px solid #cccccc; display:none;}
+#img1{ position:absolute; left:0; top:0;}
+</style>
+<script type="text/javascript">
+     window.onload = function(){
+	      var oDiv = document.getElementById("div");
+		  var oSmall = document.getElementById("small");
+		  var oMark = document.getElementById("mark");
+		  var oFloat = document.getElementById("float");
+		  var oBig = document.getElementById("big");
+		  var oImg  = document.getElementById("img1");
+		  
+		  oMark.onmouseover = function(){
+			   oFloat.style.display ="block";
+			   oBig.style.display="block";
+		  }
+		   oMark.onmouseout = function(){
+			   oFloat.style.display ="none";
+			   oBig.style.display="none";
+		  }
+		  oMark.onmousemove = function(ev){
+				//事件兼容
+			    var oEvent = ev||event;
+				//获取鼠标纵坐标  鼠标纵坐标-小块高度一半
+				var t=oEvent.clientY-oFloat.offsetHeight/2;
+				//获取鼠标横坐标  鼠标横坐标-小块宽度一半
+				var l=oEvent.clientX-oFloat.offsetWidth/2;
+				//判断 跟随鼠标小块不能出去
+				if(t<0){
+					t=0
+				}else if(t>oSmall.offsetHeight-oFloat.offsetHeight){
+					t=oSmall.offsetHeight-oFloat.offsetHeight;
+				}
+				if(l<0){
+					l=0
+				}else if(l>oSmall.offsetWidth-oFloat.offsetWidth){
+					l=oSmall.offsetWidth-oFloat.offsetWidth;
+				}
+				//定位小块位置
+				oFloat.style.left = l+"px";
+				oFloat.style.top = t+"px";
+				
+
+				var X =l/(oSmall.offsetWidth-oFloat.offsetWidth);
+				var Y =t/(oSmall.offsetHeight-oFloat.offsetHeight);
+				
+				oImg.style.left  = -X*(oImg.offsetWidth-oBig.offsetWidth)+"px";
+				oImg.style.top = -Y*(oImg.offsetHeight-oBig.offsetHeight)+"px";
+		  }
+	 }
+</script>
+</head>
+
+<body>
+<div  id="div">
+    <div  id="small">
+         <span id="mark"></span>
+         <span id="float"></span>
+         <img src="images/small.jpg" style="width:400px; height:260px;"/>
+    </div>
+    <div id="big">
+          <img src="images/big.jpg" style="width:2400px;height:1560px;" id="img1"/>
+    </div>
+</div>
+</body>
+</html>

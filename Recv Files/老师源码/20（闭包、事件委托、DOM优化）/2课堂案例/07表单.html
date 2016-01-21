@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<form id="form">
+			<input type="text" name="txt" value="请输入文字" />
+			<input type="radio"  name="sex"  value="男" />男
+			<input type="radio"  name="sex"  value="女" />女
+			<input type="checkbox"  name="food1"  value="白菜" />白菜
+			<input type="checkbox"  name="food2"  value="牛肉" />牛肉
+			<input type="checkbox"  name="food3"  value="地瓜" />地瓜
+			<input type="checkbox"  name="food4"  value="青椒" />青椒
+			<select id="sel">
+				<option value="1">周一</option>
+				<option value="2">周二</option>
+				<option value="3">周三</option>
+				<option value="4">周四</option>
+			</select>
+			<input type="button" value="按钮" />
+			<input type="submit" value="提交" />
+			<input type="reset" value="重置" />
+			<br />
+			<br />
+			<input type="text" id="txt"/>
+			<input type="button" id="btn1" value="select" />
+		</form>
+		
+		<script type="text/javascript">
+			var oForm = document.getElementById("form");
+			var oInp = oForm.getElementsByTagName("input");
+			//oForm.txt.value = 'hhl';
+			
+			/*
+			 
+			 onchange:改变值得时候触发
+			 	text:离开的时候触发
+			  	radio:选中的时候触发
+			  	checkbox：选中的时候触发取消的时候也触发
+			  	oInp[7].onchange = function(){
+				alert(this.value)
+			}
+			 
+			oForm.onsubmit = function(){
+				if( oInp[0].value ){
+					alert(oInp[0].value)
+				}else{
+					alert('不能提交！！！！')
+				}
+				
+			}
+			oForm.onreset = function(){
+				alert('确定要重置吗？')
+			}
+			oInp[0].onfocus = function(){
+				if(this.value == "请输入文字"){
+					this.value = ''
+				}
+				
+			}
+			oInp[0].onblur = function(){
+				if(this.value == ''){
+					this.value = "请输入文字"
+				}
+				
+			}
+			*/
+			oForm.onclick = function(){
+				//oInp[0].focus()
+				oInp[0].blur()
+			}
+			document.getElementById("btn1").onclick = function(){
+				oInp[10].select()
+			}
+		</script>
+	</body>
+</html>

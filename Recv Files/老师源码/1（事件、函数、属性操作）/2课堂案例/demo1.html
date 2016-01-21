@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				list-style: none;
+			}
+			
+			#warp li {
+				float: left;
+				font-size: 14px;
+				color: #000;
+				
+			}
+			#warp li a {
+				margin: 5px;
+			}
+			#list {
+				position: absolute;
+				border: 1px solid #999;
+				height: 100px;
+				left: 50%;
+				margin-left: -35px;
+				
+				display: none;
+			}
+			#list li {
+				width: 70px;
+				line-height: 25px;
+				text-align: center;
+				color: #000;
+				margin: 0;
+				
+			}
+		</style> 
+	</head>
+	<body>
+		<ul id="warp">
+			<li><a href="###">新闻</a></li>
+			<li><a href="###">贴吧</a></li>
+			<li><a href="###">hao123</a></li>
+			<li id="li-a" style="position: relative;"><a href="###">设置</a>
+				<ul id="list">
+					<li>搜索设置</li>
+					<li>高级搜索</li>
+					<li>关闭预测</li>
+					<li>搜索历史</li>
+				</ul>
+			</li>
+		</ul>
+		
+		
+		<script type="text/javascript">
+			//document.getElementById('li-a');
+			
+			/*onclick ondblclick onmouseover onmouseout 
+			  onmouseup onmousedown onkeypress onkeyup onkeydown
+			  onresize onscroll onload
+			  
+			  元素.事件   元素.onclick
+			 */
+			/*
+			 函数执行
+			 
+			 1.aaa(); //主动去执行
+			 2.元素.事件 = aaa; 
+			 
+//			(function (){
+//				//他会打你一顿 （做出的反应）
+//				alert(1);
+//			})()
+			function aaa(){
+				//他会打你一顿 （做出的反应）
+				alert(1);
+			}
+			//aaa();
+			document.getElementById('li-a').onclick = aaa;
+			*/
+			document.getElementById('li-a').onmouseover = show;
+			document.getElementById('li-a').onmouseout = hide;
+			
+			function show(){
+				document.getElementById('list').style.display = 'block';
+			}
+			
+			function hide(){
+				document.getElementById('list').style.display = 'none';
+			}
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+			<li>44</li>
+			<li>55</li>
+			<li>66</li>
+		</ul>
+		
+		
+		<script type="text/javascript">
+			var oUl = document.getElementById("list");
+			var oLi= oUl.getElementsByTagName("li");
+			for(var i=0;i<oLi.length;i++){
+				/*
+				oLi[i].index = i;
+				oLi[i].onclick = function(){
+					alert(this.index)
+				}
+				*/
+				(function(i){
+					oLi[i].onclick = function(){
+						alert(i);
+					}
+				})(i);
+				
+			}
+			
+				//内存泄露：
+				var oBox = document.getElementById("oBox");
+				oBox.onclick = function(){
+					//oBox.id;
+					this.id
+				}
+				
+			
+		
+				window.onunload = function(){
+					oBox.id = null;
+				}
+		</script>
+	</body>
+</html>

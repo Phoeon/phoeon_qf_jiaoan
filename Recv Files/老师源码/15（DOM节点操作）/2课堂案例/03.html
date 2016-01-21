@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li id="li1">111</li>
+				<li>222</li>
+				<li>333</li>
+				<li>444</li>
+				<li>555</li>
+			</ul>
+			<p>666</p>
+		</div>
+		
+		<script type="text/javascript">
+			var oBox = document.getElementById("list");
+			var oLi1 = document.getElementById("li1");
+			alert(oBox.parentNode.id);
+			var oLiParChild = oLi1.parentNode.children;
+			
+			for(var i=0;i<oLiParChild.length;i++){
+				if( oLiParChild[i] != oLi1 ){
+					oLiParChild[i].style.color = 'red';
+				}
+			
+			}
+		
+		</script>
+	</body>
+</html>

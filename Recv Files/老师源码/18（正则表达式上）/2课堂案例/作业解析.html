@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#magnifier {
+				width: 800px;
+				height: 360px;
+				position: relative;
+				top: 10px;
+				left: 200px;
+			}
+			#sImg {
+				width: 360px;
+				height: 360px;
+				border: 1px solid #ccc;
+			}
+			#sImg img {
+				display: block;
+			}
+			#shank {
+				width: 200px;
+				height: 200px;
+				background: #ccc;
+				opacity: .4;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			#bImg {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width:420px;
+				height: 420px;
+				overflow: hidden;
+				display: none;
+			}
+			#bImg img {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="magnifier">
+			<div id="sImg">
+				<img src="img/2.jpg" width="360" height="360"/>
+				<span id="shank"></span>
+			</div>
+			<div id="bImg"><img id="img" src="img/2.jpg" width="800" height="800"/></div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oMg = document.getElementById("magnifier"); //最大的div
+				var sImg = document.getElementById("sImg"); //小图片的DIV
+				var oMove = document.getElementById("shank"); //小滑块
+				var bImg = document.getElementById("bImg"); //大图片的DIV
+				var oImg = document.getElementById("img"); //大图片
+				sImg.onmouseover = function(){
+					oMove.style.display = 'block';
+					bImg.style.display = 'block';
+				}
+				sImg.onmouseout = function(){
+					oMove.style.display = 'none';
+					bImg.style.display = 'none';
+				}
+				sImg.onmousemove = function( ev ){
+					var ev = ev || event;
+					// 移动范围
+					var oL = ev.clientX - oMg.offsetLeft - oMove.offsetWidth /2;
+					var oT = ev.clientY - oMg.offsetTop - oMove.offsetHeight /2;
+					//小滑块的最大移动范围
+					var oW = sImg.offsetWidth - oMove.offsetWidth;
+					var oH = sImg.offsetHeight - oMove.offsetHeight;
+					//document.title = sL + '||' + sT;
+					if( oL < 0 ){
+						oL = 0;
+					}else if( oL > oW ){
+						oL = oW;
+					}
+					if( oT < 0 ){
+						oT = 0;
+					}else if( oT > oH ){
+						oT = oH;
+					}
+					oMove.style.left = oL + 'px';
+					oMove.style.top = oT + 'px';
+					
+					//求百分比
+					var perX = oL / oW;
+					var perY = oT / oH;
+					//document.title = perX + '||' + perY ;
+					oImg.style.left =-perX*(oImg.offsetWidth - bImg.offsetWidth) +'px';
+					oImg.style.top =-perY*(oImg.offsetHeight - bImg.offsetHeight) +'px';
+				}
+			};
+		</script>
+		
+	</body>
+</html>

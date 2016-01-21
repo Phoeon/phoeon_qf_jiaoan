@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="button" id="btn" value="按钮" />
+		
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			
+			/*
+			oBtn.onclick = function(){
+				this.style.width = '200px';
+				this.style.height = '200px';
+				this.style.background = 'yellow'
+			}
+			*/
+			oBtn.onclick = function(){
+			css({ 
+				'width' : '200px',
+				'height' : '100px',
+				'background' : '#f40'
+			} , oBtn)
+			
+			}
+		}
+			/*
+			 cJson = { 
+				'width' : '200px',
+				'height' : '100px',
+				'background' : '#f40'
+			}
+			obj = oBtn;
+			用for in 循环出cJson里的属性
+			obj.style[key] = cJson[key]
+			 */
+		function css( cJson , obj ){
+				for(var key in cJson){
+					//alert(cJson[key])
+					obj.style[key] = cJson[key];
+				}
+			}
+			
+			
+			
+			var xbx = {
+				name : '向泊修',
+				age : 75,
+				height : '1.8m',
+				weight : '180kg',
+				marry : false
+			}
+			
+			var ww = {
+				'name' : '王伟',
+				'age' : 18,
+				'height' : '1.78m',
+				'weight' : '45kg',
+				'marry' : false
+			}
+			
+			/*alert(ww['name'])
+			for(var i in ww){
+				alert(ww[i])
+			}
+			*/
+			
+			
+		</script>
+	</body>
+</html>

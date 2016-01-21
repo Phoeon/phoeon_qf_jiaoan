@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html,body{
+    width:100%;
+    height:100%;
+    font-size:62.5%;
+}
+body{margin:0}
+.box {
+    position:relative;
+    margin: 3rem auto;
+    width: 50%;
+    height: 50%;
+}
+
+.preview {
+    width:50%;
+    height:50%;
+    text-align:center;
+    margin: auto;
+}
+.preview > img{
+    width:100%;
+}
+
+.wrap {
+    white-space:nowrap;
+    overflow:hidden;
+    position: relative;
+}
+.wrap img{
+   vertical-align: middle;
+}
+.btn{
+    position:absolute;
+    width: 10%;
+    background:red;
+    height:100%;
+}
+
+.btn.left {
+    left: 0;
+    top: 0;
+}
+
+.btn.right {
+    right: 0rem;
+    top: 0rem;
+}
+
+.img-wrap {
+    margin-left: 3rem;
+    width: 80%;
+}
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		<div class="preview">
+		 <img src="imgs/small_1.jpg">
+		</div>
+		<div class="wrap">
+		  <div class="btn left">left</div>
+		  <div class="img-wrap">
+					<img src="imgs/small_1.jpg" alt="">
+					<img src="imgs/small_2.jpg" alt="">
+					<img src="imgs/small_3.jpg" alt="">
+					<img src="imgs/small_4.jpg" alt="">
+					<img src="imgs/small_5.jpg" alt="">
+					<img src="imgs/small_6.jpg" alt="">
+					<img src="imgs/small_7.jpg" alt="">
+					<img src="imgs/small_8.jpg" alt="">
+					<img src="imgs/small_9.jpg" alt="">
+					<img src="imgs/small_10.jpg" alt="">
+		  </div>
+		  <div class="btn right">right</div>
+		</div>
+	</div>
+	<script>
+	    var imgs = document.
+		document.addEventListener("click",function(e) {
+			e||(e=window.event);
+			var target = e.target||e.srcElement;
+			var className  = target.className; 
+			if(className.indexOf("left")){
+				moveImage("left");
+			}else if(className.indexOf("right")){
+				moveImage("right");
+			}
+		})
+
+		function moveImage(dir){
+			var img = document.
+		}
+	</script>
+</body>
+</html>

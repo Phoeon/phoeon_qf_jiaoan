@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			
+			/*函数他也是块作用域
+			 * 
+			 * 1.a = 1 , fn()
+			 * 2.fn();
+			 * 		1. a; c;
+			 * 		2.
+			 */
+			
+			
+			//var a = 1;
+			function fn1(){
+				var a = 5; //fn里的变量是局部变量
+				return 10;
+			}
+			function fn(){
+				
+				alert( a ); //undefined
+				
+				var c = 3;
+				
+			}
+
+			alert(fn1());
+			fn();
+		
+			
+		</script>
+		
+		
+	</body>
+</html>

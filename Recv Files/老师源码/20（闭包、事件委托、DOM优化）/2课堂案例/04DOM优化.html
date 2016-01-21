@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<div id="box"></div>
+		<ul id="list">
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+			<li>33</li>
+		</ul>
+		<script type="text/javascript">
+			
+			/*
+			 
+			 DOM优化：
+			 		提高效率，减少内存占用
+			 		
+			 		DOM跟JS 本质上不同 DOM是DOM JS是JS
+			 		JS用DOM的方法去操作DOM节点；
+			 		能不用DOM方法就不用DOM方法，尽量用JS的方法
+			*/
+			/*
+			var oBox = document.getElementById("box");
+			var str = '';
+			
+			console.time('a');
+			for(var i=0;i<5000;i++){
+				oBox.innerHTML +='郝宏麟'
+			};
+			console.timeEnd('a'); //870ms
+			*/
+			/*
+			console.time('a');
+			for (var i=0;i<5000;i++) {
+				str += '郝宏麟'
+			}
+			oBox.innerHTML = str;
+			console.timeEnd('a'); 
+			*/
+			
+			var oUl = document.getElementById("list");
+			var oLi = oUl.getElementsByTagName('li');
+			var str = '';
+			/*
+			console.time('a');
+			for(i=0;i<5000;i++){
+				str += '<li>11</li>'
+			}
+			oUl.innerHTML = str;
+			console.timeEnd('a'); 
+			
+			var oL = document.createElement('li');
+			oL.innerHTML +='11';
+			console.time('a');
+			for(i=0;i<5000;i++){
+				var a = oL.cloneNode(true); 
+				oUl.appendChild(a);
+			}
+			
+			console.timeEnd('a'); 
+			*/
+			var len = oLi.length;
+			for(var i=0;i<len;i++){
+				var a = oLi[i].cloneNode(true);
+				oUl.appendChild(a);
+			}
+			
+			chlidren()   childNode()
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+		//b  fn 
+		//alert  0    
+		//c d  a()
+		//
+		
+		
+			//alert(a);
+			var b = 0;
+			alert(b)
+			function fn(){
+				alert(c);//undefined
+				var c = 1;
+				var d = 2;
+				alert(d);//2
+				alert(3);//3
+				function a(){
+					function e(){
+						alert(e);
+						alert(a);
+						alert(a);
+						alert(a);
+					}
+					alert(a);
+					return e;
+				}
+				return a;
+				
+			}
+			fn()()();
+		</script>
+		
+		
+	</body>
+</html>

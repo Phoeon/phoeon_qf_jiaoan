@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			/*
+			 
+			 event:事件
+			 
+			 event在IE里 ：null；
+				     在谷歌里：undefined
+				     在火狐里：报错
+				   alert( event );
+				   
+				   
+			当我们触发事件的时候
+				 在IE里：可以直接使用event
+				 在谷歌里：可以直接使用event,或者函数的第一个参数
+				 在火狐里：函数的第一个参数
+				   
+			*/			
+//			function fn(ev){
+//				var ev = ev || event;
+//				alert(ev);
+//			}
+//			fn()
+//			
+			document.onclick = function( ev ){
+				var ev = ev || event;
+				//alert(ev)
+				for(var key in ev){
+					document.write(key+'='+ev[key]+'<br />');
+				}
+			}
+			
+
+		</script>
+		
+	</body>
+</html>

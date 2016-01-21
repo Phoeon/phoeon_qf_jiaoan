@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap {
+				width: 750px;
+				height: 500px;
+				border: 1px solid red;
+				margin: 50px auto;
+				position: relative;
+			}
+			#ul li {
+				width:125px;
+				height: 125px;
+				box-shadow: 0 0 1px #000;
+				float: left;
+				list-style: none;
+				background: url(img/1.jpg);
+				/*
+				 background-position = 0*-125 1*-125
+				 */
+			}
+			#wrap a {
+				position: absolute;
+				top: 50%;
+				text-decoration: none;
+				width: 40px;
+				height: 40px;
+				display: block;
+				background: rgba( 0,0,0,.4);
+				color: #fff;
+				font-size: 28px;
+				font-family: "微软雅黑";
+				text-align: center;
+			}
+			#right {
+				right: -40px;
+		
+			}
+			#left {
+				left: -40px;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul id="ul">
+			
+			</ul>
+			<a href="###" id="right">></a>
+			<a href="###" id="left"><</a>
+		</div>
+		
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oWrap = document.getElementById("wrap");
+				var oUl = document.getElementById("ul");
+				var oLeft = document.getElementById("left");
+				var oRight = document.getElementById("right");
+				var oLi = oUl.getElementsByTagName('li');
+				var timer = null;
+				var num = 1;
+				for(var i=0;i<24;i++){
+					var x = i%6;
+					var y = Math.floor(i/6);
+					var li = document.createElement('li');
+					li.style.backgroundPosition =x*-125+'px '+y*-125+'px';
+					oUl.appendChild(li);
+				}
+				oRight.onclick = function(){
+					num++;
+					if(num>24){
+						num = 1;
+					}
+					cha();
+				}
+				oLeft.onclick = function(){
+					num--;
+					if(num<1){
+						num = 24;
+					}
+					cha();
+				}
+				
+				
+				function cha(){
+					var arr = [];
+					for(var i=0;i<24;i++){
+						arr[i] = i;
+					}
+					clearInterval(timer)
+					timer = setInterval(function(){
+						var index = Math.floor(Math.random()*arr.length);
+						oLi[arr[index]].style.backgroundImage = 'url(img/'+num+'.jpg)'
+						arr.splice( index,1 );
+						console.log(arr)
+						if( arr.length == 0 ){
+							clearInterval(timer);
+						}
+					},50)
+				}
+			}
+		</script>
+		
+	</body>
+</html>

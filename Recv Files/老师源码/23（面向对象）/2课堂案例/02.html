@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			/*
+			 	对象：
+			 		方法，属性
+			*/
+//			var arr = new Array(); //系统对象
+//			var banner = new Banner(); //创建对象		
+			
+			var obj = new Object();
+			obj.name = '向泊修';
+			obj.nameWork = function(){
+				//alert( obj.name )
+				alert( this.name )
+			};
+			obj.nameWork();
+			
+			var obj2 = new Object();
+			obj2.name = '大姐';
+			obj2.nameWork = function(){
+				//alert( obj.name )
+				alert( this.name )
+			};
+			obj3.nameWork();
+			
+			var obj3 = new Object();
+			obj3.name = '李成';
+			obj3.nameWork = function(){
+				//alert( obj.name )
+				alert( this.name )
+			};
+			obj3.nameWork();
+		</script>
+		
+	</body>
+</html>

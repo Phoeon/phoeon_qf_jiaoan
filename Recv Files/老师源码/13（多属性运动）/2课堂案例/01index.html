@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				list-style: none;
+			}
+			#list {
+				margin-top: 100px;
+			}
+			#list li {
+				float: left;
+				margin-left: 20px;
+			}
+			#list li span {
+				display: none;
+			}
+			#list li a {
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				border: 1px solid #000;
+				text-decoration: none;
+				display: block;
+			}
+			#list li a:hover {
+			
+				border: 1px solid red;
+			}
+			#list a.first {
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li ><a class="first" href="###">1<span>a</span></a></li>
+			<li><a href="###">2<span>a</span></a></li>
+			<li><a href="###">3<span>a</span></a></li>
+			<li><a href="###">4<span>a</span></a></li>
+			<li><a href="###">5<span>a</span></a></li>
+		</ul>
+	</body>
+	
+	
+	<script type="text/javascript">
+		
+		
+		var oList = document.getElementById("list");
+		var oA = oList.getElementsByTagName("a");
+		for(var i=0;i<oA.length;i++){
+			oA[i].index = i;
+			oA[i].onclick = function(){
+				
+				for(var j=0;j<oA.length;j++){
+					oA[j].className = '';
+				}
+				
+				this.className = 'first';
+				this.children[0].style.display = 'block';
+				
+			}
+		}
+		
+		
+	</script>
+	
+</html>

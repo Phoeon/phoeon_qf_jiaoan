@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#txt {
+				width: 300px;
+				height: 40px;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				border: 1px solid greenyellow;
+			}
+			ul {
+				width: 300px;
+				border: 1px solid red;
+				display: none;
+			}
+			ul li{
+				width: 300px;
+				height: 30px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				list-style: none;
+				color: pink;
+			}
+			ul li a {
+				display: block;
+				color: pink;
+				text-decoration: none;
+				line-height: 30px;
+			}
+			ul li a:hover {
+				background: pink;
+				color: #fff;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<input type="text" id="txt" />
+		<ul id="list"></ul>
+		
+		
+		<script type="text/javascript">
+			var oTxt = document.getElementById("txt");
+			oTxt.onkeyup = function(){
+				var val = oTxt.value;
+				var oScript = document.createElement("script");
+				oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+val+"&cb=hhl";
+				document.body.appendChild(oScript);
+				document.body.removeChild(oScript);
+			}
+			function hhl( data ){
+				var oUl = document.getElementById("list");
+				var html = '';
+				for( var i=0;i<data.s.length;i++ ){
+					html += '<li><a href="https://www.baidu.com/s?wd='+data.s[i]+'" target="_blank">'+data.s[i]+'</a></li>';
+				}
+				oUl.style.display = 'block';
+				oUl.innerHTML = html;
+			}
+		</script>
+	</body>
+</html>

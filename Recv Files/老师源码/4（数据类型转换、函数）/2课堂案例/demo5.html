@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="text" placeholder="请输入您的QQ号"/>
+		<input type="button" id="btn" value="登陆" />
+		
+		<script type="text/javascript">
+			//isNaN   is(是不是) NaN(不是一个数字)
+			//isNaN 它非常讨厌数字 如果不是数字返回的是true  它会先让Number()去处理，然后再判断
+			//alert(isNaN('250'));
+			
+			var oText = document.getElementById("text");
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+				var val = oText.value;
+				if( isNaN( val ) ){
+					alert("您的QQ号不合法")
+				}else{
+					alert("验证成功")
+				}
+			};
+			
+		</script>
+	</body>
+</html>

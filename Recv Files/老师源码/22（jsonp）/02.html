@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript" src="js/ajax.js"></script>
+		<script type="text/javascript">
+			ajax({
+				url : 'http://www.baidu.com/1.txt',
+				success : function(data){
+					alert(data)
+				}
+			});
+			XMLHttpRequest cannot load http:/ /www.baidu.com/1.txt. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://127.0.0.1' is therefore not allowed access.
+		</script>
+		
+	</body>
+</html>

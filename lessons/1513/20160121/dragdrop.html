@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+		 position:absolute;
+		 width:300px;
+		 height:200px;
+		 border:1px solid #000;
+		}
+		.move-bar{
+		    height:30px;
+		    background:#f00;
+		    cursor: move;
+		}
+		.bottom-bar {
+		    position: absolute;
+		    bottom: 0;
+		    height: 3px;
+		    background: #666;
+		    width: 100%;
+		    cursor: ns-resize;
+		}
+
+		.right-bar {
+		    position: absolute;
+		    height: 100%;
+		    top: 0;
+		    right: 0;
+		    width: 5px;
+		    background: #666;
+		    cursor:e-resize;
+		}
+		.left-bar{
+			position: absolute;
+		    background: #666;
+		    width: 5px;
+		    height: 100%;
+		    top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="move-bar"></div>
+		<div class="bottom-bar"></div>
+		<div class="right-bar"></div>
+		<div class="left-bar"></div>
+	</div>
+	<script>
+
+
+		var dialog = document.getElementsByClassName("box")[0],
+		    moveBar = dialog.getElementsByClassName("move-bar")[0],
+		    initSpan = [];
+
+		    startMoving=false;
+		    startResize = false;
+		    // moveBar.addEventListener("mousedown",function(e){
+		    // 	e=e||event;
+
+		    // 	var parentNode = moveBar.parentNode;
+		    // 	var cx = e.clientX,
+		    // 		cy = e.clientY;
+		    // 		// initSpan.push(cx - pNode.offsetLeft) ;
+		    // 		// initSpan.push(cy - pNode.offsetTop) ;
+		    // 		initSpan[0]=cx - moveBar.parentNode.offsetLeft ;
+		    // 		initSpan[1]=cy - moveBar.parentNode.offsetTop ;
+		    // 	// document.dialog = pNode;
+		    // 	startMoving = true;
+
+		    // },false);
+
+		    // document.addEventListener("mousemove",function(e){
+		    // 	e=e||event;
+		    // 	if(startMoving){
+			   //  	var cx = e.clientX,
+			   //  		cy = e.clientY;
+
+			   //  	dialog.style.left = cx - initSpan[0] +"px";
+			   //  	dialog.style.top = cy - initSpan[1] +"px";
+		    // 	}
+
+		    // },false)
+
+		    // moveBar.addEventListener("mouseup",function(){
+		    // 	startMoving = false||0||null;
+		    // },false)
+
+// 下 右
+		    // var bottomBar = document.getElementsByClassName("bottom-bar")[0];
+		    // bottomBar.addEventListener("mousedown",function(e){
+		    // 	e=e||event;
+		    // 	var cx = e.clientX,
+		    // 		cy = e.clientY;
+		    // 		initSpan[2]=cx - dialog.offsetWidth ;
+		    // 		initSpan[3]=cy - dialog.offsetHeight ;
+		    // 	startResize = true;
+		    // },false);
+		    // document.addEventListener("mousemove",function(e){
+		    // 	e=e||event;
+		    // 	if(startResize){
+			   //  	var cx = e.clientX,
+			   //  		cy = e.clientY;
+
+			   //  	// dialog.style.width = cx - initSpan[2] +"px";
+			   //  	dialog.style.height = cy - initSpan[3] +"px";
+		    // 	}
+		    // },false)
+
+		    //  document.addEventListener("mouseup",function(){
+		    // 	startResize;
+		    // },false)
+
+//      右边
+		    // var rightResize = false;
+		    // var rightBar = document.getElementsByClassName("right-bar")[0];
+		    // rightBar.addEventListener("mousedown",function(e){
+		    // 	e||(e=window.event);
+		    // 	var ex = e.clientX;
+		    // 	var ey = e.clientY;
+
+		    // 	initSpan[4] = ex - dialog.offsetWidth ;
+		    // 	rightResize = true;
+
+		    // })
+		    // document.addEventListener("mousemove",function(e){
+		    // 	e||(e=window.event);
+		    // 	if(rightResize){
+		    // 		dialog.style.width = e.clientX - initSpan[4] + "px";
+		    // 	}
+		    // },false)
+		    // document.addEventListener("mouseup",function(e){
+		    // 	rightResize = false;
+		    // },false)
+
+		    // var leftBar = document.getElementsByClassName("left-bar")[0];
+		    // var leftResize = false;
+		    // leftBar.addEventListener("mousedown",function(e){
+		    // 	e||(e=window.event);
+
+		    // 	var ex = e.clientX;
+		    // 	var ey = e.clientY;
+
+		    // 	initSpan[5] = ex-(dialog.offsetLeft+dialog.offsetWidth);
+		    // 	leftResize = true;
+		    // },false)
+
+		    // document.addEventListener("mousemove",function(e){
+		    // 	if(leftResize){
+			   //  	var ex = e.clientX;
+			   //  	dialog.style.width = ex - initSpan[5] +"px";
+		    // 	}
+		    // },false)
+		    // document.addEventListener("mouseup",function(e){
+		    // 	leftResize = false ;
+		    // },false)
+	
+	</script>
+</body>
+</html>

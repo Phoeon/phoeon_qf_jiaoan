@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//今天是周四，向泊修在班里跟大姐一起玩娃娃
+			//周四 向泊修 大姐  娃娃
+			//跟  玩
+			function Person(name){
+				this.name = name;
+			}
+			
+			Person.prototype = {
+				and : function( person ){
+					console.log(this.name + '在班里跟'+person.name+'一起');
+				},
+				play : function( game ){
+					console.log( '玩'+ game.name );
+				}
+			}
+			function Game(name){
+				this.name = name
+			}
+			function DateTime(data){
+				this.data = data;
+			}
+			var p1 = new Person('向泊修');
+			var p2 = new Person('大姐');
+			var game = new Game('日本娃娃');
+			console.log( "今天是 "+ new DateTime('周四').data );
+			p1.and(p2);
+			p1.play(game);
+		</script>
+	</body>
+</html>

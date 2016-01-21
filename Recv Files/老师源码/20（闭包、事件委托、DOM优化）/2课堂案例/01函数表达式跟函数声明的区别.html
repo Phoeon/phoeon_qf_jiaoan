@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+				函数声明 ： function 函数名(){}; 
+				函数表达式： var fn = function 函数名(可以不写){};
+				
+				函数声明他能够被预解析
+			
+			
+				执行函数声明的方法:
+				(function(){})()
+			    +function(){}()
+				-function(){}()
+				！function(){}()
+				~function(){}()
+				
+				
+			if(true){
+				function d(){
+					alert(1)
+				}
+			}else{
+				function c(){
+					alert(2)
+				}
+			}
+			
+			c();
+			*/
+			
+			function a(){
+				alert(1) 
+			};
+			
+			function(){
+				alert(1)
+			}();
+		</script>
+	</body>
+</html>

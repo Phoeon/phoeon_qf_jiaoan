@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 500px;
+				height: 37px;
+				position: relative;
+			}
+			#list li{
+				line-height: 37px;
+				list-style: none;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				background: red;
+				color: #fff;
+				float: left;
+				padding:  0 20px;
+				border-right: 1px solid #fff;
+				cursor: pointer;
+			}
+			#dj {
+				
+				width: 95px;
+				height: 200px;
+				background: blue;
+				position: absolute;
+				top: 37px;
+				left: 69px;
+				display: none;
+			}
+			#dj li{
+				line-height: 37px;
+				list-style: none;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				background: red;
+				color: #fff;
+				float: left;
+				padding:  0 20px;
+				border-right: 1px solid #fff;
+				cursor: pointer;
+				
+			}
+			#thi_d{
+				width: 200px;
+				height: 200px;
+				background: greenyellow;
+				position: absolute;
+				left: 100px;
+				display: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li>首页</li>
+				<li id="dad">产品列表
+					<ul id="dj">
+						<li class="thi">
+							<div id="thi_d"></div>
+						</li>
+						<li class="thi">2</li>
+						<li class="thi">3</li>
+						<li class="thi">4</li>
+					</ul>
+				</li>
+				<li>大姐顾问</li>
+				<li>加入大姐</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+		/*ev.cancelBubble：取消冒泡事件*/
+			var dad = document.getElementById("dad");
+			var dj = document.getElementById("dj");
+			var thi = document.getElementsByClassName("thi");
+			
+			dad.onmousemove = function( ev ){
+				var ev = ev || event;
+				dj.style.display = 'block';
+				ev.cancelBubble = true;
+			}
+			
+			dj.onmouseout = function(){
+				dj.style.display = 'none';
+			}
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				padding: 50px;
+			}
+			#div1 {
+				background: red;
+			}
+			#div2 {
+				background: yellow;
+			}
+			#div3 {
+				background: green;
+			}
+		</style>
+		
+	</head>
+
+	<body>
+
+		<div id="div1">
+			<div id="div2">
+				<div id="div3">
+
+				</div>
+			</div>
+		</div>
+
+
+	<script type="text/javascript">
+		
+		var div1 = document.getElementById("div1");
+		var div2 = document.getElementById("div2");
+		var div3 = document.getElementById("div3");
+		div1.onclick = fn;
+		div2.onclick = fn2;
+		div3.onclick = fn3;
+		
+		function fn(){
+			alert(1)
+		}
+		function fn2(){
+			alert(2)
+		}
+		function fn3(ev){
+			var ev = ev || event;
+			ev.cancelBubble = true;
+			alert(3)
+		}
+	</script>
+
+	
+	</body>
+
+</html>

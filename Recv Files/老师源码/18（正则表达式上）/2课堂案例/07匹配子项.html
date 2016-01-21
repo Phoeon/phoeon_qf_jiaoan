@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			/*
+			 匹配子项：();
+			 正则表达式：母体
+			 从括号左面开始第一项就是第一个子项
+			*/
+			/*
+			var str = '2015-12-23';
+			var reg = /(\d+)-/g;
+			str = str.replace(reg,function( s , s1 ){
+				//第一个参数：母体
+				//第二个参数：子项
+				return s1 + '.'
+			})
+			alert(str);
+			*/
+			var str = 'abab2131absdsdabffgababab';
+			var reg = /(ab)+/g;
+			str = str.replace(reg ,'mm')
+			alert(str)
+			
+		</script>
+		
+	</body>
+</html>

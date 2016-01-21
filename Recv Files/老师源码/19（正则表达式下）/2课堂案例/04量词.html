@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			/*
+			 量词：{}
+			 + == {1,}:最少出现一次
+			 {1,5}:最少出现一次最多出现5次
+			 {0,}:最少出现0次 *
+			 ？== {0,1}要么不出现要么出现一次
+			 {5，}最少出现5次
+			
+			*/
+			/*
+			 ^： /^a/ :以a开头  
+			 $: /a$/ :以a结束
+			*/
+			
+			
+			
+			var str = '12ab';
+			var reg = /^1[0-9]{10}$/;
+			alert( reg.test( str ) );
+			
+		</script>
+		
+	</body>
+</html>

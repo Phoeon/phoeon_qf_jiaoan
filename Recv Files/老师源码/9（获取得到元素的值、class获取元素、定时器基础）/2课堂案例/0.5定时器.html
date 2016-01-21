@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		asfasdhsakjfsd<br />
+		这是我的网站，嘿嘿嘿嘿嘿<br />
+		您访问的页面不存在!将在<span id="num" style="color: red;">5</span>秒后跳转……
+		<script type="text/javascript">
+			/*	
+			var num = 0;
+			var timer = setInterval(function(){
+				num ++;
+				alert(num)
+				if( num==10 ){
+					clearInterval(timer)
+				}
+			},1000)
+		*/
+		
+		/*
+			setTimeout(function(){
+				window.open('http://www.baidu.com') //在新窗口打开页面
+			},2000)
+		*/
+			
+			var oNum = document.getElementById("num");
+			var num = 5;
+			var timer = setInterval(function(){
+				num--;
+				oNum.innerHTML = num;
+				if(num==0){
+					clearInterval(timer);
+					window.location.href = 'http://www.baidu.com';//在当前页面进行跳转
+				}
+			},1000);
+		</script>
+		
+		
+	</body>
+</html>

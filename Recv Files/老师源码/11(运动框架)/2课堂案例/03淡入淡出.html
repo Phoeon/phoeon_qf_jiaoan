@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			img {
+				width: 500px;
+				display: block;
+				margin: 50px auto;
+				opacity: 0.3;
+				filter:alpha(opacity = 30);
+			}
+		</style>
+	</head>
+
+	<body>
+		<img src="img/1.jpg" id="pic"/>
+		<script type="text/javascript">
+			var oPic = document.getElementById("pic");
+			var timer = null;
+			var num = 30;
+			oPic.onmouseover = function(){
+				move()
+			}
+			function move(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(num >= 100){
+						clearInterval(timer);
+					}else{
+						num += 10;
+						oPic.style.filter = 'alpha(opacity = '+num+')';
+						oPic.style.opacity = num/100;
+					}
+				},80)
+				
+			}
+		</script>
+	</body>
+
+</html>

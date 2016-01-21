@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li><a href="###">我是第一个li</a></li>
+			<li><a href="###">我是第二个li</a></li>
+			<li><a href="###">我是第三个li</a></li>
+		</ul>
+		
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oList = document.getElementById('list');
+				var oLi = oList.getElementsByTagName('li');
+				//alert(oLi.length)
+				/*
+				oLi[0].onclick = alt;
+				oLi[1].onclick = alt;
+				oLi[2].onclick = alt;
+				function alt(){
+					alert(this.innerHTML);
+				};
+				*/
+				
+				
+				for (var i=0;i<oLi.length;i++) {
+					oLi[i].index = i; 
+					//给每个oLi都添加了index这个属性，属性名随便取的,
+					//这个时候就把i的值存进了oLi[i].index里，
+					//当i=0的时候，当前第一个li的index属性就等于0
+					oLi[i].onclick = function(){
+					//alert(this.innerHTML)
+					//alert(i)
+					alert(this.index)
+				};
+				}
+				
+				/*
+				var arr = [1,'向泊修','聂聪聪','欧阳林惠'];
+				arr[3] = '郑强丽'; //改值
+				alert(arr[3]); //找值
+				*/
+			}
+		</script>
+		
+	</body>
+</html>

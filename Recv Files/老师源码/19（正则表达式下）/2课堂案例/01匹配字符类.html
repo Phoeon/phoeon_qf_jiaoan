@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			var str = '123abcd';
+			var reg = /(\d+)(ab)/;
+			alert( str.replace(reg,'$3') )
+			*/
+			
+			/*
+			字符类[]: 
+			^:代表非
+			.:所有
+			[0-9]  [6-8]
+			[a-z]  [h-j]
+			[A-Z]
+			[0-9A-Za-z]
+			*/
+			
+			
+			var str = 'a.cd';
+			//var reg = /ab[bc]d/;   //代表b或者c
+			//var reg = /ab[^f]d/;   
+			
+			var reg = /a\.cd/;
+			alert( reg.test(str) )
+		</script>
+	</body>
+</html>

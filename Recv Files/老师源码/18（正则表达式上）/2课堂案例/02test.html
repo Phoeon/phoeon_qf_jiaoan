@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//用来匹配字符串。 字符串有什么方法，chaAt(),substring(),indexOf()
+			/*
+			var str = 'sad124dsff21fgg552fdsf23'; //[124 21 552 23]
+			function fn(){
+				alert( str.match(/\d+/g) );
+			}
+			fn();
+			*/
+			/*
+			
+			正则表达式:
+				规则：是让电脑认识的规则
+				86750236@qq.com
+				18910898936
+				var reg = //;
+				var reg = new RegExp();
+			*/
+			
+			
+			/*
+			 正则表达式方法：
+			 	test：匹配成功返回true，否则返回false;
+			 		reg.test(str);
+			 		\n : 换行   \t： 制表符  \r： 回车
+			 		
+			 		\d:数字    \D:非数字
+			 		\w:字符    \W:非字符
+			 		\s：空格   \S：非空格
+			 		\b:编辑     \B:非编辑
+			*/
+			
+			
+			
+			//alert('a\nb')
+			var str = 'a675a0236';
+			var reg = /\d/;
+			alert( reg.test(str) )
+			/*
+			if( reg.test(str) ){
+				alert('您的内容不是纯数字')
+			}else{
+				alert('您的内容是纯数字')
+			}
+			*/
+		</script>
+		
+	</body>
+</html>

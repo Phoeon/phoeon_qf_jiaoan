@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<p>这是大姐</p>
+			<ul id="list">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+			<p>这是向泊修</p>
+			<p>这是张立</p>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var oList = document.getElementById("list");
+			//oList.nextSibling.style.color = 'red';
+			//oList.nextElementSibling.style.color = 'red';
+		/*查找兄弟节点 只会找到相邻的第一个
+			if( oList.nextElementSibling ){ 
+				oList.nextElementSibling.style.color = 'red';
+			}else{
+				oList.nextSibling.style.color = 'red';
+			}
+		*/	
+			//oList.previousSibling.style.color = 'red';
+			if( oList.previousElementSibling ){ 
+				oList.previousElementSibling.style.color = 'red';
+			}else{
+				oList.previousSibling.style.color = 'red';
+			}
+		</script>
+		
+	</body>
+</html>

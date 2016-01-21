@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			
+			
+			/*
+			 
+			 1.定义 ： var function 
+			 2：执行：执行表达式
+			 
+			 
+			 子集通过作用域链像父级查找，如果子集内没有定义，他会像父级查找，他的父级不可以查找自己内的元素；
+			
+			if( true ){
+				var a = 1;
+				function fn(){alert(1)}
+			}else {
+				var b = 2;
+			}
+			
+			alert(fn);*/
+			
+			
+			/*
+			c();
+			alert(a); //undefined
+			var a = 1; //var a=1;
+			var b = 2;	// var b=2;
+			function c(){ 
+				alert(b); //undefined
+				window.d = 3;
+			}
+			alert(d); 
+			
+			alert(a); //报错
+			
+			*/
+			
+			
+			/* 
+			 
+			 1.var c,b,function a(),d;
+			 2.alert a,c=3,b=2,a(),d=4,
+			 var b,e;
+			 alert 1,c,e=5;
+			  
+			 
+			alert(a); //函数体
+			var c = 3;
+			var b = 2;
+			function a(b){
+				alert(1) //1
+				alert(c); //3
+				window.e = 5;
+				return e;
+			}
+			a(b);
+			var d = 4;
+			alert(a()); //1,3,5
+			alert(e) //报错
+			*/
+		</script>
+		
+		
+	</body>
+</html>

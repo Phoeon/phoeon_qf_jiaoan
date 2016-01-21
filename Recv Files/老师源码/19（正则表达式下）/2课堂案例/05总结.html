@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		<script type="text/javascript">
+			
+			
+			/*
+			 
+			 正则表达式：
+			 规则：让计算机认识的规则
+			 
+			 1.test()
+			 2.match()
+			 3.search()
+			 4.replace()
+			 
+			 字符类：[] [a-zA-Z0-9] [^] 
+			 转义字符：\n \r \t   \s\S \w\w \d\D \b\B \. 
+			 量词：{},+=={1，} ？=={0,1} * == {0} 
+			 标识：g    i     /asdasd/ig
+			 /^/  /$/
+			*/
+			
+			
+			
+			var str = '86750236';
+			var reg = /^[1-9]\d{4,9}$/;
+			//alert( reg.test(str) )
+			
+			var str = '86750236@qq.com';
+			var reg = /^[1-9a-zA-Z]\w+@[0-9a-zA-Z]+\.[a-zA-Z]{1,}$/
+			alert( reg.test(str) )
+			
+			
+			
+		</script>
+	</body>
+</html>

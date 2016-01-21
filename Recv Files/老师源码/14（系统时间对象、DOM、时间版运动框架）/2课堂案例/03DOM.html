@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="box">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<a href="###">大姐</a>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			/*
+			 * DOM:Document Object Model 文档对象模型
+			 * 文档：HTML
+			 * 文档对象：HTML元素
+			 * 文档对象模型：定义，方便js操作DOM节点
+			 * 
+			 * 
+			 * 使用nodeType:查看节点类型
+			 * childNodes:他的长度在IE 678 自动屏蔽换行。
+			 * childNodes.nodeType:在IE里返回的只有元素节点；
+			 * 在其他浏览器 元素节点+其他节点；
+			 * 
+			 * children:推荐大家使用；
+			 */
+			var oBox = document.getElementById("box");
+			var oUl = oBox.getElementsByTagName("ul")[0];
+			//alert(oBox.childNodes.length);
+			//alert(oBox.childNodes[0].nodeType);
+			//alert(oUl.childNodes.length);
+			//alert(oUl.children.length);
+			//alert(oUl.childNodes.length);
+		</script>
+		
+	</body>
+</html>

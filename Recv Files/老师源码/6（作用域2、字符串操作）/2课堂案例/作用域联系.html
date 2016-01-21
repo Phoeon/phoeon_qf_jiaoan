@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//1.定义 var a,b   function()
+			//2.表达式：fn(),
+			//var c,
+			    
+			fn(b);
+			var a = 1;
+			var b = 2;
+			function fn(b){
+				alert(c);  //undefined
+				var c = 3;
+				alert(a);   //undefined
+			return function fn1(){
+					alert(2);
+				}
+			}
+			alert(fn());    //undefined 1 返回值的函数体
+			alert(c);       //报错
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

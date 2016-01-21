@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//聂聪聪和欧阳林惠去美容院做皮肤美白
+			//聂聪聪  欧阳林惠  美容院  皮肤美白
+			function Preson(name){
+				this.name = name;
+			}
+			
+			Preson.prototype = {
+				and : function(preson){
+					console.log(this.name+'和'+preson.name);
+				},
+				go : function(spa){
+					console.log('去'+spa.name);
+				},
+				make : function(skin){
+					console.log('做'+skin.name)
+				}
+			}
+			function Spa(name){
+				this.name = name;
+			}
+			function Skin(name){
+				this.name = name;
+			}
+			var p1 = new Preson('聂聪聪');
+			var p2 = new Preson('欧阳林惠');
+			var spa = new Spa('非洲美容院');
+			var skin = new Skin('激光打皮');
+			p1.and(p2);
+			p1.go(spa);
+			p1.make(skin);
+		</script>
+	</body>
+</html>

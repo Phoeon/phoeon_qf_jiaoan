@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+			#box {
+				width: 100px;
+				height: 100px;
+				background: #f40;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		
+		
+		<script type="text/javascript" src="js/hhl.js"></script>
+		<script type="text/javascript">
+			var oBox = document.getElementById("box");
+			//alert( getComputedStyle(oBox).width );//不兼容ie 6 7 8;
+			//alert( oBox.currentStyle.width ) ; //兼容IE
+			alert( getStyle( oBox,'margin' ) );
+			
+			/*
+			 * 
+			 * 1.不能使用复合属性;
+			 * 2.不能有空格,但是我们已经解决了O(∩_∩)O~~;
+			 * 3.不能引用没有定义的属性;
+			 * 
+			 */
+			
+			
+			
+			
+			
+			/*
+			function getStyle( obj,attr ){
+				
+				if( obj.currentStyle ){ //判断当前浏览器是否是IE
+					return obj.currentStyle[attr]
+				}else{
+					return getComputedStyle(obj)[attr]
+				}
+				/*
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr]
+				
+			}
+			*/
+			
+			
+		</script>
+	</body>
+</html>

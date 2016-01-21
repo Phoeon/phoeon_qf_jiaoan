@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body style="height: 3000px;">
+		<input type="button" name="btn" id="btn" value="按钮" />
+		<a href="#dd">111</a>
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+			
+//				var oWin = open('http://www.baidu.com');
+//				oWin.document.title = '111111111111111111111';
+//				oWin.document.write('相比牛erkngerlkgnrengern');
+//			
+////				window.close();//尽量别用
+//				
+			alert(window.navigator.userAgent);
+			
+			
+			if(window.navigator.userAgent.indexOf('MSIE') == -1){
+				alert('这不是IE')
+			}else{
+				alert('这是IE')
+			}
+			
+			window.location.href = 'http://www.baidu.com';
+			
+		}
+			
+			/*当我们页面改变大小的时候触发
+			  var i = 0;
+			window.onresize = function(){
+				document. = i++;
+			}
+			*/
+			/*当滚动条滚动的时候所触发的事件*/
+			window.onscroll = function(){
+				document.title = i++;
+			}
+			
+			
+			//alert( typeof window.location.href );
+			//alert( window.location.search );
+			//alert( window.location.hash );
+		
+			
+			</script>
+	</body>
+</html>

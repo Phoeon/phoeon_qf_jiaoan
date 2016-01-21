@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+		//原型：prototype 只有构造器函数才能使用原型
+			var arr = [1,2,3,4]; //[] == new Array();
+			var arr1 = [5,6,7,8];
+			var arr2 = [11,11,11,23];
+			var arr3 = [62,1,2,4];
+		
+			Array.prototype.sum = function(){
+				var s = 0;
+				for(var i=0;i<this.length;i++){
+					s+=this[i]
+				}
+				return s;
+			}
+			
+			function People(name,age,sex){
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			//Str.prototype.isHandsome = '超级true';
+			/*
+			People.prototype.eat = function(){
+				alert(this.name+'正在吃饭'+',他的年龄是:'+this.age+',他的性别:'+this.sex);
+			}
+			People.prototype.sleep = function(){
+				alert(this.name+'正在睡觉');
+			}
+			*/
+			
+			People.prototype = {
+				eat:function(){
+					alert(this.name+'正在吃饭'+',他的年龄是:'+this.age+',他的性别:'+this.sex);
+				},
+				sleep : function(){
+					alert(this.name+'正在睡觉');
+				},
+				play : function(){
+					alert(this.name+'正在玩娃娃')
+				}
+			}
+			
+			
+			var p1 = new People('向泊修',88,'男');
+			var p2 = new People('大姐',17);
+			var p3 = new People('郝宏麟',18);
+			p1.play();
+			p2.eat();
+			p3.sleep();
+			
+			//alert( p3.isHandsome );
+			
+			/*
+			arr.sum = function(){
+				s = 0;
+				for(var i=0;i<this.length;i++){
+					s+=this[i]
+				}
+				return s;
+			}
+			alert( arr.sum() )
+			*/
+			
+		</script>
+		
+	</body>
+</html>

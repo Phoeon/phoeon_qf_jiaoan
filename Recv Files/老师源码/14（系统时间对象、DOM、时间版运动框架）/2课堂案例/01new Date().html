@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		<script type="text/javascript">
+			
+			//alert( new Date() );
+			
+			//alert(time.getTime());//从1970年开始;
+			//alert(time.getFullYear());
+			
+			setInterval(function(){
+				timeDate();
+			},1000) // 999 1002
+			
+			function timeDate(){
+				
+				var time = new Date();
+				var year = time.getFullYear();
+				var month = time.getMonth() + 1;
+				var date = time.getDate();
+				var day = time.getDay();
+				var hours = time.getHours();
+				var min = time.getMinutes();
+				var sec = time.getSeconds();
+				
+				
+				switch(day){
+					case 0:
+						day='星期日';
+						break;
+					case 1:
+						day='星期一';
+						break;
+					case 2:
+						day='星期二';
+						break;
+					case 3:
+						day='星期三';
+						break;
+					case 4:
+						day='星期四';
+						break;
+					case 5:
+						day='星期五';
+						break;
+					case 6:
+						day='星期六';
+						break;
+						
+				}
+				
+				
+				
+				function toTwo(n){
+					if( n < 10 ){
+						n = '0'+n;
+					}
+					return n;
+				}
+				
+				
+				//document.write(year+'年'+month+'月'+date+'日'+day+' '+toTwo(hours)+':'+toTwo(min)+':'+toTwo(sec))
+				document.body.innerHTML = (year+'年'+month+'月'+date+'日'+day+' '+toTwo(hours)+':'+toTwo(min)+':'+toTwo(sec));
+				/*
+				 * getMonth(),从0开始
+				 */
+			}
+		</script>
+		
+	</body>
+</html>
