@@ -12,6 +12,8 @@ body{
     list-style:none;
     display:none;
     font-size:2rem;
+    background: red;
+    padding: 0.2rem;
 }
 .link{
     text-decoration:none;
@@ -49,7 +51,7 @@ body{
     width: 100%;
     z-index: 1;
     top: 0%;
-    left: 100%;
+    left: 95%;
 }
 .menu-sl .link{
     background:#666;

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+form{background:#fff;border-radius:5px;box-shadow:0px 0px 10px;width:500px;padding:10px;margin:30px auto;}
+fieldset{margin:30px;padding:30px;}
+input{text-indent:10px;border:1px solid #ccc;padding:3px 0;border-radius:3px;}
+input:focus{border:1px solid #69f;outline:none;box-shadow:0px 0px 5px #69f;}
+button{padding:3px 20px;}
+	</style>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>LOGIN IN</legend>
+			用户名：<input type="text" id="username" placeholder="username please "><br/><br/>
+			密&nbsp;码：<input type="password" id="password" placeholder="password please"><br/><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="checkbox">记住密码<br/><br/>
+			&nbsp;&nbsp;&nbsp;<button id="go">Go</button></br/><br/>
+		</fieldset>
+	</form>
+	<script>
+		var checkbox = document.querySelector("#checkbox"),
+			button = document.querySelector("#go");
+			button.onclick=function (argument) {
+				var cookieTextArr = [];
+				if(checkbox.checked){
+					var username = document.querySelector("#username").value;
+						cookieTextArr.push("username="+username);
+						cookieTextArr.push(";expires="+new Date(new Date().getTime()+24*60*60));
+				}else {
+						cookieTextArr.push("username=");
+						cookieTextArr.push(";expires="+new Date(0));
+				}
+				document.cookie = cookieTextArr.join("");
+			}
+
+			function getCookie(){
+				var data = [];
+				var hasCookie = document.cookie.indexOf("username")>-1;
+				if(hasCookie){
+					data["username"] = document.cookie.match(/username=(\w+);/)[1];
+				}
+				return data;
+			}
+
+			function setForm(data){
+				for(var k in data){
+					document.querySelector("#"+k).value = data[k]||"";
+				}
+			}
+
+			setForm(getCookie());
+	</script>
+</body>
+</html>

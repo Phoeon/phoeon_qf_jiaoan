@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>您的购物车商品如下：</h1>
+	<ul id="items">
+			
+	</ul>
+</body>
+<script>
+	
+	var ulDom = document.querySelector("#items"),
+		items = document.cookie.match(/RMB\w*=\W*/g);
+		for(var i=0;i<items.length;i++){
+			var li = document.createElement("li");
+			item = items[i].split("=");
+			li.innerHTML = item[1]+"....................."+item[0];
+			ulDom.appendChild(li);
+		}
+</script>
+</html>

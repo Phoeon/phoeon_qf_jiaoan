@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{line-height:10;text-align:center;font-size:50px;}
+		span{color:#0f0;font-weight:bold;}
+	</style>
+</head>
+<body>
+	<div>当前访问次数 <span class="times">1</span></div>
+	<script>
+	  var result = document.cookie.match(/times=(\d+)/);
+      var times = (result||"")[1];
+      times=times?(+times+1):1;
+      document.cookie = "times="+times+";expires="+new Date(new Date().getTime()+24*60*60);
+      document.querySelector(".times").innerHTML = times;
+	</script>
+</body>
+
+</html>

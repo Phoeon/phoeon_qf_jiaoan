@@ -7,8 +7,99 @@
 </head>
 <body>
 	
+	<div class="menu-wrap">
+		<ul class="menu menu-fl menu-active">
+			<li class="item">
+				<a href="" class="link">ITEM 1</a>
+				<ul class="menu menu-sl">
+					<li class="item">
+						<a href="" class="link">ITEM 1</a>
+						<ul class="menu menu-tl">
+							<li class="item"><a href="" class="link">ITEM 1</a></li>
+							<li class="item"><a href="" class="link">ITEM 2</a></li>
+							<li class="item"><a href="" class="link">ITEM 3</a></li>
+							<li class="item"><a href="" class="link">ITEM 4</a></li>
+							<li class="item"><a href="" class="link">ITEM 5</a></li>
+						</ul>
+					</li>
+					<li class="item">
+						<a href="" class="link">ITEM 2</a>
+						<ul class="menu menu-tl">
+							<li class="item"><a href="" class="link">ITEM 1</a></li>
+							<li class="item"><a href="" class="link">ITEM 2</a></li>
+							<li class="item"><a href="" class="link">ITEM 3</a></li>
+							<li class="item"><a href="" class="link">ITEM 4</a></li>
+							<li class="item"><a href="" class="link">ITEM 5</a></li>
+						</ul>
+					</li>
+					<li class="item"><a href="" class="link">ITEM 3</a></li>
+					<li class="item"><a href="" class="link">ITEM 4</a></li>
+					<li class="item"><a href="" class="link">ITEM 5</a></li>
+				</ul>
+			</li>
+			<li class="item">
+				<a href="" class="link">ITEM 2</a>
+				<ul class="menu menu-sl">
+					<li class="item"><a href="" class="link">ITEM 1</a></li>
+					<li class="item"><a href="" class="link">ITEM 2</a></li>
+					<li class="item"><a href="" class="link">ITEM 3</a></li>
+					<li class="item"><a href="" class="link">ITEM 4</a></li>
+					<li class="item"><a href="" class="link">ITEM 5</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 	<script>
-      
+	var TICK = 100;
+      document.addEventListener("mouseover",function(e){
+      	e||(e=window.event);
+      	var target = e.target||e.srcElement;
+      	var className = target.className;
+
+      	if(/link/.test(className)){
+      		var liPNode = target.parentNode,
+      		    ulPNode = liPNode.parentNode;
+      		    var list = ulPNode.children;
+      		    for(var i=0;i<list.length;i++){
+      		    	var subMenu = list[i].children[1];
+      				if(subMenu){
+      					if(list[i]==liPNode){
+      						if(subMenu.className.indexOf("menu-active")==-1)subMenu.className += " menu-active";
+      					}else subMenu.className.replace(/\smenu-active/g,"");
+      				}
+      		    }
+      	}
+
+      },false)
+
+      document.addEventListener("mouseout",function(e){
+      	e||(e=window.event);
+      	var target = e.target||e.srcElement;
+      	var className = target.className;
+		if(/menu/.test(className)){
+			target.stopHide = false;
+  				notifyParentMenuToHide(target);
+      	}
+      },true)
+
+      function notifyParentMenuToHide(ulNode){
+      	while(true){
+      		hideSubmenu(ulNode);
+      		if(/menu-fl/.test(ulNode.className))break;
+      		ulNode.className=ulNode.className.replace(/\smenu-active/g,"");
+      		ulNode = ulNode.parentNode.parentNode;
+      	}
+      }
+
+      function hideSubmenu(ulNode){
+      	var list = ulNode.children;
+  		    for(var i=0;i<list.length;i++){
+  		    	var subMenu = list[i].children[1];
+  				if(subMenu){
+  					subMenu.className.replace(/\smenu-active/g,"");
+  				}
+  		    }
+      }
 	</script>
 </body>
 </html>

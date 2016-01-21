@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+
+	<body>
+		<ul>
+			<li><span>商品1</span><span>RMB45</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品2</span><span>RMB123</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品3</span><span>RMB64</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品4</span><span>RMB343</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品5</span><span>RMB77</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品6</span><span>RMB445</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+		</ul>
+		<a href="shoppingcart.html">查看购物车</a>
+	</body>
+	<script>
+		document.addEventListener("click",function(e){
+			e||(e=window.event);
+			var target = e.target||e.srcElement;
+
+			target.tagName=="A"&&addCookie(target);
+		},false)
+
+		function addCookie(t){
+			var li = t.parentNode.parentNode;
+			document.cookie = 
+			li.firstChild.nextSibling.innerHTML+"="+li.firstChild.innerHTML+
+			";expires="+new Date(new Date().getTime()+24*3600);
+		}
+	</script>
+</html>
