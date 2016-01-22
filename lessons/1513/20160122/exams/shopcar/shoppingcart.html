@@ -13,8 +13,8 @@
 <script>
 	
 	var ulDom = document.getElementById("items"),
-		items = document.cookie.match(/RMB\w*=\W*\w*/g);
-
+		items = document.cookie.match(/RMB\w*=\W*/g);
+		
 		for(var i=0;i<items.length;i++){
 			var li = document.createElement("li");
 			item = items[i].split("=");

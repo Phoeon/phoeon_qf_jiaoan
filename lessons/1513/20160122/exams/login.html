@@ -22,30 +22,35 @@ button{padding:3px 20px;}
 		</fieldset>
 	</form>
 	<script>
-		var checkbox = document.querySelector("#checkbox"),
+		var checkbox = document.getElementById("checkbox"),
 			button = document.querySelector("#go");
-			button.onclick=function (argument) {
+			button.onclick=function () {//注册点击事件
 				var cookieTextArr = [];
+				//如果选中复选框
 				if(checkbox.checked){
-					var username = document.querySelector("#username").value;
+					var username = document.getElementById("username").value;
+					   //保存当前用户名到cookie
 						cookieTextArr.push("username="+username);
 						cookieTextArr.push(";expires="+new Date(new Date().getTime()+24*60*60));
 				}else {
+					  //没有选中复选框
+					  //设置cookie失效
 						cookieTextArr.push("username=");
 						cookieTextArr.push(";expires="+new Date(0));
 				}
 				document.cookie = cookieTextArr.join("");
 			}
-
+			//获取cookie中保存的username
 			function getCookie(){
 				var data = [];
 				var hasCookie = document.cookie.indexOf("username")>-1;
 				if(hasCookie){
-					data["username"] = document.cookie.match(/username=(\w+);/)[1];
+					data["username"] = 
+					document.cookie.match(/username=(\w+);?/)[1];
 				}
 				return data;
 			}
-
+			//读取cookie中的保存的用户名，设置表单input对象
 			function setForm(data){
 				for(var k in data){
 					document.querySelector("#"+k).value = data[k]||"";

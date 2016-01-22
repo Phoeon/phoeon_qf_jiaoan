@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.box{
+		width:300px;
+		border:1px solid red;
+		white-space:nowrap;
+		overflow:hidden;
+		margin:0 auto;
+	}
+	.img-wrap{
+		width:200px;
+		overflow:hidden;
+		display:inline-block;
+		border:1px solid blue;
+		box-sizing:border-box;
+	}
+	img{
+		width:200px;
+	}
+	.preview{
+		text-align: center;
+	}
+	.preview img{
+		width:300px;
+	}
+	</style>
+</head>
+<body>
+	<div class="preview">
+		<img src="imgs/img1.png" />
+	</div>
+	<div class="box">
+		<div class="img-wrap"><img src="imgs/img1.png" alt=""></div>
+		<div class="img-wrap"><img src="imgs/img0.png" alt=""></div>
+		<div class="img-wrap"><img src="imgs/img1.png" alt=""></div>
+	</div>
+	<script>
+	// width 和 margin-left方式
+	   (function(){
+		   	var box = document.getElementsByClassName("box")[0];
+			var imgWrap = document.getElementsByClassName("img-wrap")[0],
+	    	WIDTH = 200;
+	    	var moveLeft = function(duration){
+	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
+	    		var img = imgWrap.children[0];
+	    		if(--WIDTH>0){
+		    		imgWrap.style.width = WIDTH + "px" ;
+		    		img.style.marginLeft = (WIDTH-200) + "px";
+		    	}else {
+		    		imgWrap.style.width = 200+"px";
+		    		img.style.marginLeft = 0;
+		    		box.appendChild(imgWrap);
+		    		WIDTH=200;
+		    		imgWrap = null;
+		    	}
+		    	setTimeout(moveLeft,duration||10);
+	    	}
+
+	    	// 启动做方向
+	    	// moveLeft(1);
+	   })();
+		
+
+		// 图片包裹容器的 width 和 scrollLeft
+    	(function(){
+
+		   	var box = document.getElementsByClassName("box")[0];
+			var imgWrap = document.getElementsByClassName("img-wrap")[0],
+	    	WIDTH = 200;
+	    	var moveLeft = function(duration){
+	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
+	    		if(--WIDTH>0){
+		    		imgWrap.style.width = WIDTH + "px" ;
+		    		imgWrap.scrollLeft = (200 - WIDTH) ;
+		    	}else {
+		    		imgWrap.style.width = 200+"px";
+		    		imgWrap.scrollLeft = 0;
+		    		box.appendChild(imgWrap);
+		    		WIDTH=200;
+		    		imgWrap=null;
+		    	}
+		    	setTimeout(moveLeft,duration||10);
+	    	}
+
+	    	// 启动做方向
+	    	// moveLeft(1);
+	   })();
+
+	   // 图片包裹容器的 width 和 textIndent
+    	(function(){
+
+		   	var box = document.getElementsByClassName("box")[0];
+			var imgWrap = document.getElementsByClassName("img-wrap")[0],
+	    	WIDTH = imgWrap.offsetWidth;
+	    	var moveLeft = function(duration){
+	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
+	    		if(--WIDTH>0){
+		    		imgWrap.style.width = WIDTH + "px" ;
+		    		imgWrap.style.textIndent = (WIDTH - 200) + "px" ;
+		    	}else {
+		    		imgWrap.style.width = 200+"px";
+		    		imgWrap.style.textIndent = 0+"px";
+		    		box.appendChild(imgWrap);
+		    		WIDTH=200;
+		    		imgWrap=null;
+		    	}
+		    	setTimeout(moveLeft,duration||10);
+	    	}
+
+	    	// 启动做方向
+	    	// moveLeft(1);
+	   })();
+   		
+		// 右边方向
+   		// 图片包裹容器的 width 和 scrollLeft
+    	(function(){
+
+		   	var box = document.getElementsByClassName("box")[0];
+			var imgWrap = document.getElementsByClassName("img-wrap")[0],
+	    	WIDTH = imgWrap.offsetWidth;
+	    	var moveRight = function(duration){
+	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
+	    		if(++WIDTH < 200){
+		    		imgWrap.style.width = WIDTH + "px" ;
+		    		imgWrap.style.textIndent = (WIDTH - 200) + "px" ;
+		    	}else {
+
+		    		imgWrap.style.width = 200+"px";
+		    		imgWrap.style.textIndent = 0+"px";
+
+		    		var lastChild = box.lastElementChild;
+		    		lastChild.style.width=0+"px"
+		    		lastChild.style.textIndent=-200+"px";
+
+		    		box.insertBefore(lastChild,imgWrap);
+		    		WIDTH=0;
+		    		imgWrap=null;
+		    	}
+		    	setTimeout(moveRight,duration||10);
+	    	}
+
+	    	// 启动做方向
+	    	moveRight();
+	   })()
+	</script>
+</body>
+</html>
