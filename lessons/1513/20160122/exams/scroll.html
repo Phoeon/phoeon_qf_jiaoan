@@ -39,29 +39,30 @@
 		<div class="img-wrap"><img src="imgs/img1.png" alt=""></div>
 	</div>
 	<script>
+		var duration = 10;
 	// width 和 margin-left方式
 	   (function(){
 		   	var box = document.getElementsByClassName("box")[0];
-			var imgWrap = document.getElementsByClassName("img-wrap")[0],
-	    	WIDTH = 200;
-	    	var moveLeft = function(duration){
+			var imgWrap = document.getElementsByClassName("img-wrap")[0];
+	    	var CONST = WIDTH = imgWrap.offsetWidth;
+	    	var moveLeft = function(){
 	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
 	    		var img = imgWrap.children[0];
 	    		if(--WIDTH>0){
 		    		imgWrap.style.width = WIDTH + "px" ;
-		    		img.style.marginLeft = (WIDTH-200) + "px";
+		    		img.style.marginLeft = (WIDTH-CONST) + "px";
 		    	}else {
-		    		imgWrap.style.width = 200+"px";
+		    		imgWrap.style.width = CONST+"px";
 		    		img.style.marginLeft = 0;
 		    		box.appendChild(imgWrap);
-		    		WIDTH=200;
+		    		WIDTH=CONST;
 		    		imgWrap = null;
 		    	}
 		    	setTimeout(moveLeft,duration||10);
 	    	}
 
 	    	// 启动做方向
-	    	// moveLeft(1);
+	    	moveLeft();
 	   })();
 		
 
@@ -69,50 +70,50 @@
     	(function(){
 
 		   	var box = document.getElementsByClassName("box")[0];
-			var imgWrap = document.getElementsByClassName("img-wrap")[0],
-	    	WIDTH = 200;
-	    	var moveLeft = function(duration){
+			var imgWrap = document.getElementsByClassName("img-wrap")[0];
+	    	var CONST = WIDTH = imgWrap.offsetWidth;
+	    	var moveLeft = function(){
 	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
 	    		if(--WIDTH>0){
 		    		imgWrap.style.width = WIDTH + "px" ;
-		    		imgWrap.scrollLeft = (200 - WIDTH) ;
+		    		imgWrap.scrollLeft = (CONST - WIDTH) ;
 		    	}else {
-		    		imgWrap.style.width = 200+"px";
+		    		imgWrap.style.width = CONST+"px";
 		    		imgWrap.scrollLeft = 0;
 		    		box.appendChild(imgWrap);
-		    		WIDTH=200;
+		    		WIDTH=CONST;
 		    		imgWrap=null;
 		    	}
 		    	setTimeout(moveLeft,duration||10);
 	    	}
 
 	    	// 启动做方向
-	    	// moveLeft(1);
+	    	// moveLeft();
 	   })();
 
 	   // 图片包裹容器的 width 和 textIndent
     	(function(){
 
 		   	var box = document.getElementsByClassName("box")[0];
-			var imgWrap = document.getElementsByClassName("img-wrap")[0],
-	    	WIDTH = imgWrap.offsetWidth;
-	    	var moveLeft = function(duration){
+			var imgWrap = document.getElementsByClassName("img-wrap")[0];
+	    	var CONST = WIDTH = imgWrap.offsetWidth;
+	    	var moveLeft = function(){
 	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
 	    		if(--WIDTH>0){
 		    		imgWrap.style.width = WIDTH + "px" ;
-		    		imgWrap.style.textIndent = (WIDTH - 200) + "px" ;
+		    		imgWrap.style.textIndent = (WIDTH - CONST) + "px" ;
 		    	}else {
-		    		imgWrap.style.width = 200+"px";
+		    		imgWrap.style.width = CONST+"px";
 		    		imgWrap.style.textIndent = 0+"px";
 		    		box.appendChild(imgWrap);
-		    		WIDTH=200;
+		    		WIDTH=CONST;
 		    		imgWrap=null;
 		    	}
 		    	setTimeout(moveLeft,duration||10);
 	    	}
 
 	    	// 启动做方向
-	    	// moveLeft(1);
+	    	// moveLeft();
 	   })();
    		
 		// 右边方向
@@ -120,21 +121,21 @@
     	(function(){
 
 		   	var box = document.getElementsByClassName("box")[0];
-			var imgWrap = document.getElementsByClassName("img-wrap")[0],
-	    	WIDTH = imgWrap.offsetWidth;
-	    	var moveRight = function(duration){
+			var imgWrap = document.getElementsByClassName("img-wrap")[0];
+	    	var CONST = WIDTH = imgWrap.offsetWidth;
+	    	var moveRight = function(){
 	    		imgWrap||(imgWrap=document.getElementsByClassName("img-wrap")[0]);
-	    		if(++WIDTH < 200){
+	    		if(++WIDTH < CONST){
 		    		imgWrap.style.width = WIDTH + "px" ;
-		    		imgWrap.style.textIndent = (WIDTH - 200) + "px" ;
+		    		imgWrap.style.textIndent = (WIDTH - CONST) + "px" ;
 		    	}else {
 
-		    		imgWrap.style.width = 200+"px";
+		    		imgWrap.style.width = CONST+"px";
 		    		imgWrap.style.textIndent = 0+"px";
 
 		    		var lastChild = box.lastElementChild;
 		    		lastChild.style.width=0+"px"
-		    		lastChild.style.textIndent=-200+"px";
+		    		lastChild.style.textIndent=-CONST+"px";
 
 		    		box.insertBefore(lastChild,imgWrap);
 		    		WIDTH=0;
@@ -144,7 +145,7 @@
 	    	}
 
 	    	// 启动做方向
-	    	moveRight();
+	    	// moveRight();
 	   })()
 	</script>
 </body>
