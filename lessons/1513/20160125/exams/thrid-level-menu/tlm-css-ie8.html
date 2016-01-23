@@ -5,23 +5,23 @@
 	<title>Document</title>
 	<!-- <link rel="stylesheet" href="./css/tlm.css" type="text/css"> -->
 	<style>
-		html,body{width:100%;height:100%;font-size:62.5%;}
+		html,body{width:100%;height:100%;}
 		body{margin:0;}
-		.menu-wrap{padding:3rem 1rem;}
+		.menu-wrap{padding:30px 10px;}
 		.menu{margin:0;padding:0;list-style:none;display: none;}
-		.menu .link{text-decoration:none;color:#fff;display:block;text-indent: 1rem;}
-		.menu .item{position:relative;height:1.5rem;line-height:1.5rem;}
+		.menu .link{text-decoration:none;color:#fff;display:block;text-indent: 10px;}
+		.menu .item{position:relative;height:24px;line-height:1.5;}
 		.menu-first-level .item:hover{background: #666;}
 		.menu-second-level .item:hover{background: #999;}
 		.menu-third-level .item:hover{background: #ccc;}
 		.item .hover-zone{position:absolute;}
 		.menu-first-level{display:block;}
-		.menu-first-level > .item{display:inline-block;background:#000;width:10rem;}
+		.menu-first-level > .item{display:inline-block;background:#000;width:100px;}
 		.hover-zone{width:100%;}
 		.hover-zone:hover .menu-second-level{display:block;}
 		.menu-second-level{background:#666;}
-		.menu-second-level .hover-zone:hover{width:40rem;}
-		.menu-second-level .hover-zone:hover .menu-third-level{display:block;width:30rem;position:absolute;left:10rem;top:0;}
+		.menu-second-level .hover-zone:hover{width:400px;}
+		.menu-second-level .hover-zone:hover .menu-third-level{display:block;width:300px;position:absolute;left:100px;top:0;}
 		.menu-third-level{background:#999;}
 	</style>
 </head>
@@ -78,13 +78,13 @@
 		</ul>
 	</div>
 	<div class="content">
-		<h1 id="h1" style="text-align:center;font-size:3rem;color:#0f0;">content zone</h1>
+		<h1 id="h1" style="text-align:center;font-size:30px;color:#0f0;">content zone</h1>
 	</div>
 	 <script>
-	 	document.addEventListener("click",function(e){
+		document.attachEvent("onclick",function(e){
 	 		e||(e=window.event);
 	 		var target = e.target||e.srcElement;
-	 		target.className==="link"&&(document.querySelector("#h1").innerHTML = target.innerHTML);
+	 		target.className==="link"&&(document.getElementById("h1").innerHTML = target.innerHTML);
 	 	})
 	</script>
 </body>
