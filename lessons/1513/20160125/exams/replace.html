@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{height:100%;}
+		body{margin:0;}
+		textarea{display:block;width:90%;height:80%;margin:auto;}
+		input{margin-top:5px;margin-left:4.5%;padding:0;}
+	</style>
+</head>
+<body>
+	<textarea name="" id="" cols="30" rows="10"></textarea>
+	<input type="text" placeholder="查找字符串">
+	<input type="text" placeholder="替换为">
+	<button>替换全部</button>
+	<script>
+		var textarea = document.getElementsByTagName("textarea")[0];
+		var ips = document.getElementsByTagName("input");
+		var searchIp = ips[0];
+		var replaceIp = ips[1];
+		var button = document.getElementsByTagName("button")[0];
+
+		button.onclick=function(){
+			textarea.value = textarea.value.replace(new RegExp(searchIp.value,"gi"),replaceIp.value);
+		}
+	</script>
+</body>
+</html>
