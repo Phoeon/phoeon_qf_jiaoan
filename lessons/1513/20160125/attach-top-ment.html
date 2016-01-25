@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html{position: relative;height: 100%}
+		html,body{height:100%}
+		body{margin:0}
+		.container {height:1500px;padding-top: 300px;position: relative;}
+
+
+		.menu {
+		    width: 100%;
+		    height: 20px;
+		    background: red;
+		}
+		.top{
+		    position:fixed;
+		    top:0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="menu">i am menu</div>
+	</div>
+	<script>
+		var menu = document.getElementsByClassName("menu")[0];
+		var menuOffSetTop = menu.offsetTop;
+		window.onscroll=function(){
+			var scrollTop = document.documentElement.scrollTop||
+							document.body.scrollTop||
+							+window.pageYOffset ;
+
+				if(scrollTop>menuOffSetTop){
+					menu.className="menu top";
+				}else menu.className="menu";
+		}
+	</script>
+</body>
+</html>

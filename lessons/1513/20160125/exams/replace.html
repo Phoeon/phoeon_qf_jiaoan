@@ -20,10 +20,12 @@
 		var ips = document.getElementsByTagName("input");
 		var searchIp = ips[0];
 		var replaceIp = ips[1];
+		
 		var button = document.getElementsByTagName("button")[0];
 
 		button.onclick=function(){
-			textarea.value = textarea.value.replace(new RegExp(searchIp.value,"gi"),replaceIp.value);
+			textarea.value = textarea.value
+			.replace(new RegExp(searchIp.value,"gi"),replaceIp.value);
 		}
 	</script>
 </body>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+正则表达式上下限
+	<script>
+		
+		var reg = new RegExp("\\d{3,6}","g");
+		reg.exec("123456789");
+		console.log(reg.lastIndex)
+		reg.exec("123456789");
+		console.log(reg.lastIndex)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	html,body{
+		hegiht:100%;
+	}
+	body{
+		height:500px;
+	}
+.menu{
+ display:none;   
+ list-style:none;
+ margin:0;
+ padding:0;
+}
+.item{
+    width:100px;
+    height:20px;
+    line-hegiht:20px;
+    position:relative;
+    background:#000;
+    color:#fff;
+    cursor:pointer;
+    text-indent:10px;
+}
+.menu-first-level{
+    display:block;
+}
+
+.menu-first-level > .item{
+    float:left;
+    margin-right:3px;
+}
+
+.wrap-menu{
+    position:absolute;
+    width:100px;
+    top:0;
+    left:0;
+}
+
+.wrap-menu:hover /* .menu-second-level{
+    display:block;
+}*/
+.menu-second-level .item{
+    background:#666;
+}
+.menu-third-level{
+    position:absolute;
+    top:0;
+    left:100px;
+}
+
+.menu-third-level .item{
+    background:#999
+}
+
+.menu-first-level .item:hover{
+    background:#666;
+}
+.menu-second-level .item:hover{
+    background:#999;
+}
+.menu-third-level .item:hover{
+    background:#ccc;
+}
+
+.show{
+	display:block;
+}
+
+	</style>
+	<script>
+		window.onload=function(){
+			document.addEventListener("click",function(e){
+				e||(e=window.event);
+				var  target=e.target||e.srcElement;
+				var subMenu;
+				if(target.className=="link"){
+					subMenu = target.parentNode.getElementsByClassName("menu")[0];
+					if(subMenu.className.indexOf("show")>-1){
+						subMenu.className
+						=subMenu.className.replace(/\sshow/g,"");
+					}
+					else subMenu.className += " show";
+					e.stopPropagation();
+					e.cancelBubble=true;
+				}else {
+					var subMenus = document.getElementsByClassName("show");
+					for(var i=0;i<subMenus.length;i++){
+						var subMenu = subMenus[i];
+						subMenu.className
+						=subMenu.className.replace(/\sshow/g,"");
+					}
+				}
+			},false)
+		}
+	</script>
+</head>
+<body>
+	<!-- 第一级菜单 -->
+	<ul class="menu menu-first-level">
+		<li class="item">
+			<div class="wrap-menu">
+				<div class="link">ITEM 1</div>
+				<!-- 第二集菜单 -->
+				<ul class="menu menu-second-level">
+					<li class="item">
+						<div class="wrap-menu">
+							<div class="link">ITEM 1 1</div>
+							<ul class="menu menu-third-level">
+								<li class="item">
+									<div class="wrap-menu">
+										<div class="link">ITEM 1 1 1</div>
+										
+									</div>
+								</li>
+								<li class="item">ITEM 2</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">ITEM 2</li>
+				</ul>
+
+			</div>
+		</li>
+		<li class="item">
+			<div class="wrap-menu">
+				<div class="link">ITEM 2</div>
+				<!-- 第二集菜单 -->
+				<ul class="menu menu-second-level">
+					<li class="item">
+						<div class="wrap-menu">
+							<div class="link">ITEM 2 1</div>
+							<ul class="menu menu-third-level">
+								<li class="item">
+									<div class="wrap-menu">
+										<div class="link">ITEM 2 1 1</div>
+										
+									</div>
+								</li>
+								<li class="item">ITEM 2</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">ITEM 2</li>
+				</ul>
+
+			</div>
+		</li>
+	</ul>
+</body>
+</html>

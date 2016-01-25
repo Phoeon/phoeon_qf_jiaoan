@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="username" placeholder="字母和数字组合长度大于8位">
+	<br/><br/>
+	<input type="text" id="email" placeholder="例如：163club@qq.com">
+</body>
+<script>
+var usernameIp = document.getElementById("username");
+
+usernameIp.onkeyup=function(){
+	var v = this.value;
+	if(
+		/^[0-9A-z]+$/.test(v)&&
+		/[A-z]/.test(v)&&
+		/\d/.test(v)&&
+		v.length>8
+		){
+		usernameIp.style.border="3px solid #0f0"
+	}else {
+		usernameIp.style.border="3px solid #f00"
+	}
+}
+
+var email = document.getElementById("email");
+	email.onkeyup=function(){
+		var v = this.value;
+	if(
+		/^[0-9A-z]+@[0-9A-z]+\.(com|cn)$/.test(v)
+		){
+		email.style.border="3px solid #0f0"
+	}else {
+		email.style.border="3px solid #f00"
+	}
+	}
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      input:focus{
+      	outline:none;
+      }
+	</style>
+</head>
+<body>
+	<input type="text" id="num-ip" >
+</body>
+<script>
+	// document.getElementById("num-ip").onkeyup=function(){
+	// 	var value = this.value;
+	// 	var result = /^[0-9]+$/.test(value)&&parseInt(value)>0&&parseInt(value)<100;
+
+	// 	if(result){
+	// 		this.style.border="1px solid #0f0"
+	// 	}else {
+	// 		this.style.border="1px solid #f00"
+	// 	}
+	// }
+	//[0-9]==\d
+	//\w ==[A-z0-9_]  字母数字下划线
+	document.getElementById("num-ip").onkeyup=function(){
+		var value = this.value;
+		var result = /^\d+$/.test(value)&&parseInt(value)>0&&parseInt(value)<100;
+
+		if(result){
+			this.style.border="1px solid #0f0"
+		}else {
+			this.style.border="1px solid #f00"
+		}
+	}
+</script>
+</html>
