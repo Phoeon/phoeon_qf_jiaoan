@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="initThird">初始化三级联动</button><br/><br/>
+</body>
+<script>
+	(function(){
+		var loaded = false,
+			selects = [],
+			datas;
+		function loadData(method,url,async,fn){
+			var xhr = new XMLHttpRequest();
+			if(async){
+				xhr.onreadystatechange = function(){
+					(xhr.readyState==4&&xhr.status==200)&&fn(xhr.responseText);
+				}
+			}
+			xhr.open(method,url,async);
+			xhr.send();
+
+			(!async&&xhr.status==200)&&fn(xhr.responseText);
+		}
+
+		document.querySelector("#initThird").onclick=function(e){
+			!loaded&&loadData("get","./datas/locations.json",true,function(response){
+				loaded = true;
+				datas = JSON.parse(response);
+				createSelect(datas);
+			})
+		}
+
+
+		function createSelect(data){
+			// 创建三个select
+			for(var type in data){
+				var select = document.createElement("select");
+				select.id=type;
+				document.body.appendChild(select);
+				selects[type] = select;
+			}
+
+			// 初始化三个select数据
+			initSelect(data["provinces"],selects["provinces"]);
+			initSelect(data["counties"][0],selects["counties"]);
+			initSelect(data["districts"][0][0],selects["districts"]);
+
+			//绑定数据
+			selects["provinces"].onchange = function(){
+				initSelect(datas["counties"][this.selectedIndex],selects["counties"]);
+				initSelect(datas["districts"][this.selectedIndex][0],selects["districts"]);
+			}
+			selects["counties"].onchange = function(){
+				initSelect(datas["districts"][selects["provinces"].selectedIndex][this.selectedIndex],selects["districts"]);
+			}
+		}
+
+		function initSelect(data,sel){
+			sel.length=0;
+			for(var k=0;k< data.length;k++){
+				var option = new Option();
+				option.innerHTML = data[k];
+				sel.appendChild(option);
+			}
+		}
+
+	})();
+</script>
+</html>

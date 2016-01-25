@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{height:100%;}
+		body{margin:0;}
+		textarea{display:block;width:90%;height:80%;margin:auto;}
+		button{margin-left:50px;}
+	</style>
+</head>
+<body>
+	<textarea name="" id="" cols="30" rows="10"></textarea>
+	<button>替换全部</button>
+	<script>
+	
+	(function(){
+
+		function loadData(method,url,async,fn){
+			var xhr = new XMLHttpRequest();
+			if(async){
+				xhr.onreadystatechange = function(){
+					(xhr.readyState==4&&xhr.status==200)&&fn(xhr.responseText);
+				}
+			}
+			xhr.open(method,url,async);
+			xhr.send();
+
+			(!async&&xhr.status==200)&&fn(xhr.responseText);
+		}
+
+		document.querySelector("button").onclick=function(){
+			loadData("get","./tasklist.txt",true,function(res){
+				document.querySelector("textarea").value = res;
+			});
+		}
+	})();
+</script>
+</html>
