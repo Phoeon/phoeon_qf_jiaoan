@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.small {
+    width:300px;
+    position:relative;
+    background:#eee;
+    float:left;
+    font-size:0;
+}
+.small img{
+    width:100%;
+}
+.preview{
+    float:left;
+    width:100px;
+    height:100px;
+    position:relative;
+    background:#ee3 url(desktop.png) no-repeat;
+    border-radius:50%;
+    visibility: hidden;
+}
+	</style>
+</head>
+<body>
+	<div class="small">
+		<img src="desktop.png"/>
+	</div>
+	<div class="preview"></div>
+</body>
+<script>
+var tmp = new Image();
+tmp.src="desktop.png";
+var preview = document.querySelector(".preview"),
+    img = document.querySelector("img"),
+    wrap = img.parentNode;
+    scaleWidth = preview.offsetWidth; 
+    ;
+
+img.onmousemove=function(e){
+  var xspan = tmp.width*(e.clientX-wrap.offsetLeft)/this.offsetWidth,
+      yspan = tmp.height*(e.clientY-wrap.offsetTop)/this.offsetHeight;
+
+      var x = xspan<scaleWidth/2?0:(-xspan+scaleWidth/2);
+          x = (xspan<tmp.width-scaleWidth/2)?x:(-tmp.width+scaleWidth);
+
+      var y = yspan<scaleWidth/2?0:(-yspan+scaleWidth/2);
+          y = (yspan<tmp.height-scaleWidth/2)?y:(-tmp.height+scaleWidth);
+      
+      preview.style.backgroundPositionX = x+"px";
+      preview.style.backgroundPositionY = y+"px";
+      preview.style.visibility="visible";
+}
+img.onmouseout=function(){preview.style.visibility="hidden";};
+</script>
+</html>
