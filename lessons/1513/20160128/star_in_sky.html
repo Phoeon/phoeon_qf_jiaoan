@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html,body{height: 100%}
+body{margin:0;background: -webkit-linear-gradient(-125deg,#666,#000,#000);overflow:hidden;}
+span{color:yellow;position: absolute;
+	transition:all 0.3s;
+}
+.moon {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#ff0;
+    box-shadow: 0px 0px 200px 30px #ff0;
+    position:absolute;
+    right:100px;
+    top:100px;
+}
+
+
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	document.write("<div class='moon'></div>");
+	for(var i=0;i<300;i++){
+		var x = document.body.offsetWidth*Math.random();
+		var y = document.body.offsetHeight*Math.random();
+		var pos = "left:"+x+"px;top:"+y+"px";
+		document.write("<span style="+pos+">★</span>");
+	}
+
+	var stars = document.querySelectorAll("span");
+	function blink(){
+		for(var i=0;i<stars.length;i++){
+			if(Math.random()<0.3){
+				var star = stars[i];
+				star.style.transform = "scale("+(1.5*Math.random())+")"
+			}
+		}
+		setTimeout(arguments.callee,100);
+	}
+	blink()
+	document.onmousemove=function(e){
+		var bh = document.body.offsetHeight,
+			bw = document.body.offsetWidth;
+	var ex = e.clientX,
+        ey = e.clientY;
+     for(var i=0;i<stars.length;i++){
+           var star = stars[i];
+　　　　　  var starx = star.offsetLeft,
+　　　　　　　　stary = star.offsetTop;
+           var esx = ex-starx,
+               esy = ey-stary;
+           var distance = Math.sqrt(esx*esx+esy*esy,2);
+
+           var x = 100 - Math.min(100,distance);
+           var y = 100 - Math.min(100,distance);
+           star.style.transform = "scale("+(1.5*Math.random())+") translate("+x+"px,"+y+"px)"
+       }
+	}
+</script>
+</html>
