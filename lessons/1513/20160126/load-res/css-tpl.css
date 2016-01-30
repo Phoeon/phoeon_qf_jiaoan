@@ -1,0 +1,20 @@
+html,body{width:100%;height:100%;font-size:62.5%;}
+body{margin:0;}
+.container{width:80%;margin:auto;overflow:hidden;}
+.form{margin:1rem;}
+fieldset{border:0.1rem solid transparent;/*     background:#eee; */}
+legend{margin-left:3rem;color:transparent;}
+.field-group{position:relative;min-height:4.5rem;overflow:hidden;}
+.field-group.field-group-textarea{
+	height: 9.5rem;
+}
+.field-label{float:left;text-align:right;width:20%;line-height:2.5rem;}
+.field{float:left;text-indent:1rem;border:1px solid #ccc;box-sizing:border-box;padding:0;width:60%;margin-left:5%;line-height:2.5rem;border-radius:0.3rem;}
+textarea.field{height: 7.5rem;resize:none;}
+.field.btn{width:20%;text-indent:0;background:#fff;}
+.field.btn:hover{background:#eee;cursor:pointer;}
+.field:focus{outline:none;border-color:#69f;box-shadow:0rem 0rem 0.5rem 0rem #69f inset;}
+.field.invalid{border-color:#f66;box-shadow:0rem 0rem 0.5rem 0rem #f66 inset;}
+.field.valid{border-color:#3c3;box-shadow:0rem 0rem 0.5rem 0rem #3c3 inset;}
+.field-tip{float:left;width:60%;line-height:2rem;margin-left:25%;text-indent:1rem;color:#933;}
+.field-tip:before{content:"\200B";}

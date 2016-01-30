@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>button 1</button>
+	<button>button 2</button>
+	<button>button 3</button>
+</body>
+<script>
+// 问题代码
+ var btns = document.getElementsByTagName("button");
+     // for(var i=0;i<btns.length;i++){
+
+     // 	var btn = btns[i];
+	    //  	btn.onclick = function(){
+	    //  		alert(i);
+	    //  	}
+     // }
+
+//right way 1
+     // for(var i=0;i<btns.length;i++){
+     // 	var btn = btns[i];
+     // 		btn.index = i; 
+	    //  	btn.onclick = function(){
+	    //  		alert(this.index);
+	    //  	}
+     // }
+
+// way 2
+for(var i=0;i<btns.length;i++){
+     	var btn = btns[i];
+	     	btn.onclick = (function(abc){
+		     	return function(){
+		     		alert(abc);
+		     	}
+	     	})(i);
+     }
+
+     // (function go(){})()
+     // go()
+</script>
+</html>

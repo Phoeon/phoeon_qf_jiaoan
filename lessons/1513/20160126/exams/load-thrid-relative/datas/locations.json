@@ -1,0 +1,31 @@
+{
+	"provinces" : ["province_1","province_2","province_3","province_4"],
+	"counties"  : [
+						["pro_1_county_1","pro_1_county_2","pro_1_county_3"],
+						["pro_2_county_1","pro_2_county_2","pro_2_county_3"],
+						["pro_3_county_1","pro_3_county_2","pro_3_county_3"],
+						["pro_4_county_1","pro_4_county_2","pro_4_county_3"]
+				],
+	"districts" : [
+			[
+				["pro_1_cou_1_district_1","pro_1_cou_1_district_2","pro_1_cou_1_district_3"],
+				["pro_1_cou_2_district_1","pro_1_cou_2_district_2","pro_1_cou_2_district_3"],
+				["pro_1_cou_3_district_1","pro_1_cou_3_district_2","pro_1_cou_3_district_3"]
+			],
+			[
+				["pro_2_cou_1_district_1","pro_2_cou_1_district_2","pro_2_cou_1_district_3"],
+				["pro_2_cou_2_district_1","pro_2_cou_2_district_2","pro_2_cou_2_district_3"],
+				["pro_2_cou_3_district_1","pro_2_cou_3_district_2","pro_2_cou_3_district_3"]
+			],
+			[
+				["pro_3_cou_1_district_1","pro_3_cou_1_district_2","pro_3_cou_1_district_3"],
+				["pro_3_cou_2_district_1","pro_3_cou_2_district_2","pro_3_cou_2_district_3"],
+				["pro_3_cou_3_district_1","pro_3_cou_3_district_2","pro_3_cou_3_district_3"]
+			],
+			[
+				["pro_4_cou_1_district_1","pro_4_cou_1_district_2","pro_4_cou_1_district_3"],
+				["pro_4_cou_2_district_1","pro_4_cou_2_district_2","pro_4_cou_2_district_3"],
+				["pro_4_cou_3_district_1","pro_4_cou_3_district_2","pro_4_cou_3_district_3"]
+			]
+	]
+}

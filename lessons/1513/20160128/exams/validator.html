@@ -47,7 +47,7 @@
 					<span class="field-tip"></span>
 				</div>
 				<div class="field-group">
-					<label for="" class="field-label">省份证号：</label>
+					<label for="" class="field-label">身份证号：</label>
 					<input type="text" name="id-card" class="field" placeholder="尚未实现"/>
 					<span class="field-tip"></span>
 				</div>
@@ -63,12 +63,12 @@
 				</div>
 				<div class="field-group">
 					<label for="" class="field-label">联系方式：</label>
-					<input type="text" name="email" class="field" placeholder="尚未实现 固话|手机"/>
+					<input type="text" name="tel" class="field" placeholder="尚未实现 固话|手机"/>
 					<span class="field-tip"></span>
 				</div>
 				<div class="field-group">
 					<label for="" class="field-label">余额：</label>
-					<input type="text" name="email" class="field" placeholder="尚未实现 123.456"/>
+					<input type="text" name="money" class="field" placeholder="尚未实现 123.456"/>
 					<span class="field-tip"></span>
 				</div>
 				<div class="field-group field-group-textarea">
@@ -84,109 +84,66 @@
 			</fieldset>
 		</form>
 	</div>
+
 	<script>
-	var form = document.getElementsByClassName("form")[0];
+		document.addEventListener("keyup",function(e){
+			e||(e=window.event);
+			var target = e.target||e.srcElement ;
+			var valid;
+			if(target.name=="username"){
+				valid = /^[A-z0-9]{8,}$/.test(target.value)&&
+ 					/[A-z]/.test(target.value)&&
+ 					/[0-9]/.test(target.value);
+				dealInvalid(target,valid,"非法用户名");
+			}
+			else if(target.name==="email"){
+				valid = /^[A-z0-9_]+@[A-z0-9_]+\.com$/.test(target.value);
+				dealInvalid(target,valid,"邮箱非法");
+			}else if(target.name === "main-page"){
+				valid = /^http\:\/\/[a-z]+(\.[a-z]+)+\/\w+$/.test(target.value) ;
+				dealInvalid(target,valid,"地址非法");
+			}else if(target.name==="id-card"){
+				valid = /^[1-9]\d{13,16}([0-9]|x)$/.test(target.value);
+				dealInvalid(target,valid,"非法身份证");
+			}else if(target.name==="age"){
+				valid = !isNaN(target.value)&&
+						parseInt(target.value)>0&&
+						parseInt(target.value)<100;
+				dealInvalid(target,valid,"年龄约见");
+			}else if(target.name==="birth-day"){
+				valid = /^\d{4}-\d{2}-\d{2}$/.test(target.value);
+				if(valid){
+					var nums = target.value.split("-");
+					//year
+					valid = parseInt(nums[0])<=2016?valid:false;
+					//month
+					valid = (parseInt(nums[1])>0&&parseInt(nums[1])<=12)?valid:false;
+					//day
+					valid = parseInt(nums[2])>0&&parseInt(nums[2])<31?valid:false;
+				}
+				dealInvalid(target,valid,"年龄约见");
+			}else if(target.name==="tel"){
+				valid = /^(\d{11}|(\d{3,4}-\d{7,8}))$/.test(target.value);
+				dealInvalid(target,valid,"非法联系方式");
+			}else if(target.name==="money"){
+				valid = /^(([1-9])*0(\.\d+)?)$/.test(target.value);
+				dealInvalid(target,valid,"非法金额");
+			}else if(target.name==="motto"){
+				valid = target.value.length<=50;
+				dealInvalid(target,valid,"字数约见");
+			}
+		},false)
 
-	var usernameIp = document.getElementsByName("username")[0];
-	var email      = document.getElementsByName("email")[0];
-	var motto      = document.getElementsByName("motto")[0];
-	var mainPage   = document.getElementsByName("main-page")[0];
 
-
-	// 阻止表单提交
-	// form.onsubmit=function(){
-	// 	var fields = form.getElementsByClassName("field");
-	// 	var valid = true;
-	// 	for(var i=0;i<fields.length;i++){
-	// 		var field = fields[i];
-	// 		if(field.className.indexOf("btn")==-1){
-	// 			field.validate();
-	// 			valid=(field.valid!=true)?false:valid;
-	// 		}
-	// 	}
-	// 	return valid;
-	// }
-	// form.onreset = function(){
-	// 	var fields = form.getElementsByClassName("field");
-	// 	for(var i=0;i<fields.length;i++){
-	// 		var field=fields[i];
-	// 		if(field.className.indexOf("btn")==-1)field.className="field";
-	// 	}
-	// 	return true;
-	// }
-
-	// 用户名验证
-	usernameIp.validate=usernameIp.onkeyup=function(){
-		var value = this.value;
-		this.valid = (
-			/^[A-z0-9]{8,}$/.test(value)&&
-			/[A-z]/.test(value)&&
-			/[0-9]/.test(value)&&
-			!/\\/.test(value));
-
-		valid(this,"非法用户名");
-	}
-	// 邮箱验证
-	email.validate=email.onkeyup=function(){
-		this.valid = /\w+@\w+\.com/.test(this.value);
-		valid(this,"非法邮箱")
-	}
-	// 座右铭验证
-	motto.validate=motto.onkeyup=function(){
-		this.valid = this.value.length<50;
-		valid(this,"字符数超出上线50");
-	}
-
-	// 验证地址主页
-	mainPage.onkeyup = function(){
-		var v = this.value;
-		var reg = /^http\:\/\/[a-z]+\.[a-z]+\.[a-z]+\/\w+$/ ;
-		if(reg.test(v)){
-			this.className  = "field valid";
-			this.nextElementSibling.innerHTML = "";
-		}else {
-			this.className  = "field invalid";
-			this.nextElementSibling.innerHTML = "非法地址输入";
+		function dealInvalid(target,valid,tip){
+			if(valid){
+				target.className = "field valid";
+				target.nextElementSibling.innerHTML = "";
+			}else {
+				target.className = "field invalid";
+				target.nextElementSibling.innerHTML = tip;
+			}
 		}
-	}
-	//省份证验证
-	document.getElementsByName("id-card")[0].onkeyup = function(){
-		var v = this.value;
-		var reg = /^\d{14,17}(\d|x)$/;
-		if(reg.test(v)
-			// &&v.length<=18
-			){
-			this.className  = "field valid";
-			this.nextElementSibling.innerHTML = "";
-		}else {
-			this.className  = "field invalid";
-			this.nextElementSibling.innerHTML = "非法省份证号";
-		}
-	}
-	//年龄
-	document.getElementsByName("age")[0].onkeyup = function(){
-		var v = this.value;
-		var age = parseInt(v);
-		if(age&&age>0&&age<100){
-			this.className  = "field valid";
-			this.nextElementSibling.innerHTML = "";
-		}else {
-			this.className  = "field invalid";
-			this.nextElementSibling.innerHTML = "非法年龄";
-		}
-	}
-	
-	// 生日
-	// document.getElementsByName("birth-day")[]
-	function valid(field,tip){
-		if(field.valid===true){
-			field.className = "field valid";
-			field.nextElementSibling.innerHTML="";
-		}else {
-			field.className = "field invalid";
-			field.nextElementSibling.innerHTML = tip;
-		}
-	}
 	</script>
 </body>
 </html>

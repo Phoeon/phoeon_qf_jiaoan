@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <link rel="stylesheet" href="./css/grey.css" type="text/css">
+</head>
+
+<body>
+    <div class="box transition">
+        <div class="table-wrap">
+            <table class="table">
+                <caption class="caption">
+                    <label>班级名单：</label>
+                    <label id="close" class="btn close"></label>
+                    <label id="max" class="btn max"></label>
+                    <label id="min" class="btn min"></label>
+                    <label id="cs" class="btn cs">换肤</label>
+                </caption>
+                <thead>
+                    <tr class="tr">
+                        <th class="th index">
+                            <input type="checkbox" id="cka"> </th>
+                        <th class="th index">编号</th>
+                        <th class="th">姓名</th>
+                        <th class="th">性别</th>
+                        <th class="th">兴趣爱好</th>
+                        <th class="th">最高学历</th>
+                        <th class="th">所处职位</th>
+                        <th class="th oper">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-group">
+            <label id="bdel" class="btn">批量删除</label>
+            <label id="add" class="btn">新增</label>
+            <label id="load" class="btn" onclick="initTable()">加载数据</label>
+        </div>
+    </div>
+    <script>
+    	
+    	var loadBtn = document.getElementById("load");
+    	loadBtn.onclick = function(){
+    		var xhr = new XMLHttpRequest();
+
+    		xhr.onreadystatechange = function(){
+    			if(xhr.readyState==4&&xhr.status==200){
+    				addTr(xhr.responseText);
+    			}
+    		}
+
+    		xhr.open("get","datas/data.txt",true);
+
+    		xhr.send();
+    	}
+
+    	function addTr(response){
+    		var list = JSON.parse(response)["list"];
+    		for(var i=0;i<list.length;i++){
+    			createTrElement(list[i]);
+    		}
+    	}
+
+    	function createTrElement(data){
+    		var tr = document.createElement("tr");
+    		tr.className = "tr";
+
+    		var td0 = document.createElement("td");
+    		var checkbox = document.createElement("input");
+    		checkbox.type="checkbox";
+    		td0.appendChild(checkbox);
+    		td0.className = "td index";
+
+			var td1 = document.createElement("td");
+				td1.innerHTML = data.id;
+				td1.className = "td" ;
+
+			var td2 = document.createElement("td");
+				td2.innerHTML = data.name ;
+				td2.className = "td" ;
+
+			var td3 = document.createElement("td");
+				td3.innerHTML = data.gender;
+				td3.className = "td" ;
+
+			var td4 = document.createElement("td");
+				td4.innerHTML = data.hobby;
+				td4.className = "td" ;
+
+			var td5 = document.createElement("td");
+				td5.innerHTML = data.rank;
+				td5.className = "td" ;
+
+			var td6 = document.createElement("td");
+				td6.innerHTML = data.position;
+				td6.className = "td" ;
+
+			var td7 = document.createElement("td");
+				td7.innerHTML = "删除";
+				td7.className = "td" ;
+			
+			tr.appendChild(td0)
+			tr.appendChild(td1)
+			tr.appendChild(td2)
+			tr.appendChild(td3)
+			tr.appendChild(td4)
+			tr.appendChild(td5)
+			tr.appendChild(td6)
+			tr.appendChild(td7)
+
+			document.getElementsByTagName("tbody")[0].appendChild(tr);
+    	}
+    </script>
+  </body>
+ </html>

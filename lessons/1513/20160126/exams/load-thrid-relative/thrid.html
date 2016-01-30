@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		
+		var xhr = new XMLHttpRequest();
+		var selects = {};
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				createSelects(xhr.responseText);
+			}
+		}
+		xhr.open("get","datas/locations.json",true);
+
+		xhr.send();
+
+		function createSelects(res){
+			var datas = JSON.parse(res);
+
+			for(var k in datas){
+				var select = document.createElement("select");
+				selects[k] = select;
+				document.body.appendChild(select);
+			}
+
+			// 填充省
+			fillSelect(datas["provinces"],selects["provinces"]);
+
+			//填充市
+			fillSelect(datas["counties"][0],selects["counties"]);	
+				
+			// 填充镇
+			fillSelect(datas["districts"][0][0],selects["districts"]);	
+
+			// 绑定change事件
+			// 省
+			selects["provinces"].onchange = function(){
+				//填充市
+				fillSelect(datas["counties"][this.selectedIndex],selects["counties"]);
+				// 填充镇
+				fillSelect(datas["districts"][this.selectedIndex][0],selects["districts"]);	
+			}
+			//市
+			selects["counties"].onchange = function(){
+				// 填充镇
+				fillSelect(datas["districts"][selects["provinces"].selectedIndex][this.selectedIndex],selects["districts"]);
+			}
+
+		}
+
+		function fillSelect(arr,sel){
+			sel.length = 0;
+			for(var i=0;i<arr.length;i++){
+				var option = document.createElement("option");
+				option.innerHTML = arr[i];
+				sel.appendChild(option);
+			}
+		}
+	</script>
+</body>
+</html>

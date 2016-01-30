@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.content{
+	    height: 500px;
+    border: 1px solid red;
+}
+	</style>
+
+</head>
+<body>
+	<div class="content"></div>
+	<button id="loadData">加载资源</button>
+	<script>
+		
+		var loadBtn = document.getElementById("loadData");
+		loadBtn.onclick = function () {
+			// 创建xhr对象
+			var xhr = new XMLHttpRequest();
+			// 请求状态变更事件监听函数
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState==4&&xhr.status==200){
+					// debugger
+					dealData(xhr.responseText);
+				}
+			}
+
+			// 发送前准备
+			xhr.open("get","abc.txt",true);
+
+			// 具体发送请求
+			xhr.send();
+
+			// 响应内容 处理函数
+			function dealData(res){
+				document.getElementsByClassName("content")[0].innerHTML = res;
+			}
+		}
+
+	</script>
+</body>
+</html>

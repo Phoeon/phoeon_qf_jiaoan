@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{overflow:hidden;padding:20px;}
+		.star {
+		    float:left;
+		    width:50px;
+		    height:50px;
+		    background:#ccc;
+		    margin-left:3px;
+		}
+		.star.highlight{
+			background:yellow;	
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="star"></div>
+		<div class="star"></div>
+		<div class="star"></div>
+		<div class="star"></div>
+		<div class="star"></div>
+	</div>
+	<script>
+
+		//鼠标悬浮的时候，加高亮
+		document.addEventListener("mouseover",function(e){
+			e||(e=window.event);
+			var target = e.target||e.srcElement ;
+			if(target.className.indexOf("star") > -1){
+				target.className = "star highlight";
+
+				var prevSibling = target.previousElementSibling;
+
+				while(prevSibling){
+
+					prevSibling.className = "star highlight";
+
+					prevSibling = prevSibling.previousElementSibling;
+
+				}
+			}
+
+		},false)
+		// 鼠标离开的时候，没有选中过的scored 为false的取消高光
+		document.addEventListener("mouseout",function(e){
+			e||(e=window.event);
+
+			var target = e.target||e.srcElement ;
+			if(target.className.indexOf("star") > -1){
+				!target.scored&&(target.className = "star");
+
+				var prevSibling = target.previousElementSibling;
+
+				while(prevSibling&&!prevSibling.scored){
+						prevSibling.className = "star";
+						prevSibling = prevSibling.previousElementSibling;
+				}
+			}
+
+		},false)
+
+		// 点击后，当前和之前的所有兄弟节点加高光，之后的取消高光
+		document.addEventListener("click",function(e){
+			e||(e=window.event);
+
+			var target = e.target||e.srcElement ;
+			var curStar = target;
+
+			if(target.className.indexOf("star") > -1){
+
+				target.scored = true;
+				target.className = "star highlight";
+
+				// 所有之前的兄弟节点加高光，枷锁
+				var prevSibling = target.previousElementSibling;
+				while(prevSibling){
+
+					prevSibling.scored = true;
+
+					prevSibling.className = "star highlight";
+
+					prevSibling = prevSibling.previousElementSibling;
+
+				}
+
+				// 所有之后的兄弟节点减高光，减锁
+				var nextSibling = target.nextElementSibling;
+				while(nextSibling){
+					
+					nextSibling.scored = false;
+
+					nextSibling.className = "star";
+
+					nextSibling = nextSibling.nextElementSibling;
+
+				}
+			}
+		},false)
+
+	</script>
+</body>
+</html>

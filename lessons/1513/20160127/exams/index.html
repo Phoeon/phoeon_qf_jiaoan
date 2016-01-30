@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/grey.css" type="text/css">
+	<link rel="stylesheet" href="./css/form.css" type="text/css">
+</head>
+<body>
+	<div id="view" class="view">
+		
+	</div>
+	<div class="mask" id="mask"></div>
+</body>
+<script src="js/ajax.js"></script>
+<script>
+	(function() {
+		var view = document.querySelector("#view");
+		var mask = document.querySelector("#mask");
+		var interfaces = {
+			list : {
+				method : "get",
+				url	   : "list.html",
+				async  : true,
+				success : function(res){
+					view.innerHTML = res;
+				}
+			},
+			create : {
+				method : "get",
+				url	   : "create.html",
+				async  : true,
+				success : function(res){
+					mask.style.display = "block";
+					mask.innerHTML = res;
+				}
+			},
+			trTpl : {
+				method : "get",
+				url	   : "tr.html",
+				async  : true,
+				success : function(res){}
+			},
+			data :{
+				method : "get",
+				url	   : "datas/data.txt",
+				async  : true,
+				success : function(res){}
+			}
+		}
+
+		var page = {
+			init : function(){
+				this.datas = [];
+				// 绑定事件代理
+				this.bindEvent();
+				// 加载列表结构
+				this.getList();
+			},
+			getList : function(){
+				var args = interfaces.list;
+				request(args.method,args.url,args.async,args.success);
+			},
+			getTrTpl : function(fn){
+				if(this.tpl){fn(this.tpl); return false;}
+				var args = interfaces.trTpl;
+				var self = this;
+				request(args.method,args.url,args.async,function(tpl){
+					self.tpl = tpl;
+					fn(tpl);
+				});
+			},
+			getData : function(){
+				var self = this;
+				var args = interfaces.data;
+				request(args.method,args.url,args.async,function(res){
+					var datas = JSON.parse(res);
+					self.datas=self.datas.concat(datas) ;
+					self.renderTable(self.datas);
+				});
+			},
+			filterData : function(pattern){
+				return (this.datas||[]).filter(function(item){
+					return pattern?new RegExp(pattern,"i").test(item.name):true;
+				})
+			},
+			renderTable :function(datas){
+				this.getTrTpl(function(tpl){
+					var trArr = datas.map(function(data){
+						return tpl.replace(/\{(\w+)\}/g,function(){
+							return data[arguments[1]];
+						});
+					});
+					document.querySelector("tbody").innerHTML = trArr.join("");
+				});
+			},
+			loadForm : function(){
+				var args = interfaces.create;
+				request(args.method,args.url,args.async,args.success);
+			},
+			saveData : function(){
+				var form = document.querySelector("#form");
+				var ips = form.querySelectorAll(".field");
+				var data = {
+					id : "QF_1000_"+parseInt(Math.random()*1000)
+				};
+				for(var i=0;i<ips.length;i++){
+					var ip = ips[i];
+					if(ip.className.indexOf("btn")==-1){
+						data[ip.name] = ip.value;
+					}
+				}
+				
+				this.datas.unshift(data);
+
+				this.renderTable(this.datas);
+
+				mask.innerHTML="";
+				mask.style.display="none";
+			},
+			bindEvent : function(){
+				var self = this;
+				document.addEventListener("click",function(e){
+					e||(e=window.event);
+					var target= e.target||e.srcElement ;
+
+					if(target.id==="load"){
+						self.getData();
+					}else if(target.id==="add"){
+						self.loadForm();
+					}else if(target.id==="save"){
+						self.saveData();
+					}else if(target.id==="closeForm"){
+						mask.innerHTML="";
+						mask.style.display="none";
+					}
+				},false);
+
+				document.addEventListener("keyup",function(e){
+					e||(e=window.event);
+					var target= e.target||e.srcElement ;
+					if(target.id==="search-ip"){
+						self.keyupTimer&&clearTimeout(self.keyupTimer);
+						self.keyupTimer = setTimeout(function(){
+							var datas = self.filterData(target.value);
+							self.renderTable(datas);
+						},200);
+					}
+				},false)
+			}
+		};
+
+		// 初始化页面
+		page.init();
+
+	})();
+</script>
+</html>

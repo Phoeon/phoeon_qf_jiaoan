@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="loadHtml">loadHtml</button>
+	<button id="loadCss">loadHtml</button>
+	<button id="loadJs">loadHtml</button>
+	<div class="container">
+	</div>
+	<script>
+		(function(){
+
+			function request(method,url,async,fn){
+				// 创建事例对象  a asyncrous jax
+				var xhr = new XMLHttpRequest();
+
+				//处理异步加载毁掉
+				if(async){
+					xhr.onreadystatechange = function(){
+						// 0 
+						// 4 
+						// open send receive part  receive full
+						// status
+						// 1xx  2xx 302 4x4 500/503
+
+						if(xhr.status==200&&xhr.readyState==4){
+							fn(xhr.responseText);
+						}
+					}
+				}
+
+				//发送前准备
+				xhr.open(method,url,async);
+
+				//发送请求
+				xhr.send();
+
+				// 处理同步毁掉
+				// !async&&xhr.status==200&&fn(xhr.responseText);
+			}
+
+
+			var loadHtml = document.getElementById("loadHtml");
+			var loadCss = document.getElementById("loadCss");
+			var loadJs = document.getElementById("loadJs");
+
+			loadHtml.onclick = function(){
+				request("get","html-tpl.html",true,function(res){
+					document.getElementsByClassName("container")[0].innerHTML = res ;
+				});
+			}
+
+			loadCss.onclick = function(){
+				request("get","css-tpl.css",true,function(res){
+					var style = document.createElement("style");
+					style.innerHTML = res;
+					document.head.appendChild(style);
+				})
+			}
+
+			loadJs.onclick = function(){
+				request("get","js-tpl.js",true,function(res){
+					var script = document.createElement("script");
+					script.innerHTML = res;
+					document.body.appendChild(script);
+				})
+			}
+
+		})();
+	</script>
+</body>
+</html>

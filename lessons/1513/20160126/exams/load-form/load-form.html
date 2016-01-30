@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="loadForm">加载表单页面</button>
+	<button id="loadFormCss">加载表单样式</button>
+	<button id="loadFormJs">加载表单验证</button>
+	<div class="container"></div>
+</body>
+<script>
+	(function(){
+		/*
+			method 请求方式  get 或者 post
+			url    请求数据的server端地址
+			async  是否异步加载
+			fn 	   加载成功后的回调函数  后续对于数据的处理
+		*/
+		function xhrLoadData(method,url,async,fn){
+			// 创建xhr对象  readyState = 0;
+			var xhr = new XMLHttpRequest();
+
+			//异步回调执行条件
+			if(async){
+				xhr.onreadystatechange = function(){
+					(xhr.readyState==4&&xhr.status==200)&&fn(xhr.responseText);
+				}
+			}
+			//为发送请求做准备
+			//readyState = 1
+			xhr.open(method,url,async);
+			//发送请求
+			//readyState = 2
+			xhr.send();
+
+			//同步回调执行条件
+			(!async&&xhr.status==200)&&fn(xhr.responseText);
+		}
+
+		document.addEventListener("click",function(e){
+			e||(e=window.event);
+			var target = e.target||e.srcElement;
+			if(target.id=="loadForm"){
+				xhrLoadData("get","./html/form.html",true,function(res){
+					document.querySelector(".container").innerHTML = res;
+				})
+			}else if(target.id=="loadFormCss"){
+				xhrLoadData("get","./css/form.css",true,function(res){
+					var styleSheet = document.createElement("style");
+					styleSheet.innerHTML = res;
+					document.head.appendChild(styleSheet);
+				})
+			}else if(target.id=="loadFormJs"){
+				xhrLoadData("get","./js/form.js",true,function(res){
+					var script = document.createElement("script");
+					script.innerHTML = res;
+					document.body.appendChild(script);
+				})
+			}else {}
+		},false);
+	})();
+</script>
+</html>

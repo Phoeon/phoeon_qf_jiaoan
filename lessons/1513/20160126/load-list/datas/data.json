@@ -1,0 +1,8 @@
+{
+	"list" : [
+		{"id":"10000","name":"name0","gender":"女","hobby":"should life be what it was !! ","rank":"专科","position":"产品经理"},
+		{"id":"10001","name":"name1","gender":"男","hobby":"should life be what it was !! ","rank":"本科","position":"项目经理"},
+		{"id":"100098","name":"name98","gender":"女","hobby":"should life be what it was !! ","rank":"专科","position":"产品经理"},
+		{"id":"100099","name":"name99","gender":"男","hobby":"should life be what it was !! ","rank":"本科","position":"项目经理"}
+	]	
+}
