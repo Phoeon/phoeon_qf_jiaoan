@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title></title>
+	</head>
+
+	<script>
+		function test() {
+			//从第一个输入框当中获取它的内容
+			var num1Val = Number(document.getElementById("num1").value);
+			//从第二个输入框当中获取它的内容
+			var num2Val = Number(document.getElementById("num2").value);
+			
+			//Number函数 可以讲任意类型转换成数字
+			
+			
+			alert(obj.name);
+			//isNaN  is not a number  是不是一个NaN
+			//在if语句中，小括号的条件，必须是一个布尔类型的值
+			
+			if(isNaN(num1Val) || isNaN(num2Val)){//如果有某一个数字不合法
+				alert("请输入正确的数字");	
+			} else {//否则
+				document.getElementById("res").value = num1Val + num2Val;
+			}
+		}
+	</script>
+
+	<body>
+		<input type="text" id="num1" /> +
+		<input type="text" id="num2" /> =
+		<input type="text" id="res" />
+		<br>
+		<button onclick="test()">计算</button>
+	</body>
+
+</html>

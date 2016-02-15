@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<script>
+	</script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/index22.js" ></script>
+	<script>
+		window.onload = function(){
+//			var p = document.getElementsByClassName("a")[0];
+////			alert(p.getAttribute("name")); // 自定义属性
+//			p.setAttribute("value",123); //修改
+////			alert(p.getAttribute("value")) //再次获取
+//			alert(p.outerHTML);
+
+			var list = document.getElementsByTagName("td");
+			for(var i=0; i<list.length; i++){
+				list[i].onclick = function(){
+					var str = this.innerHTML;
+					this.innerHTML = "";
+					var _input = document.createElement("input"); //创建input元素
+					_input.type = "text";
+					_input.value = str;
+					_input.onclick = function(event){
+						//阻止JS冒泡
+						event.stopPropagation();
+					}
+					//失去焦点
+					_input.onblur = function(){
+						_input.outerHTML = _input.value;
+					}
+					
+					//把input元素放入当前元素(td)
+					this.appendChild(_input);
+					
+					_input.focus();//让输入框获得焦点
+					
+				}
+			}	
+			//JS冒泡
+			//当子元素被单击了，这个单击的动作会传递到父元素
+			
+		} 
+	</script>
+
+	<body>
+		<table border="1">
+			<tr>
+				<td>你好</td><td>我好</td><td>大家好</td>
+			</tr>
+		</table>		
+	</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+	<head>
+		<title>正则表达式的第一个例子</title>
+	</head>
+	<style>
+	</style>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script>
+		function check(){
+			//输入框只能输入数字字母下划线,数字不能开头，长度在6-20
+			var reg = new RegExp("^[a-zA-Z_][a-zA-Z0-9_]{5,19}$");
+			var inputvalue = document.getElementById("username").value;
+			var result = reg.test(inputvalue);
+			//test结果为true  表示匹配规则， 如果为false表示不匹配该规则
+			alert(result);
+		}
+	</script>
+
+	<body>
+		
+		<input id="username" type="text" onblur="check()" />
+	</body>
+
+</html>

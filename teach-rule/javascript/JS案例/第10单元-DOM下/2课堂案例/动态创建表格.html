@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>日期对象Date</title>
+	</head>
+	<style>
+	</style>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script>
+		//DOM
+		//获取元素、创建元素、修改元素、删除元素
+		function bindclick(){
+			var delbtns = document.getElementsByName("delete");
+			
+			//获取table元素
+			var table = document.getElementById("mytab");
+			//
+			var delbtns = document.getElementsByName("delete");
+			for(var i=0; i<delbtns.length; i++) {
+				delbtns[i].onclick = function(){ //多次执行，会覆盖
+					//这里的this指当前对象，当前对象指的是delbtns[i]
+					
+					//this=超链接-->td-->tr-->tbody
+					//this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+					table.deleteRow(this.parentNode.parentNode.rowIndex);
+					//table.deleteRow(this.getAttribute("index"));
+					//使用自定义属性，会带来下标错误问题，因为随着TR的删除，每行的下标都在变化
+					
+					//parent.removeChild(child);
+					//删除一个元素，必须通过其父元素.removeChild（子元素）这种方法来执行
+				}
+			}
+			
+		}
+		
+		function add(){
+			//获取table元素
+			var table = document.getElementById("mytab");
+			
+			//获取输入框的值
+			var info = Base.getById("reginfo");
+			var _id = info.getElementsByTagName("input")[0].value;
+			var _name = info.getElementsByTagName("input")[1].value;
+			var _tel = info.getElementsByTagName("input")[2].value;
+			
+			//创建4个TD
+			var td1 = document.createElement("td");
+			var td2 = document.createElement("td");
+			var td3 = document.createElement("td");
+			var td4 = document.createElement("td");
+			//给TD赋值
+			td1.innerHTML = _id;
+			td2.innerHTML = _name;
+			td3.innerHTML = _tel;
+//			var opt = document.createTextNode("");
+//			//nodeValue里面不要放标签,除非标签要原样输出
+//			opt.nodeValue = "<a name='delete' href='#'>删除</a>";
+//			td4.appendChild(opt);
+			td4.innerHTML = "<a name='delete' href='#'>删除</a>";
+			
+			//创建一个TR
+			var tr = document.createElement("tr");
+			
+			//将TD放入TR
+			tr.appendChild(td1);
+			tr.appendChild(td2);
+			tr.appendChild(td3);
+			tr.appendChild(td4);
+			//最后一步，把TR放入表格，记住，这一步一定放在最后，否则后续对TR添加子元素将会不起作用
+			//lastChild获取tbody节点，将所有的tr都放入tbody中
+			table.lastChild.appendChild(tr);
+			bindclick();
+		}
+	</script>
+
+	<body>
+		<div id="reginfo">
+			ID ： <input type="text"/>
+			姓名： <input type="text"/>
+			电话: <input type="text" />
+			<button onclick="add()">保存</button>
+		</div>
+		<table id="mytab" border="1">
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>TEL</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>30</td>
+				<td>张三</td>
+				<td>13542685569</td>
+				<td><a name="delete" href="#">删除</a></td>
+			</tr>
+			<tr>
+				<td>35</td>
+				<td>张三</td>
+				<td>13542685569</td>
+				<td><a name="delete" href="#">删除</a></td>
+			</tr>
+		</table>
+		
+	</body>
+
+</html>

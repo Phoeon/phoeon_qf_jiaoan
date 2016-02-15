@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+
+	<head>
+		<title>prototype</title>
+	</head>
+	<style>
+		body {
+			height: 100%;
+		}
+		html {
+			height: 100%;
+		}
+	</style>
+	<script>
+		/*	
+										
+		//==========================================================================
+				
+		//==========================================================================
+				
+		//==========================================================================	
+			
+		* */
+		　　
+		var name = "The Window";　
+		　
+		var object = {　　　　
+			name: "My Object",
+		　　　getNameFunc: function() {　　
+				var that = this;　　　　
+				return function() {　
+					//把this所指代的对象使用 变量that保存起来，这样即使运行环境发生了改变，that所指代的对象也不会变化　　　　　　　
+					return that.name;　　　　　
+				};　　　　
+			}
+		};
+		
+		alert(object.getNameFunc()()); 
+		//this作为JS的关键字，有特殊的含义，代表了当前对象，而当前对象是谁，由函数执行时所处的环境来决定
+		//当环境改变时，this所指代的对象也可能会发生变化
+//=============================================================================	
+		function test(){
+			console.log(this.name);
+		}
+		
+		function Student() {
+			this.name = "abc";
+			this.talk = test;
+		}
+		var stu = new Student();
+		stu.talk();
+		
+//=============================================================================	
+	</script>
+
+	<body>
+	</body>
+
+</html>

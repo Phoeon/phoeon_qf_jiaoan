@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+window.onload=function(){
+	getTimes()
+	setInterval(getTimes,1000)	
+}
+function getTimes(){
+	    var oDiv=document.getElementById('div')
+		var aImg=oDiv.getElementsByTagName('img')
+		var oDate=new Date();
+		var oHours=oDate.getHours();
+		var oMinites=oDate.getMinutes();
+		var oSencod=oDate.getSeconds();
+		//oDiv.innerHTML=''+toDouuble(oHours)+'时'+toDouuble(oMinites)+'分'+toDouuble(oSencod)+'秒'
+		str=toDouuble(oHours)+toDouuble(oMinites)+toDouuble(oSencod)
+		
+		for(i=0;i<aImg.length;i++){
+			aImg[i].src='img/'+str[i]+'.png'
+		}
+}
+function toDouuble(num){
+	if(num<10){
+		return '0'+num
+	}else{
+		return ''+num
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div"><img src="img/0.png" /><img src="img/0.png" /><img src="img/0.png" /><img src="img/0.png" /><img src="img/0.png" /><img src="img/0.png" /></div>
+</body>
+</html>

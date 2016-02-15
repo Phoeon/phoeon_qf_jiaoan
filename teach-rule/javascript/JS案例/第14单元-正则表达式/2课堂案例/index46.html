@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+	<head>
+		<title>正则表达式</title>
+	</head>
+	<style>
+	</style>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script>
+	/*
+		//. 元字符，代表除了换行之外的所有单个字符
+		var reg = /g..gle/ig;
+		var str = 'gooogle';
+		alert(reg.test(str));
+===================================================================================
+		//重复多次匹配  *号元字符，出现任意次
+		var pattern = /g.*gle/ig;
+		var str = "gogle, google, gooogle, goooole";
+		var str2 = "ggle";
+		alert(pattern.test(str2));
+===================================================================================
+		//+ 表示至少1次
+		var pattern = /g.+gle/ig;
+		var str = "gogle, google, gooogle, goooole";
+		var str2 = "ggle";
+		alert(pattern.test(str2)); //false
+===================================================================================		
+		//[]表示字符可以出现的范围
+		var pattern = /g[a-z0-9_-]gle/g;
+		var str = "g-gle";
+		alert(pattern.test(str));
+===================================================================================
+		//\w 等价于[a-zA-Z0-9_]
+		var pattern = /g\w*gle/; 
+		var str = "g-gle";
+		alert(pattern.test(str));  //结果为false
+===================================================================================
+		// \d 代表数字  等价于[0-9]
+		var pattern = /g\d+g/g;
+		var str = "g555gle";
+		alert(pattern.test(str));  
+===================================================================================	
+		//  \D{7,}匹配至少 7 个非数字  相当于[^0-9]{7,}
+		var pattern = /\D{7,}/;     
+		var str = 'google8';
+		alert(pattern.test(str)); //结果fasle
+===================================================================================	
+		// /^ 匹配开始  $/ 匹配结尾
+		var pattern = /^\D{7,}$/;    
+		var str = 'googled99999googled';
+		alert(pattern.test(str)); //结果fasle
+===================================================================================	
+		// \s 匹配空格
+		var str = "gogle google  gooogle   goooole";
+		alert(str.replace(/\s+/g, ""));
+===================================================================================	
+		var pattern = /google\b/g; //\b 可以匹配是否到了边界, 把google当成一个单词来搜索
+		var str = 'google';
+		var str2 = 'google,aa google xxgoogledsdddd';
+		alert(pattern.exec(str2));
+===================================================================================	
+		//  | 代表或者的意思   匹配其中一种字符串
+		var pattern = /google|baidu|bing|yahoo/;  
+		var str = 'baidu';
+		alert(pattern.test(str));
+===================================================================================	
+		// （） 加上小括号  将内容进行分组，可以作为一个整体进行多次匹配
+		var pattern = /(google){4,8}/; //匹配分组里的字符串 4-8 次
+		var str = 'googlegooglegooglegoogle';
+		alert(pattern.test(str));
+===================================================================================	
+		var pattern = /8(.*)8/;        //获取 8..8 之间的任意字符
+		var str = 'This is 8google8xxxx8';
+		alert(str.match(pattern));
+		alert(RegExp.$1);             //得到第一个分组里的字符串内容
+===================================================================================			
+		var pattern = /8(.*)8/;
+		var str = 'This is 8baidu8';
+		var result = str.replace(pattern,'<strong>$1</strong>'); //得到替换的字符串输出
+		//获取分组内容的前提是，这个字符串必须被正则表达式匹配过
+		document.write(result);
+===================================================================================					
+		var pattern = /(.*)\s(.*)/;
+		var str = "baidu taobao";
+		alert(str.replace(pattern, "$2 $1"));	
+===================================================================================							
+		//exce 方法将匹配到的内容  返回，并将（）分组的内容也放入数组  返回
+		var pattern = /^([a-z]+)\s([0-9]{4})$/i; //使用分组
+		var str = 'google 2012';
+		alert(pattern.exec(str));
+		
+		alert(pattern.exec(str)[0]); //google 2012
+		alert(pattern.exec(str)[1]); //google  RegExp.$1
+		alert(pattern.exec(str)[2]); //2012    RegExp.$2
+	*/	
+
+	</script> 
+	
+	<body>
+		
+	</body>
+
+</html>

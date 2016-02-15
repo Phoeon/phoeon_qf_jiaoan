@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title></title>
+	</head>
+
+
+
+	<body>
+		<!-- 
+			onclick 单击事件， 当这个按钮被点击的时候，触发这个事件，然后执行我们指定好的函数
+			ondblclick 双击事件 
+			onfocus 获得焦点事件
+			onblur 失去焦点事件
+		-->
+		<form>
+			姓名：<input type="text" id="name" onblur="check()"/><br>
+			<input type="button" value="注册" ondblclick="sub()"/>
+		</form>
+	</body>
+	<script>
+		/*
+		//函数/方法  的定义  见名知意
+		function test(){
+			//函数的作用，就是对一段代码进行一个打包，或者叫封装
+			for(var i=0;i<5;i++){
+				document.write(i+"<br>");
+			}
+		}
+		//变量命名规则：：数字、字母、_、 $，其中 数字不可以开头
+		for(var k=0;k<5;k++){
+			test();
+		}
+		function check(){
+			alert("用户名不合法！");
+		}
+		
+		function sub(){
+			var name = document.getElementById("name").value;
+			alert(name);
+		}
+		sub();
+		
+		Math.round(12.56); //12.56就是函数的参数
+		function sum(p1, p2){
+			return p1+p2;  //return语句的作用是，结束这个函数的执行，同时返回一个结果
+		}
+		
+		function sum2(p1, p2){
+			return p1+p2;
+		}
+		
+		var res2 = sum(5,3);
+		//函数分两种，一种带返回值，一种不带返回值的
+		//alert(res2); //由于函数没有返回结果，因此这里是undefined
+		
+		res2 = sum2(1,2);
+		//alert(res2); //结果是
+		
+		//函数的参数定义，在执行方法的时候，必须按照函数的定义形式来传递参数
+		function daifan(money){
+			var price = 20;
+			if(money < 20){
+				alert("钱不够");
+				return; //如果return 后面直接分号，表示结束该方法，但不返回任何值
+			}
+			return "你的益达";
+		}
+		var fan = daifan(18);
+		//alert(fan);
+		
+		//有些时候，函数没有定义参数，但在执行的时候，我们也可以强行传参
+		
+		//计算任何个数相加
+		function sum(){
+			//alert(arguments.length); //参数的个数
+			//alert(arguments[0] + arguments[1] + arguments[2]);
+			var result = 0;
+			for(var i=0;i<arguments.length;i++){
+				result += arguments[i];
+			}
+			return result;
+		}
+		sum(5,10, 20, 15, 1,1 ,1,1,1,1,1,1,1);
+		
+		//形参和实参
+		var a = 10;
+		function m1(x){  //x叫做形参
+			x += 10;
+		}
+		m1(a); //把a叫做实参
+		//在函数中，形参的改变，不会影响实参
+		alert(a);//请问a的值是多少？
+		
+		
+		//函数的作用域
+		var a = 10;//声明在函数外的，可以在任意一个函数中使用，作用范围比较大，我们称为全局变量
+		function m1(){
+			var b = 20; //在函数内部定义的变量，只在函数中可以使用，范围较小，我们称之为局部变量
+			alert(b);
+		}
+		m1();
+		
+		alert(b);//函数外无法访问，局部变量
+		
+		
+		//100! = 100 X 99 X 98 ......
+		//     =  100 X 99!
+		//				99 X 98!
+		//m(n) = n X m(n-1);
+		//编写一个函数，请计算N的阶乘
+		function m(n){
+			/////////////=======================所有没有结束条件的递归，都是死循环
+			if(n <= 1){
+				return 1;
+			}
+			return n*m(n-1); //在函数内部调用函数自身，这叫做递归
+			
+		}
+		
+		var res = m(100);
+		alert(res);
+		*/
+		
+		
+		
+		
+		
+		
+	</script>
+</html>

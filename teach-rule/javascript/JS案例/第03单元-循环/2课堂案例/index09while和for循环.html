@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title></title>
+	</head>
+
+	<script>
+		/*1 打开firebug界面
+		  2	切换到脚步一栏
+		  3 在左侧单击，给程序的适当位置设置断点
+		  4 运行程序，观察变量的值
+		  5 单击下一步，观察程序的运行顺序
+		//DeBug方式来观察程序的运行，调试错误
+		
+		while(count <= 10) {
+			document.write("**********<br>");
+			count++;
+		}
+		
+		var count = 1;
+		
+		do { //第一次的执行，是没有判断的，从第二次开始，判断条件
+			document.write("**********<br>");
+			count++;
+		} while(count > 10)
+		
+		var num = 1;
+		while(num <= 100){
+			if(num%7 == 0){
+				document.write("\t"+num);
+			}
+			num++;
+		}
+		
+		//for（循环变量的初始化; 循环的终止条件; 循环变量的变化）
+		
+		for(var num=1; num <= 100; num++){
+			if(num%7 == 0){
+				document.write("\t"+num);
+			}
+		}
+		
+		//一个新入职，月工资为2000元的员工，每年涨工资2%，到退休时工作50年的月工资是多少？
+		var salary = 2000;
+		for(var i=0; i<50; i++){
+			salary *= 1.02;
+		}
+		alert(salary);
+		
+		//打印100–200之间所有能被3或者7整除的数
+		for(var i=100; i<=200; i++){
+			if(i%3==0 || i%7==0){
+				document.write(i+"\t");
+			}
+		}
+		
+		
+		
+		//计算10的阶乘
+		var sum = 1;
+		for(var i=100; i>=1; i--){
+			sum = sum * i;
+		}
+		alert(sum);
+		
+		//计算1+3+5+...+99的和
+		var sum = 0;
+		for(var i=1; i<100; i+=2){
+			sum += i;
+		}
+		alert(sum);
+		
+		//break 语句，不是中断程序，中断for循环
+		for(var i=0;i<5;i++){
+			if(i==2){
+				break;//终止for循环
+			}
+			document.write(i);
+		}
+		
+		//continue 语句   跳过一次循环
+		for(var num=1; num <= 100; num++){
+			if(num%7 != 0){
+				//不输出
+				continue;//跳过当前这一次循环
+			}
+			document.write("\t"+num);
+		}
+		
+		//大括号的省略, 大括号省略时，if语句只针对，第一行有效
+		if(3>5)  
+			alert("abc");
+			alert("def");
+		
+		while(5>4)
+			alert("abc");
+			alert("def");
+		
+		*/
+		/* 
+			*************
+			*************
+			*************
+			*************
+			*************
+			
+			for(var i=1; i<=5; i++){
+				document.write("*************<br>");
+			}
+
+		*/
+
+		
+		/** 
+			*
+			* *　
+			* * *
+			* * * *
+			* * * * *
+			for(var k=1; k<=5; k++){ //外层循环控制行数
+				for(var j=1; j<=k; j++){ //内层循环控制列数
+					document.write("*");
+				}
+				document.write("<br>");
+			}
+		*/
+		
+		
+		/** 
+			        *
+			      * *　
+			    * * *
+			  * * * *
+			* * * * *
+			for(var i=1; i<=5; i++){
+				for(var k=1; k<= 5-i; k++){
+					document.write("&nbsp;");
+				}
+				for(var j=1; j<=i; j++){ //内层循环控制列数
+					document.write("*");
+				}
+				document.write("<br>");
+			}
+		*/
+		
+		/*
+		1X1=1
+		2X1=2 2X2=4
+		3X1=3 3X2=6 3X3=9
+		4X1=4 4X2=8 4X3=12 4X4=16
+		
+		for(var i=1;i<=9;i++){
+			for(var k=1;k<=i;k++){
+				document.write(i+"X"+k+"="+i*k+"\t");
+			}
+			document.write("<br>");
+		}
+		*/
+
+		
+		/*
+		//死循环
+		while(true){
+			alert("abc");
+		}
+		
+		while(1==1){
+			alert("abc");
+		}
+		
+		while(a=1){
+			alert("abc");
+		}
+		
+		for(;;){
+			alert("abc");
+		}
+		
+		*/
+		
+		//赋值表达式的结果，等于=号右边的值
+		//alert(a=1);
+		
+		//a在没有定义的情况，也可以使用
+		
+		/**
+			while循环适合于，次数不固定的循环动作
+			例如： while（！按钮被点击）{
+				
+					}
+			for循环，更多的适合于，循环次数固定的动作
+		*/
+		
+		
+	</script>
+
+	<body>
+		
+	</body>
+
+</html>

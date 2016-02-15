@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title></title>
+	</head>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script>
+		function rep(){
+			var text = document.getElementById("content");
+			//获取两个输入框的内容
+			var p1 = document.getElementById("param1").value;
+			var p2 = document.getElementById("param2").value;
+			//将多行文本域的内容进行替换后保存到str
+			var reg = eval("/"+p1+"/g");
+			var str = text.value.replace(reg,p2);
+			//str赋值给多行文本域，替换文本内容
+			//alert(str);
+			text.value = str;
+		}
+	</script>
+	<body>
+		查找替换：<input type="text" id="param1"/> ---> <input type="text" id="param2"/> 
+		<button onclick="rep()">执行</button>
+		<textarea rows="5" cols="60" id="content"></textarea>
+	</body>
+	
+</html>

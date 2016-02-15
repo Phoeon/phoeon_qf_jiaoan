@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title></title>
+	</head>
+
+	<script>
+		/*
+			//判断一个年份是否是闰年
+			var year = 1996;
+			//year%4 == 0 && year%100 != 0  代表 对4整除的，但不是整百年
+			//year%400 == 0 代表 所有400的倍数
+			if(year%4 == 0 && year%100 != 0 || year%400 == 0){
+				alert("是闰年");
+			} else {
+				alert("不是闰年");
+			}
+			
+			//给一个分数，判断它的等级，如果90以上为A  80-90为B 70-80为C 60-70为D 60以下  留级
+		
+			var score = 88;
+			if(score >= 90){
+				alert("成绩：A");
+			} else if(score >= 80) {
+				alert("B");
+			} else if(score >= 70) {
+				alert("C");
+			} else if(score >= 60) {
+				alert("D");
+			} else {
+				alert("留级");
+			}
+		*/
+		
+		function test(){
+			var num = document.getElementById("num").value;
+			/*
+				//此刻num实际上是string类型，==会自动转型并做比较
+				if(num == 1){
+					alert("星期一");
+				} else if(num == 2){
+					alert("星期二");
+				} else if(num == 3){
+					alert("星期三");
+				} else if(num == 4){
+					alert("星期四");
+				} else if(num == 5){
+					alert("星期五");
+				} else if(num == 6){
+					alert("星期六");
+				} else if(num == 7){
+					alert("星期日");
+				}
+			*/
+			
+			//switch语句在检测变量的值的时候，不会对其转型
+			//关于case语句后面的代码，当符合条件时，会从符合条件的那一条语句开始，依次顺序执行
+			//使用break语句，可以防止case穿透
+			switch(num){
+				case '1': alert("星期一"); break;
+				case '2': alert("星期二"); break;
+				case '3': alert("星期三"); break;
+				case '4': alert("星期四"); break;
+				case '5': alert("星期五"); break;
+				case '6': alert("星期六"); break;
+				case '7': alert("星期日"); break;
+				default: alert("输入错误");
+			}
+		}
+		
+		
+	</script>
+
+	<body>
+		<input type="text" id="num"/>
+		<button onclick="test()">按钮</button>
+	</body>
+
+</html>

@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>进度条 </title>	
+	</head>
+	<style>
+		#progress{
+			position: relative;
+			margin: auto;
+			top: 200px;
+			display: block;
+			width: 200px;
+			height: 20px;
+			border-style: dotted;
+			border-width: thin;
+			border-color: darkgreen;
+		}
+		#filldiv{
+			position:absolute;
+			top: 0px;
+			left: 0px;
+			width: 0px;
+			height: 20px;
+			background: blue;
+		}
+		#percent{
+			position: absolute;
+			top: 0px;
+			left: 200px;
+			
+		}
+	</style>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script>
+		window.onload = function(){
+			var percent = 0;
+			var timer = setInterval(function(){
+				
+				percent++; //百分比数字
+				
+				var p = Base.getById("percent");
+				p.innerHTML = percent+"%"; //数字放入span标签
+				
+				var oDiv = Base.getById("filldiv");
+				var style = Base.getStyle(oDiv);//获取div的样式,
+				
+				oDiv.style.width = parseInt(style.width)+2+"px";//每次宽度增加总长度的1%  就是2PX
+				
+				if(percent == 100){//当数字等于100时，销毁定时器
+					clearInterval(timer);
+				}
+			},100);
+		}
+		
+		
+	</script>
+	<body>
+		<div id="progress">
+			<div id="filldiv"></div>
+			<span id="percent"></span>
+		</div>
+	</body>
+</html>

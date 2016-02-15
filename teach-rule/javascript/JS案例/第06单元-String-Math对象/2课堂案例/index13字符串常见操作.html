@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title></title>
+	</head>
+	<script>
+		var str = "abcdefsdfstmdfstmddsttmdysdfmandfsdfoijmancxnTMDdddddtmd";
+		//获得了下标为3的字符
+		//alert(str.charAt(3));  //驼峰标识
+		//获取下标为0的字符的ascii码
+		//alert(str.charCodeAt(0)); 
+		//将指定的编码值，转换为字符
+		//alert(String.fromCharCode(90));  //String的方法
+		//查找在字符串当中，man这个单词出现的位置
+		//alert(str.indexOf("man")); //如果未找到这个单词，返回-1
+		//alert(str.lastIndexOf("man"));//返回最后一个单词的位置
+		//str.replace("tmd", "*");
+		//alert(str.replace(/tmd/gi, "*"));  //把左边的替换为右边的字符，左边接收的是正则表达式
+		//var s1 = "abc";
+		//var s2 = new String("abc");
+		
+		//alert(s1 == s2);
+		
+		//alert(s1 === s2);  //注意， new String() 创建字符串对象  s1 和 s2 类型不一致
+		//alert(str.substring(20));
+		var arr = str.split("tmd"); //按照指定的字符串进行分割，返回一个字符串数组
+		//alert(arr.length);
+	</script>
+	<body>
+		查找替换：<input type="text"/> ---> <input type="text"/> 
+		<button>执行</button>
+		<textarea rows="5" cols="60">
+			
+		</textarea>
+	</body>
+	
+</html>

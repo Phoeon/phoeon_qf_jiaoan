@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+function douuble(num){
+	if(num<10){
+		return "0"+num
+		}
+		else{
+			
+			return ''+num
+			}
+	
+	}
+function sj(){
+	var oDiv=document.getElementById("timer");
+	var aImg=oDiv.getElementsByTagName("img");
+	var oBtn=document.getElementById("btn");
+	times=new Date();
+		atr=""+douuble(times.getHours())+douuble(times.getMinutes())+douuble(times.getSeconds())
+		for(i=0;i<aImg.length;i++){
+			aImg[i].src="img/"+atr[i]+".png"
+			
+			
+		
+		}
+	
+	
+	}
+
+window.onload=function(){
+	
+	setInterval(sj,1000)
+	sj();
+	}
+</script>
+</head>
+
+<body>
+<input id="btn" type="button"/>
+<div id="timer"><img src="img/0.png" /><img src="img/0.png" />时<img src="img/0.png" /><img src="img/0.png" />分<img src="img/0.png" /><img src="img/0.png" />秒</div>
+</body>
+</html>

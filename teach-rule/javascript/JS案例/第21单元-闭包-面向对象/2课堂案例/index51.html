@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+
+	<head>
+		<title>闭包</title>
+	</head>
+	<style>
+		body {
+			height: 100%;
+		}
+		html {
+			height: 100%;
+		}
+	</style>
+
+	<script>
+		
+//		
+//		var b = test();
+//		b();
+//		b();
+		//alert(num);
+
+//		var arr = new Array()
+//		
+//		for(var i=0; i<5; i++){
+//			function xxx(num){
+//				return function(){
+//					alert(num);
+//				}
+//			}
+//			arr[i] = xxx(i);
+//		}
+//		
+//		arr[2]();
+		
+//		for(var i=0; i<5; i++){
+//			(function(){
+//				for(var i=0; i<5; i++){
+//					alert(i);
+//				}
+//			})();
+//		}
+		
+		
+		var User = function(){
+			var username = "zhangsan"; //私有属性
+			var age;
+			var sex;
+			this.getName = function(){
+				return username;
+			}
+		}
+		var u1 = new User();
+		alert(u1.getName());
+//		(function(){
+//			alert("abc");
+//		})();
+		//使用()将匿名函数包围，然后再调用,这叫做匿名函数的自运行
+		
+//		var test = function(){
+//			alert("abc");
+//		}
+//		
+//		test();
+//==============================================================================
+//		function a(){
+//			var num = 1;
+//			return function(){
+//				return ++num;
+//			}
+//		}
+		//闭包，可以访问函数内部的局部变量，并让其长期驻留内存
+//		var fun = a();
+//		alert(fun());
+//		alert(fun());
+//==============================================================================
+//		
+//		window.onload = function(){
+//			var btns = document.getElementsByTagName("button");
+//			for(var i=0;i<btns.length;i++) {
+//				//做一个匿名函数，并自运行，将i的值传递进去，保存为局部变量+
+//				btns[i].a = (function(num){
+//					return function(){
+//						return num;
+//					};
+//				})(i);
+//				btns[i].onclick = function(){
+//					alert( this.a() );
+//				}
+//			}
+//			
+//		}
+//==============================================================================
+		
+//		for(var i=0; i<5; i++) {
+//			for(var i=0; i<5; i++) {
+//				alert(i);
+//			}
+//		}
+//		
+//		for(var i=0; i<5; i++) {
+//			(function(){
+//				//这里就是局部的
+//				for(var i=0; i<5; i++) {
+//					alert(i);
+//				}
+//			})();
+//		}
+//		
+//		(function(){
+//			//匿名函数自运行的方式，可以模拟一个语句块的作用域
+//			//此处的代码就是局部的，出了这个匿名函数，就无法访问了
+//		})();
+	</script>
+
+	<body>
+		
+	</body>
+
+</html>

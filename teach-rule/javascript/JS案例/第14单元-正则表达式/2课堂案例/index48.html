@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+	<head>
+		<title>正则表达式</title>
+	</head>
+	<style>
+	</style>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script>
+		window.onload = function(){
+			var str = /g(.*)g/g;
+			var reg = 'gjdgttgttttg';
+			alert(reg.match(str));
+			alert(RegExp.$1);
+		}
+	</script> 
+	
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: red; position: absolute;"></div>
+	</body>
+
+</html>

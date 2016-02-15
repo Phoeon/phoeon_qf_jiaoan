@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><br />
+<meta http-equiv="description"  content="html4 form"/>
+<meta name="keywords" content="html5 form" />
+<meta name="author" content="shuzhou" />
+<title>5.22-html5 form</title>
+<style>
+*{
+	margin:0px; padding:0px;
+}
+body{ 
+	background-color:rgb(238, 238, 238); color:rgb(180,180,180); text-align:center;
+	margin:0px; padding:0px; font-family:"微软雅黑";
+}
+
+header{
+	 font-size:30px; font-weight:bold; color:rgb(190,190,190); cursor:default; display:inline-block; margin:0px auto 10px;
+}
+
+header:hover{
+	color:rgb(200,200,200);
+}
+
+hr{ width:95%; margin:0px auto;
+}
+
+.outer-box{ width:400px; padding:4px; background:#fff;
+	border:1px solid rgb(230,230,230); margin:10px auto 0px;
+	/* -- 圆角 -- */
+	-moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;
+	/* -- 投影 -- */
+	-moz-box-shadow:0 0 5px rgb(240,240,240); -webkit-box-shadow:0 0 5px rgb(240,240,240);
+	-khtml-box-shadow:0 0 5px rgb(240,240,240); -o-box-shadow:0 0 5px rgb(240,240,240);
+	box-shadow:0 0 5px rgb(240,240,240);
+}
+
+.in-box{
+	background:rgb(238,238,238); height:100%;
+}
+
+ol{
+	border:1px solid red;
+}
+
+.txt-style{
+	width:220px; height:20px; border:1px solid rgb(171,173,170); background:rgb(245,245,245); line-height:18px;
+	margin-top:20px; margin-left:10px;
+}
+
+.txt-style:focus{
+	border:1px solid red; background:#fff;
+}
+
+label{
+	letter-spacing:4px;
+}
+
+#ageVal{
+	position:relative; top:-6px;
+}
+
+.btn{ letter-spacing:3px;
+	margin-top:15px; margin-bottom:20px; margin-left:200px;
+	font:15px Calibri, Arial, sans-serif; text-shadow:1px 1px 0 rgba(255,255,255,0.4);
+	vertical-align:baseline; position:relative; cursor:pointer; background-repeat:no-repeat;
+	padding:4px 13px 2px;
+	/* 以下两个规则通常,以防浏览器不支持多个背景. */
+	background-position:bottom left;
+	background-color:transparent; border:none;
+	background-image:url('images/button_bg.png');
+	/* 多个背景版本。背景图片的类定义单独的颜色吗 */
+	background-position:bottom left, top right, 0 0, 0 0;
+	background-clip:border-box;
+	/* 圆角 */
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	/* A 1px highlight inside of the button */
+	-moz-box-shadow:0 0 1px #fff inset;
+	-webkit-box-shadow:0 0 1px #fff inset;
+	box-shadow:0 0 1px #fff inset;
+	/* 动画 背景 位置 目前只能在Safari / Chrome 下看见效果*/
+	-webkit-transition:background-position 1s;
+	-moz-transition:background-position 1s;
+	transition:background-position 1s;
+}
+
+.button:hover{ background-position:top left;
+	background-position:top left, bottom right, 0 0, 0 0;
+}
+
+.btn:active{ bottom:-1px;
+}
+
+.gray{ color:#525252 !important; border:1px solid #a5a5a5 !important; background-color: #a9adb1;
+	background-image:url('images/button_bg.png'), url('images/button_bg.png'), 
+					-moz-radial-gradient(center bottom, circle, rgba(197,199,202,1) 0,rgba(197,199,202,0) 100px),
+					-moz-linear-gradient(#c5c7ca, #92989c);
+	background-image:url('images/button_bg.png'), url('images/button_bg.png'), 
+					 -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(197,199,202,1)), to(rgba(197,199,202,0))),
+					 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c5c7ca), to(#92989c));
+}
+.gray:hover{ background-color:#b6bbc0;
+	background-image:url('images/button_bg.png'), url('images/button_bg.png'), 
+					 -moz-radial-gradient(center bottom, circle, rgba(202,205,208,1) 0,rgba(202,205,208,0) 100px),
+					 -moz-linear-gradient(#d1d3d6, #9fa5a9);
+	background-image:url('images/button_bg.png'), url('images/button_bg.png'), 
+					 -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(202,205,208,1)), to(rgba(202,205,208,0))),
+					 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d1d3d6), to(#9fa5a9));
+}
+
+</style>
+</head>
+
+<body>
+	<header>HTML5 FORM表单演练</header>
+	<hr>
+    <div class="outer-box"><div class="in-box">
+    <form action="http://www.baidu.com" method="post">
+        <label>账号</label><input type="text" name="account" required="required" autofocus="autofocus" class="txt-style" />
+		<br>
+        <label>邮箱</label><input type="email" name="email" required="required" placeholder="312138923@qq.com" class="txt-style" />
+		<br>
+        <label style="position:relative; top:-5px; left:11px;">年龄1</label> 
+        <input type="range" name="age1" max="70" min="16" value="20" required="required" class="txt-style" onChange="showVal(this)">
+        <span id="ageVal">20</span>
+        <br>
+        <label>年龄2</label><input type="number" name="age2" max="70" min="16" value="20" required="required" class="txt-style" />
+		<br>
+        <label>生日</label><input type="date" id="birthday" class="txt-style" required="required" />
+        <br>
+        <label>博客</label><input type="url" name="url" class="txt-style" required="required" placeholder="http://user.qzone.qq.com/312138923" />
+        <br>
+        <input type="submit" value="提交" class="btn gray" />
+    </form>
+    </div></div>
+<script type="text/javascript" src="../listing/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+	function showVal(obj) {
+		$("#ageVal").html($(obj).val());
+	}
+</script>
+</body>
+</html>

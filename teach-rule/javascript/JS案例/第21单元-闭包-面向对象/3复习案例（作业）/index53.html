@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+
+	<head>
+		<title>构造函数</title>
+	</head>
+	<style>
+		body {
+			height: 100%;
+		}
+		html {
+			height: 100%;
+		}
+	</style>
+	<script>
+	/*	
+		var a = new Object();
+		a.username = "abc";
+		a.age = 30;
+		a.talk = function(){
+			alert("姓名："+this.username+",年龄:"+this.age);
+		}
+		
+		var b = {
+			username : "abc",
+			age : 20,
+			talk : function(){
+				alert("姓名："+this.username+",年龄:"+this.age);
+			}
+		};
+		
+		a.talk();
+//==========================================================================
+		var person1 = new Object();
+		person1.username = "abc";
+		person1.age = 30;
+		person1.talk = function(){
+			alert("姓名："+this.username+",年龄:"+this.age);
+		}
+		var person2 = new Object();
+		person2.username = "abc";
+		person2.age = 30;
+		person2.talk = function(){
+			alert("姓名："+this.username+",年龄:"+this.age);
+		}
+		var person3 = new Object();
+		person3.username = "abc";
+		person3.age = 30;
+		person3.talk = function(){
+			alert("姓名："+this.username+",年龄:"+this.age);
+		}
+//==========================================================================
+		//工厂模式
+		function createObject(username, age){
+			var obj = new Object();
+			obj.username = username;
+			obj.age = age;
+			obj.talk = function(){
+				alert("姓名："+this.username+",年龄:"+this.age);
+			}
+			return obj;
+		}
+		
+		var person1 = createObject("abc",30);
+		var person2 = createObject("p2",30);
+		var person3 = createObject("p3",30);
+//==========================================================================	
+	//person1和person2是引用类型
+	var person1 = createObject("abc",30);
+	var person2 = person1;
+	person2.username="2";
+	alert(person1.username);
+	alert(person2.username);
+	* */
+	
+	function createObject(username, age){
+		var obj = new Object();
+		obj.username = username;
+		obj.age = age;
+		obj.talk = function(){
+			alert("姓名："+this.username+",年龄:"+this.age);
+		}
+		return obj;
+	}
+	
+//	var a = createObject("张三",20);
+//	var b = createObject("哈士奇",5);
+//	alert(a instanceof Object);
+//	alert(b instanceof Object);
+	
+	//构造函数
+	function Human(username, age){
+		//这里的this代表，使用new关键字创建出来的那个对象
+		this.username = username;
+		this.age = age;
+		this.talk = new Function("alert(this.username+','+this.age)");
+	}
+	
+	function Animal(username, age){
+		this.username = username;
+		this.age = age;
+		this.talk = new Function("alert(this.username+','+this.age)");
+		this.getName = function(){
+			var that = this;
+			return function(){
+				return that.username;
+			}
+		}
+	}
+	
+//	var person1 = new Human("yintao",30);//配合new关键字，来执行构造函数，可以创建对象
+//	var dog1 = new Animal("旺财",5);
+//	alert(person1 instanceof Animal);
+	
+	var person1 = new Human("yintao",30);
+	var person2 = new Human("yintao",25);
+	
+//	alert(person1.username == person2.username);
+//	alert(person1.age == person2.age);
+//	alert(person1.talk == person2.talk);  //不相等，比较的是引用
+
+
+//	window.talk = function(){
+//		alert(this);
+//	}
+//  等价于 
+//	function talk(){
+//		alert(this);	
+//	}
+//	所以this代表window对象
+	</script>
+	
+	<body>
+	</body>
+
+</html>

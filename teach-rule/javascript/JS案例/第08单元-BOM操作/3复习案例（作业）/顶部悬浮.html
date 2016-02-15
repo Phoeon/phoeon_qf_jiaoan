@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{height:2500px; padding:0; margin:0;}
+#div1{height:30px; width:100%; background:#0AF;}
+#div2{height:30px; width:100%; background:red; top:400px;  filter:alpha(opacity:0);  position:absolute;}
+</style>
+<script  src="move.js"></script>
+<script type="text/javascript">
+document.onscroll=function(){
+	var oDiv1=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var scrolltop=document.documentElement.scrollTop || document.body.scrollTop;
+		if(scrolltop>=400){
+			oDiv2.style.position = "fixed";
+			oDiv2.style.top = "0px";
+		} else {
+			oDiv2.style.position = "absolute";
+			oDiv2.style.top = "400px";
+		}
+		
+	}
+
+</script>
+</head>
+
+<body>
+<div id="div1">
+	顶部信息栏
+</div>
+<div id="div2">
+	留言信息
+</div>
+</body>
+</html>

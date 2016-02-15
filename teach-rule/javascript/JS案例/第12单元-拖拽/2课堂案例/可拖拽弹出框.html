@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			padding: 0px;
+			margin: 0px;
+		}
+		.cover{
+			position: fixed;
+			width:100%;
+			height: 100%;
+			background: #B6BBC0;
+			z-index: -1;
+			padding: 0px;
+			margin: 0px;
+		}
+		.layer{
+			text-align:center;
+			position: fixed;
+			left: 500px;
+			top: 150px;
+			width:500px;
+			height: 300px;
+			background: cornflowerblue;
+		}
+		.title{
+			text-align:center;
+			height: 30px;
+			background: #006666;
+			cursor: move;
+		}
+		.closeBtn{
+			position: absolute;
+			bottom: 5px;
+		}
+	</style>
+	<script type="text/javascript" src="js/base.js" ></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var title = Base.getByClassName("title");
+			title.onmousedown = function(event){
+				//计算鼠标当前和窗口左上角的距离
+				var disX = parseInt(Base.getStyle(this.parentElement,"left")) - event.clientX;
+				var disY = parseInt(Base.getStyle(this.parentElement,"top")) - event.clientY;
+				
+				this.onmousemove = function(ev){
+					var _layer = Base.getByClassName("layer");
+					_layer.style.left = ev.clientX + disX+"px";
+					_layer.style.top = ev.clientY + disY+"px";
+//					Base.log(ev.clientX+","+ev.clientY)
+				}
+				this.onmouseup = function(){
+					this.onmousemove = "";
+				}
+			}
+			var closebtn = Base.getByClassName("closeBtn");
+			closebtn.onclick = function(){
+				Base.getByClassName("cover").style.display="none";
+			}
+		}
+	</script>
+	<body>
+		<div class="cover">
+			<div class="layer">
+				<div class="title">窗口标题</div>
+				<button class="closeBtn">关闭</button>
+			</div>			
+		</div>
+	</body>
+</html>

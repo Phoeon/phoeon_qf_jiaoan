@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+
+	<head>
+		<title>prototype 原型对象</title>
+	</head>
+	<style>
+		body {
+			height: 100%;
+		}
+		html {
+			height: 100%;
+		}
+	</style>
+	<script>
+		/*	原型对象是所有实例对象共享的,
+										
+		//==========================================================================
+				
+		//==========================================================================
+				
+		//==========================================================================	
+			
+		* */
+		function Student(username, age){
+			this.username = username;
+			this.age = age;
+		}
+//		alert(Student.prototype); //是一个对象
+
+		//给原型对象增加属性
+		
+		Student.prototype.username = "XXX";
+		Student.prototype.isUnivercity = false;
+		Student.prototype.talk = function(){
+			console.log(this.username+this.age);
+		}
+		
+		//这里stu1\2\3会共享同一个原型对象
+		var stu1 = new Student("billgates",30);  
+		var stu2 = new Student("jobs", 30);
+		var stu3 = new Student("abc",99);  
+		
+		console.log(stu1.username);
+		
+		stu1.isUnivercity = true; //修改属性的值，并不能修改原型对象中的属性，相当于给实例对象增加新属性进行覆盖
+
+		console.log(stu1.isUnivercity);//使用对象可以直接访问原型中的属性和方法
+		console.log(stu1.__proto__.isUnivercity); //
+		
+		Student.prototype.isUnivercity = true;//修改原型对象的属性，会对所有实例对象起作用，证明是共享的
+//		console.log(stu2.isUnivercity); //true
+//		console.log(stu3.isUnivercity); //true
+		
+		
+		alert(stu1.__proto__.isUnivercity);// true 使用实例对象访问时，原型对象的名称叫做 __proto__
+		
+//		console.log(stu1.talk == stu2.talk);
+	</script>
+
+	<body>
+	</body>
+
+</html>

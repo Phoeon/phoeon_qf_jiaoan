@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>	
+		<title></title>
+	</head>
+	
+	<script language="javascript" type="text/javascript">
+		/*
+		var n = 1.23456;
+		n *= 1000; //1234.56
+		
+		n = parseInt(n); //1234
+		
+		alert(n/1000); //1.234
+		*/
+		var num1 = 100; 
+		var num2 = 070; //八进制，要以0开头
+		var num3 = 079; //非八进制
+		//alert(num3);
+		var num4 = 0xA;   var box = 0x1f; //十六进制  以0x开头，注意0是数字零 不是字母o
+		//alert(box);
+		var num5 = 0.8; 
+		var num6 = .8; //不好的习惯，不推荐此写法，虽然有不少人这样写
+		//alert(num6);
+		var num7 = 12.0000000;  //这样写会自动转为整数12，为了节省内存
+		//alert(num7);
+		var num8 = 4.12e2;  //科学计数法 4.12 X 10的9次方
+		//alert(num8 + parseInt("abc"));  //返回结果NaN   Not a Number
+		var res = num8/"abc";
+		var res2 = num8/"xxx"; //res的类型是number，但值为NaN
+		alert(res == res2); //返回结果为false，因为NaN不可以参与运算
+		
+		
+	</script>
+			
+	<body>
+			
+	</body>
+</html>

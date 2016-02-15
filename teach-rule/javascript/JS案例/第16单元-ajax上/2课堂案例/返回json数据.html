@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微博</title>
+	<style type="text/css">
+	body {
+		background-color: rgb(177, 208, 224);
+		font: normal 12px Trebuchet MS;
+		color: #000;
+	}
+	
+	.roundedCorners {
+		width: 220px;
+		padding: 10px;
+		background-color: #DDEEF6;
+		box-shadow: 0px 0px 10px 0px #888888;
+		border: 1px solid #DDEEF6;
+		border-radius: 6px;
+		margin: auto;
+	}
+	
+	.roundedCorners-textbox {
+		border: 1px solid #999;
+		width: 160px;
+	}
+
+	.checkbox {
+		margin-left: 30px;
+		border: 1px solid #999;
+		width: 20px;
+	}
+	#toast {   
+		position: fixed; /* 固定位置 */  
+		top: 50%;   
+		left: 50%;   
+		width: 160px;
+		height: 35px;
+		margin-left: -100px;   
+		border: 1px solid #666;   
+		background-color: #333333;   
+		padding: 10px 10px 10px 10px;  
+		line-height: 30px;
+		text-align:center;
+		color: #EEEEEE;
+		border-radius: 5px;
+		opacity: 0; /* 透明度，取值0.1~0.9 */  
+
+	}
+</style>
+</head>
+<script type="text/javascript" src="js/base.js" ></script>
+<script>
+	//请求地址 http://255.255.255.255/AJAX/weibo 请求多条微博记录
+	//返回多条微博记录
+	function loadData(){
+		var request = new XMLHttpRequest();
+		request.open("get","http://10.10.163.77/AJAX/weibo", true);
+		request.onreadystatechange = function(){
+			if(request.readyState == 4){
+				document.write(request.responseText);
+				//eval("("+json字符串+")"); 它的作用是，将一个普通的json格式的字符串，转换成JSon格式的对象
+				var list = eval("("+request.responseText+")");
+				//alert(list instanceof Array);  返回结果是true  表示得到了一个数组
+				for(var i=0;i<list.length; i++){
+					alert(list[i].content);//遍历数组，拿出每一个元素，都是一个JS对象
+					//于是我们可以很轻易的访问对象的属性信息。例如 list[i].content
+					//利用DOM操作，生成表格将这两条微博记录，填入其中
+				}
+				//eval("alert(); var b=10; a++;");//动态执行代码
+			}
+		}
+		request.send();
+	}
+	
+	
+</script>
+<body>
+	<button>加载<button>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+#ul1{padding:0; margin:0; list-style:none;  width:300px; height:28px;}
+#ul1 li{float:left; background:url(star.gif) no-repeat 0 0; width:27px; height:28px; }
+
+.active{ }
+.default{ }
+</style>
+<script type="text/javascript">
+var arr=['差评','不推荐','一般','推荐','强力推荐'];
+window.onload=function(){
+	var oUL = document.getElementById("ul1");
+	var liList = oUL.getElementsByTagName("li");
+	
+	for(var i=0; i<liList.length; i++){
+		liList[i].num = i;
+		liList[i].onmouseover = function(){
+			for(var k=0; k<5; k++){
+				if(k <= this.num){
+					liList[k].style.background = "url(star.gif) no-repeat 0 -29px";
+				} else {
+					liList[k].style.background = "url(star.gif) no-repeat 0 0";
+				}
+			}
+		};
+		liList[i].onclick = function(){
+			//
+			alert("你打了"+(this.num+1)+"分");
+			document.getElementById("div").innerHTML = arr[this.num];
+		};
+	}
+}
+</script>
+</head>
+
+<body>
+<ul id="ul1" >
+<li class="default"> </li>
+<li class="default"> </li>
+<li class="default"> </li>
+<li class="default"> </li>
+<li class="default"> </li>
+</ul>
+<div id="div"></div>
+</body>
+</html>

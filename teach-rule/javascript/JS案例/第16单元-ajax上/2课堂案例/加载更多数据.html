@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JSON解析</title>
+	<style type="text/css">
+	body {
+		background-color: rgb(177, 208, 224);
+		font: normal 12px Trebuchet MS;
+		color: #000;
+	}
+	
+	ul li {
+		display:none
+		line-height: 30px;
+		
+	}
+</style>
+</head>
+<script type="text/javascript" src="js/base.js" ></script>
+<script>
+	//请求地址 http://xxxxxxxx/AJAX/weibo 请求多条微博记录
+	//返回多条微博记录
+	function loadData(){
+		var request = new XMLHttpRequest();
+		request.open("get","http://10.10.163.77/AJAX/weibo", true);
+		//id\content\comtcnt\likecnt\username
+		request.onreadystatechange = function(){
+			if(request.readyState == 4){
+				//alert(request.responseText);
+				var arr = eval(request.responseText);//eval转换成数组
+				
+				var tab = document.getElementById("datalist");
+				
+				for(var i=0; i<arr.length; i++){
+					var weibo = arr[i];
+					var _tr = document.createElement("tr");
+					var _id = document.createElement("td");
+					_id.innerHTML = weibo.id;
+					_tr.appendChild(_id);
+					var _content = document.createElement("td");
+					_content.innerHTML = weibo.content;
+					_tr.appendChild(_content);
+					var _comtcnt = document.createElement("td");
+					_comtcnt.innerHTML = weibo.comtcnt;
+					_tr.appendChild(_comtcnt);
+					var _likecnt = document.createElement("td");
+					_likecnt.innerHTML = weibo.likecnt;
+					_tr.appendChild(_likecnt);
+					var _username = document.createElement("td");
+					_username.innerHTML = weibo.username;
+					_tr.appendChild(_username);
+					
+					tab.appendChild(_tr);
+				}
+			}
+		};
+		request.send();
+	}
+	
+	
+</script>
+<body>
+	<button onclick="loadData()">加载</button>
+	<table id="datalist" border=1>
+		<tr>
+			<th>ID号</th>
+			<th>内容</th>
+			<th>评论数量</th>
+			<th>点赞数量</th>
+			<th>作者</th>
+		</tr>
+	</table>
+</body>
+</html>

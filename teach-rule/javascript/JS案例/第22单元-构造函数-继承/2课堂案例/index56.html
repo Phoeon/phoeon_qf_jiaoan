@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8" />
+
+	<head>
+		<title>JS的继承</title>
+	</head>
+	<style>
+		body {
+			height: 100%;
+		}
+		html {
+			height: 100%;
+		}
+	</style>
+	<script>
+		//JS的继承方式一共有3种
+		//1 prototype 这里的继承，它是所有实例对象共享属性，并且构造函数不能传参
+		//2 call 使用父类函数的call（子类对象,参数1，参数2，参数3......） 最常见
+		//3 apply 使用父类函数的apply（子类对象，[参数1，参数2，参数3]）
+		//类别\角色
+		function Human(username, age){
+			this.username = username;
+			this.age = age;
+			this.introduce = function(){
+				alert(this.username + this.age);
+			}
+		}
+		
+		function Student(username, age, score){
+			//调用父类构造函数进行传参
+			Human.call(this,username,age);
+			this.score = score;
+		}
+		
+		function Teacher(username, age) {
+			Human.apply(this,[username,age]);
+		}
+		
+//		Student.prototype = new Human();
+//		Teacher.prototype = new Human();
+		var stu1 = new Student('abc', 20, 99.9);
+		var stu2 = new Student('def', 25, 88.8);
+		
+		var tea = new Teacher("yintao",30);
+		tea.introduce();
+		console.log(stu1.username);
+		console.log(stu1.age);
+		console.log(stu2.username);
+		console.log(stu2.age);
+	</script>
+
+	<body>
+	</body>
+
+</html>

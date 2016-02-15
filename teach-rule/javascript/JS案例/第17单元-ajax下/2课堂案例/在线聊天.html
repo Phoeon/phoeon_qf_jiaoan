@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,em,img,small,strong,sub,sup,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label{margin:auto;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+		h2{ text-align:center; padding:10px; font-size:20px;}
+		a{color:#007bc4/*#424242*/; text-decoration:none;}
+		a:hover{text-decoration:underline}
+		ol,ul{list-style:none}
+		table{border-collapse:collapse;border-spacing:0}
+		body{height:100%; font:12px; sans-serif; color:#51555C; background:#2C2C2C }
+		#main_demo{width:910px; min-height:600px; margin:30px auto 0 auto; background:#fff; -moz-border-radius:12px;-khtml-border-radius: 12px;-webkit-border-radius: 12px; border-radius:12px;}
+		#results{
+			font: 12px Arial, Helvetica, sans-serif;
+			width: 400px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#results .loading-indication{
+			background:#FFFFFF;
+			padding:10px;
+			position: absolute;
+		}
+		.paginate {
+			padding: 0px;
+			margin: 0px;
+			height: 30px;
+			display: block;
+			text-align: center;
+		}
+		.paginate li {
+			display: inline-block;
+			list-style: none;
+			padding: 0px;
+			margin-right: 1px;
+			width: 30px;
+			text-align: center;
+			background: #4CC2AF;
+			line-height: 25px;
+		}
+		.page_result{
+			padding: 0px;
+		}
+		.page_result li{
+			background: #E4E4E4;
+			margin-bottom: 5px;
+			padding: 5px;
+			height: 15px;
+			font-size: 12px;
+			list-style: none;
+		}
+		.page_result .page_name {
+			font-size: 14px;
+			font-weight: bold;
+			margin-right: 5px;
+		}
+		.message_right {
+			float: right;
+			margin-left: 5px;
+		}
+		.message_left {
+			float: left;
+			margin-right: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.loginuser = prompt("请输入用户名");
+			var sendbtn = document.getElementById("send_msg");
+			document.IP = prompt("为防止伪造身份，请输入你的IP地址");
+			
+			sendbtn.onclick = function() {
+				var request = new XMLHttpRequest();
+				var msg = document.getElementById("postmsg").value;
+				var url = "http://10.10.163.77/AJAX/chat?type=send&sender="+document.loginuser+"&msg="+msg;
+				request.open("get",url, true);
+				request.send();
+				document.getElementById("postmsg").value = "";
+			}
+			
+			var timer = window.setInterval(function(){
+				var request = new XMLHttpRequest();
+				var url = "http://10.10.163.77/AJAX/chat?type=query";
+				request.open("get",url, true);
+				request.onreadystatechange = function(){
+					if(request.readyState == 4) {
+						var result = document.getElementById("page_result");
+						result.innerHTML = "";//清空内容
+						
+						var msglist = eval(request.responseText);
+						for(var index in msglist) {
+							var msg = msglist[index];
+							//创建li，准备替换
+							var li = document.createElement("li");
+							if(msg.ipfrom == document.IP) {//自己的消息
+								li.style = "background:lightgreen";
+								var spana = document.createElement("span");
+								spana.className = "message_right";
+								spana.innerHTML = "【"+msg.name+"】";
+								var spanb = document.createElement("span");
+								spanb.className = "message_right";
+								spanb.innerHTML = msg.content;
+								li.appendChild(spana);
+								li.appendChild(spanb);
+							} else {
+								var spana = document.createElement("span");
+								spana.className = "message_left";
+								spana.innerHTML = "【"+msg.name+"】";
+								var spanb = document.createElement("span");
+								spanb.className = "message_left";
+								spanb.innerHTML = msg.content;
+								li.appendChild(spana);
+								li.appendChild(spanb);
+							}
+							result.appendChild(li);
+						}
+						result.lastChild.scrollIntoView();
+					}
+				};
+				request.send();
+			}, 4000);
+			
+		}
+	</script>
+	<body>
+		<div id="main_demo">
+			<div id="results">
+				<ul class="page_result" id="page_result" style="height:380px; overflow-y:scroll; vertical-align:text-bottom;text-align:bottom">
+					<li id="item_147">
+						<span class="message_right">【yintao】</span>
+						<span class="message_right">哈哈哈哈</span>
+					</li>
+					<li id="item_146">
+						<span class="message_left">【xiaoming】</span>
+						<span class="message_left">aaaaaaaaaaaaaaaaa</span>
+					</li>
+					<li id="item_145">
+						<span class="message_left">【xiaoming】</span>
+						<span class="message_left">bbbbbbbbbb</span>
+					</li>
+					<div id="msg_end" style="height:0px; overflow:hidden"></div>
+				</ul>
+				<div align="center">
+					<textarea id="postmsg" style="width:390px;"></textarea>
+					<button class="load_more" id="send_msg" style="display: inline-block;">发送</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
