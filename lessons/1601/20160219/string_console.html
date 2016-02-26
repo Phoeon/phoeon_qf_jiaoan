@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>
+		
+		"1234345".length
+		7
+		"你好".length
+		2
+		//length  属性 ，返回字符串自身的长度
+		undefined
+
+
+		String.fromCharCode(97)
+		"a"
+		String.fromCharCode(98)
+		"b"
+		String.fromCharCode(100)
+		"d"
+		//fromCharCode  根据提供的数字 （编码） 得到编码对应的字符
+		undefined
+
+		//charAt 用来或得指定位置的字符串
+		undefined
+		"abc".charAt(0)
+		"a"
+		"abc".charAt(1)
+		"b"
+		"abc".charAt(2)
+		"c"
+		"abc".charAt(4)
+		""
+		
+
+		//charCodeAt
+		undefined
+		//charCodeAt 获取指定位置的字符对应的编码
+		undefined
+		"abde".charCodeAt(0)
+		97
+		"abde".charCodeAt(1)
+		98
+		"abde".charCodeAt(3)
+		101
+
+
+		// concat  === connect 拼凑字符串
+		undefined
+		"123".concat("abc")
+		"123abc"
+
+
+		//indexOf 用来获取字符串中某些字符所处的位置，从0开始
+		undefined
+		"abc123".indexOf("a")
+		0
+		"abc123".indexOf("c")
+		2
+		"abc123".indexOf("3")
+		5
+		"abc123".indexOf("f")
+		-1
+		"abc123".indexOf("23")
+		4
+		//其他用法：判断一个长的字符串当中是否存在指定的子字符串
+		undefined
+		//如果结果==-1，表示没有查到，不存在，否则，就返回指定字符串下表
+		undefined
+
+
+
+		undefined
+		"abc123".lastIndexOf("23")
+		4
+		"abc123".lastIndexOf("2")
+		4
+		"abc123".lastIndexOf("3")
+		5
+		"abc123".lastIndexOf("a")
+		0
+		"abcabc".lastIndexOf("a")
+		3
+		"abcdefabcdef".lastIndexOf("f")
+		11
+		"abcdefabcdef".indexOf("f")
+		5
+		//lastIndexOf 用来获取字符串中某些字符所处的位置，正数开始最后一个遇到的
+
+		//match 用来或得（匹配）指定的子字符串
+		undefined
+		"abcdef".match("cde")
+		["cde"]
+		"abcdef123123".match(/123/g)
+		["123", "123"]
+		//最终返回一个存放找到结果的数组
+		undefined
+		"abcdef".match("zzz")
+		null
+		"abcdef".match("af")
+		null
+
+
+		//replace(x,y)  替换x 为 y
+		undefined
+		"asdf".replace("s","11111")
+		"a11111df"
+		"asdfasdfasdf".replace("s","11111")
+		"a11111dfasdfasdf"
+		"asdfasdfasdf".replace(/s/g,"11111")
+		"a11111dfa11111dfa11111df"
+
+
+
+		//indexOf  不支持 正则表达式 ，search 支持
+		//search（x）  查找指定的字符串x
+		undefined
+		"abc445".search("c");
+		2
+		"abc445".search("4");
+		3
+		"abc445".search("4");
+		3
+		"abc445".search("5");
+		5
+		"abc445".search("f");
+		-1
+		"abc445".search("a");
+		0
+
+
+
+		//slice(x,y)  用于获取从x到y之前的自字符串（不包含y位置的内容）
+			undefined
+			"0123456789".slice(3,4)
+			"3"
+			"0123456789".slice(3,7)
+			"3456"
+			"0123456789".slice(3,9)
+			"345678"
+
+
+
+		//split   用指定的字符串分隔当前字符串
+		undefined
+		"a#b#c#adsfk".split("#")
+		["a", "b", "c", "adsfk"]
+		//结果返回去掉分界字符串的数组
+		undefined
+		"a#b#c#adsfk".split("，")
+		["a#b#c#adsfk"]
+		"a#b#c#adsfk".split("|")
+		["a#b#c#adsfk"]
+		"a#b#c#adsfk".split("88")
+		["a#b#c#adsfk"]
+		"1@3@6565@888@".split("@")
+		["1", "3", "6565", "888", ""]
+
+
+
+		//substring  用来或得指定区间的子字符串
+		undefined
+		"123abc".substring(1,3)
+		"23"
+		//不包含右边界
+		undefined
+		//substr(x,y)  用来或得从x位置开始长度为y的子字符串
+		undefined
+		"123abc".substr(1,4)
+		"23ab"
+		"123abc".substr(1,3)
+		"23a"
+
+
+
+		//toLowerCase  小写化字符串
+		undefined
+		"aBcDeFG".toLowerCase()
+		"abcdefg"
+		"AZDFFF".toLowerCase()
+		"azdfff"
+		//toUpperCase  大写化字符串
+		undefined
+		"aBcDeFFF".toUpperCase()
+		"ABCDEFFF"
+		"asdf".toUpperCase()
+		"ASDF"
+		//trim  取消字符串开头结尾的空格
+		undefined
+		"   asdf2323   ".trim()
+		"asdf2323"
+
+		
+	</pre>
+</body>
+<script>
+	
+
+</script>
+</html>

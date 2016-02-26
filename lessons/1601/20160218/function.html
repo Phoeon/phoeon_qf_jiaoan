@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		var date = new Date();
+		var week = date.getDay();
+		
+		//method 1 
+		// var func = function(week){
+		// 		document.write("星期"+week);
+		// 		document.write("你好");
+		// 		alert("我很好");
+		// }
+
+		//method 2
+		function func(week){
+			document.write("星期"+week);
+			document.write("你好");
+			alert("我很好");
+		}		
+
+		switch(week){
+			case 0 : {
+				func(week);
+				break ;
+			};
+			case 1 : {
+				func(week);
+				break ;
+			};
+			case 2 : {
+				func(week);
+				break ;
+			};
+			case 3 : {
+				func(week);
+			};
+			case 4 : {
+				func(week);
+				break ;
+			};
+			case 5 : {
+				func(week);
+				break ;
+			};
+			default : {
+				func(week);
+				break ;
+			};			
+		}
+	</script>
+</body>
+</html>

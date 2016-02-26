@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		//iNum  全局
+		// var iNum = 10;
+
+		// function fnGo(){
+		// 	//iNum 局部
+		// 	var iNum = 20 ;
+
+		// 	alert(iNum);
+		// 	function fnGo1(){
+		// 		var iNum = 30;
+		// 		alert(iNum)
+		// 	}
+		// 	fnGo1();
+		// }
+		
+		// fnGo(); //20
+
+		// alert(iNum); //10
+
+		// function fnOuter(){
+		// 	alert(iNum)
+		// }
+
+		// fnOuter();
+
+		// var iNum = 123;
+		// function fnGo(){
+		// 	//局部变量的作用范围
+		// 	//只是限于当前层次
+		// 	var iNum = 1323;
+		// 	alert(iNum)
+		// }
+
+		// fnGo();
+		// alert(iNum);
+
+		var iNum = 1323;
+		function fnGo(){
+			//局部变量的作用范围
+			//只是限于当前层次
+			
+			function go(){
+
+				
+				alert(iNum)
+			}
+
+			go();
+		}
+
+		fnGo();
+		alert(iNum);
+
+
+	</script>
+</body>
+</html>

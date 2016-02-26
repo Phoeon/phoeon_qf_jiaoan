@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+    body {
+        margin: 0;
+    }
+    
+    .transition{
+        transition:all 0.5s linear;
+    }
+    .item {
+        position: absolute;
+    }
+    
+    .h1 {
+        height: 10px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h2 {
+        height: 59px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h3 {
+        height: 30px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+        top: -10px;
+    }
+    
+    .h4 {
+        height: 40px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h5 {
+        height: 50px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h6 {
+        height: 60px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h7 {
+        height: 70px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h8 {
+        height: 80px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h9 {
+        height: 90px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    
+    .h10 {
+        height: 100px;
+        width: 100px;
+        background: #eee;
+        outline: 1px solid #666;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap"></div>
+</body>
+<script>
+var WaterFall = {
+    cfg: {
+        xgap: 3,
+        ygap: 3
+    }
+
+    ,
+    config: function(cfg) {
+        this.cfg || (this.cfg = {}
+
+        );
+
+        cfg || (cfg = {}
+
+        );
+
+        for (var k in cfg) {
+            this.cfg[k] = cfg[k];
+        }
+
+        return this;
+    }
+
+    ,
+    createFall: function(wrap) {
+        this.items = [];
+        var wrapBox = document.
+        querySelector(wrap || this.cfg.wrap);
+        this.wrapBox = wrapBox;
+        for (var i = 0; i < 10;
+
+            i++) {
+            var item = document.createElement("div");
+            item.className = "item h" + (i + 1);
+            wrapBox.appendChild(item);
+            // item.className += " transition";
+            this.items.push(item);
+        }
+
+        return this;
+    }
+
+    ,
+    waterFall: function waterFall() {
+        var items = this.items;
+        var cfg = this.cfg;
+        var bw = this.wrapBox.offsetWidth;
+        var iw = items[0].offsetWidth + cfg.xgap * 2;
+        var cs = Math.floor(bw / iw);
+        for (var i = 0; i < items.length;
+
+            i++) {
+            var upIdx = i - cs;
+            var item = items[i];
+
+            if (upIdx > -1) {
+                item.style.top =
+                    cfg.ygap +
+                    items[upIdx].offsetTop +
+                    items[upIdx].offsetHeight + "px";
+            } else {
+                item.style.top = cfg.ygap + "px";
+            }
+
+            item.style.left = (i % cs) * iw + (bw - iw * cs) / 2 + "px";
+            item.style.background = "#" +
+                Number(parseInt(Math.random() * 255)).toString(16) +
+                Number(parseInt(Math.random() * 255)).toString(16) +
+                Number(parseInt(Math.random() * 255)).toString(16);
+        }
+
+    }
+
+}
+
+window.onload = function() {
+    WaterFall.createFall("#wrap").waterFall();
+}
+
+window.onresize = function() {
+    WaterFall.waterFall();
+}
+</script>
+
+</html>

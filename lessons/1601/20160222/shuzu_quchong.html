@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	//数组去重 方法一
+	var arr = [1,2,3,1,2,3,1,2,3,45]
+	
+	for(var i=1;i<arr.length;i++){
+	  for(var j=0;j<i;j++){
+	    if(arr[i]==arr[j]){
+	      arr.splice(i,1);
+	      i--;
+	      break;
+	    }
+	  }
+	}
+
+
+	//数组去重复 方法二
+	var arr = [1,2,3,1,2,3,1,2,3,45];
+	var a = [];
+	a[0] = arr[0];
+
+	for(var i=1;i<arr.length;i++){
+	  var hasRepeat = false;
+	  for(var j=0;j<a.length;j++){
+	      if(arr[i] == a[j]){
+	        hasRepeat = true;
+	        break;
+	      }
+	  }
+	  if(hasRepeat == false){
+	    a.push(arr[i]);
+	  }
+	}
+</script>
+</html>

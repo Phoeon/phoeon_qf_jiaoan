@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		//for
+		var base = 5;
+		// for(var i=0;i<base;i++){
+		// 	for(var j=0;j<base*2+1;j++){
+		// 		if(j>=base-i&&j<=base+i)
+		// 			document.write("*");
+		// 		else 
+		// 			document.write(".");
+		// 	}
+		// 	document.write("<br/>")
+		// }
+
+		//while
+		// var i = 0;
+		// while(i<base){
+		// 	var j=0;
+		// 	while(j<2*base+1){
+		// 		if(j>=base-i&&j<=base+i)
+		// 			document.write("*");
+		// 		else 
+		// 			document.write("&ensp;");
+
+		// 		j++;
+		// 	}
+		// 	i++;
+		// 	document.write("<br/>")
+		// }
+
+		//do while
+		var i = 0;
+		do {
+			var j=0;
+			do {
+				if(j>=base-i&&j<=base+i)
+					document.write("*");
+				else 
+					document.write("&ensp;");
+
+				j++;
+			}while(j<2*base+1)
+			i++;
+			document.write("<br/>")
+		}while(i<base)
+		
+	</script>
+</body>
+</html>

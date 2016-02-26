@@ -1,0 +1,20 @@
+sublime hot key
+
+
+note : 命令为英文
+创建网页基本结构
+step 1 : !
+step 2 : ctrl + e;
+
+新建文件
+step ： ctrl + n
+save 文件
+step ： ctrl + s
+
+注释|解注释代码
+step ： ctrl + /
+
+多点同时编辑
+step 1 : 按下ctrl，选择多个编辑区，
+step 2 :
+放开ctrl，进行编辑操作

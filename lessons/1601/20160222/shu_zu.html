@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组案例</title>
+</head>
+<body>
+	
+</body>
+<script src="shu_zu.js"></script>
+<script>
+	var arr = [1,70,0,2,4,0,6,5,70,70,8,0,0,9];
+	//调用max方法获取数组最大值
+	var result = max(arr);
+	document.write(result);
+	document.write("<hr/>");
+	//调用min方法获取数组最小值
+	document.write(min(arr));
+
+
+	
+	
+	// arr = [1,2,3,1,2,3,1,2,3,45]
+	// [1, 2, 3, 1, 2, 3, 1, 2, 3, 45]
+	// for(var i=1;i<arr.length;i++){
+	//   for(var j=0;j<i;j++){
+	//     if(arr[i]==arr[j]){
+	//       arr.splice(i,1);
+	//       i--;
+	//       break;
+	//     }
+	//   }
+	// }
+</script>
+</html>

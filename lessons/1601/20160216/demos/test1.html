@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>一元运算符</h1>
+	<ul>
+		<li>delete</li>
+		
+
+		<li>--</li>
+
+		<li>++</li>
+
+		<li>!</li>
+		
+	</ul>
+	
+	<h1>逻辑运算符</h1>
+	<ul>
+		<li>或 ||</li>
+		
+
+		<li>与 &&</li>
+
+		<li>非 not !</li>
+		
+	</ul>
+
+	<h1>算数运算符</h1>
+	<ul>
+		<li>+</li>
+		<li>-</li>
+		<li>*</li>
+		<li>/</li>
+		<li>%</li>
+
+		<li> += </li>
+		<li> -= </li>
+		<li> *= </li>
+		<li> /= </li>
+		<li> %= </li>
+		
+	</ul>
+	<h1>逗号运算符</h1>
+	<ul>
+		<li>.</li>
+	</ul>
+	<h1>关系运算符</h1>
+	<ul>
+		<li>></li>
+		<li><</li>
+		<li>!=</li>
+		<li>>=</li>
+		<li><=</li>
+
+		<li>==</li>
+		<li>===</li>
+
+	</ul>
+	<h1>条件（三元）运算符</h1>
+	<ul>
+		<li>?:</li>
+	</ul>
+</body>
+<script>
+		// eg:
+
+// 		var obj = {
+// 		  name : "fuyue",
+// 		  gender : "男"
+// 		}
+
+// 		delete obj.name
+	//-- 放在右边
+	// var iNum = 1;
+		
+	// alert(iNum);		//1
+	// alert(iNum--);	//1
+	// alert(iNum);		//0
+
+	//-- 放在左边
+	// var iNum = 1;
+		
+	// alert(iNum);		//1
+	// alert(--iNum);		//0
+	// alert(iNum);		//0
+
+	// var bool = true;
+	// undefined
+	// bool
+	// true
+	// var result = !bool
+	// undefined
+	// result
+	// false
+	// var result = !false
+	// undefined
+	// result
+	// true
+
+	// var b1 = true;
+	// var b2 = false;
+	// var b3 = 1;
+	// var b4 = 0;
+
+	// document.write(b1&&b2);//false
+	// document.write(!!(b1&&b3));
+	// document.write(!!(b3&&b4));
+// 	f(1==1&&2==4){
+//  alert("zhen");
+// }
+// undefined
+// if(1==1||2==4){
+//  alert("zhen");
+// }
+// undefined
+
+
+// function f1(){
+//   alert("123");
+//   return 1==2;
+// }
+
+// function f2(){
+//  alert("456");
+//  return true;
+// }
+// undefined
+// f1();
+// false
+// f2()
+// true
+//&& 如果左边为false ，右边不执行
+//|| 如果有一个为真，结果为真 
+// 并且左边为真，右边不执行
+// f1()&&f2();
+// false
+
+//+= 的用法
+//(iNum += 3;) == ( iNum = iNum + 3;)
+//-=  *= /= 同上
+
+//等性 和三元（条件）
+"1"==1
+// true
+"1"===1
+// false
+1==2?"你好":"我不好";
+// "我不好"
+1==1?"你好":"我不好";
+// "你好"
+</script>
+</html>

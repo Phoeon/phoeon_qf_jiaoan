@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html{height:100%}
+body{height:100%;margin:0;position:relative;overflow:hidden;}
+#cvs{      	/*height: 100%;
+	      	width: 100%;*/}
+	</style>
+</head>
+<body>
+	<canvas id="cvs"></canvas>
+</body>
+<script>
+	function SuperMario(wrap){
+	  	var cfg = {
+	  		wrap : wrap||"#cvs",
+		  	hr : 12,
+		  	vt : 16,
+		  	scale : 20,
+		  	width:document.body.offsetWidth,
+		  	height:document.body.offsetHeight,
+		  	color:{
+			  "0":"transparent",
+			  "1":"#f00",
+			  "2":"#0f0",
+			  "3":"#ff0"
+			}
+		};
+
+		var __pos = [
+			"000111110000",
+			"001111111110",
+			"002223323000",
+			"023233323330",
+			"023223332222",
+			"022333322220",
+			"000333333300",
+			"002212220000",
+			"022212212220",
+			"222211112222",
+			"332131131233",
+			"333111111333",
+			"331111111133",
+			"001110011100",
+			"022200002220",
+			"222200002222"
+		];
+
+		var cache = {};
+
+		var __init = function(){
+			__initCache();
+			__initCanvasDimension();
+			__drawPixel();
+		}
+		var __initCache = function(){
+			cache.canvas = document.querySelector(cfg.wrap);
+			cache.context = cache.canvas.getContext("2d");
+		}
+		var __initCanvasDimension = function(){
+			var cvs = cache.canvas;
+			cvs.width = cfg.width;
+		  	cvs.height = cfg.height;
+		}
+
+		var __drawPixel = function(){
+			var ctx = cache.context;
+			ctx.clearRect(0,0,cfg.width,cfg.height);
+			
+			ctx.save();
+			ctx.translate(
+				(cfg.width-cfg.hr*cfg.scale)/2,
+				(cfg.height-cfg.vt*cfg.scale)/2);
+			
+			var pos = __pos.join("").split("");
+			for(var i=0;i<pos.length;i++){
+				ctx.save();
+				var px = pos[i];
+				var r = Math.floor(i/cfg.hr);
+				var c = i%cfg.hr;
+				ctx.fillStyle = cfg.color[px];
+				ctx.fillRect(
+					cfg.scale*c,
+					cfg.scale*r,
+					cfg.scale,
+					cfg.scale);
+
+				ctx.fill();
+				ctx.restore();
+			}
+			ctx.restore();
+		}
+		return {
+			config : function(cfg){
+				return this;
+			},
+			init : function(){
+				__init();
+				return this;
+			}
+		}
+	}
+	
+</script>
+</html>

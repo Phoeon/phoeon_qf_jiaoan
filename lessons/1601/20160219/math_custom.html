@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="num" placeholder="请输入半径">
+	<button id="btn">面积为</button>
+	<input type="text" id="result" readonly placeholder="面积为：">
+	<br>
+	<br>
+	<br>
+	<button id="createRandomP">创建随机p标签</button>
+	<br>
+	<br>
+	<br>
+	<input type="text" id="num1" placeholder="请输入半径">
+	<button id="absBtn">面积为</button>
+	<input type="text" id="result1" placeholder="请输入半径">
+</body>
+<script>
+	
+	// pow 
+
+	// var result = Math.pow(2,1);
+	// alert(result);  //2
+	// result = Math.pow(2,2);
+	// alert(result);  //4
+	// result = Math.pow(2,4);
+	// alert(result); //16
+	//pow(x,y) 作用 是 计算 x 的 y 次方
+
+	//  PI  圆周率
+	// alert(Math.PI)
+
+
+	//计算圆面积 pow + PI
+	// var btn = document.getElementById("btn");
+	// btn.onclick = function(){
+	// 	//取到输入的半径值
+	// 	var numIp = document.getElementById("num");
+	// 	var num = +numIp.value;
+
+	// 	var area = Math.PI*Math.pow(num,2);
+
+	// 	var resultIp = document.getElementById("result");
+	// 	resultIp.value = area;
+	// }
+
+	//random
+	// 用于获取随机数  0-1  浮点数
+
+	// var btn = document.getElementById("createRandomP");
+	// function createPLabel(){
+	// 	for(var i=0;i<10;i++){
+	// 		var red = parseInt(Math.random()*255);
+	// 		var green = parseInt(Math.random()*255);
+	// 		var blue = parseInt(Math.random()*255);
+	// 		var rgb = "rgb("+red+","+green+","+blue+")";
+	// 		document.write("<p style=\"color:"+rgb+"\">我是第"+i+"个p标签</p>");
+	// 	}
+	// }
+	// btn.onclick = createPLabel;
+
+	//abs 获取绝对值
+	var btn = document.getElementById("absBtn");
+	btn.onclick = function()
+	{
+		var num1 = +document.getElementById("num1").value;
+		document.getElementById("result1").value = Math.abs(num1);
+	}
+	// var result = Math.abs(-100);
+	// alert(result);
+
+
+</script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>
+		
+		//ceil 向上取整
+		var result = Math.ceil(3.1);
+
+
+
+		undefined
+		result
+		4
+		Math.ceil(3.6)
+		4
+		//floor 向下取整
+		var result = Math.floor(3.1);
+		undefined
+		result
+		3
+		Math.floor(3.9)
+		3
+
+
+
+		//round  正常的四舍五入
+		undefined
+		Math.round(4.1)
+		4
+		Math.round(4.5)
+		5
+		Math.round(4.8)
+		5
+		Math.sqrt(4)
+		2
+		Math.sqrt(16)
+		4
+		Math.sqrt(2)
+		1.4142135623730951
+		//sqrt  用于获取给定参数的平方根
+		undefined
+
+
+
+		//max  用于在所给数字序列当中获得最大值
+		undefined
+		Math.max(1,5)
+		5
+		Math.max(7,5)
+		7
+		Math.max(7,59)
+		59
+		Math.max(7,59,23)
+		59
+		Math.max(7,59,23,100)
+		100
+
+
+
+		//min  用于在所给数字序列当中获得最小值
+		undefined
+		Math.min(1,4)
+		1
+		Math.min(8,4)
+		4
+		Math.min(8,4,2)
+		2
+		Math.min(8,4,2,0)
+		0
+		Math.min(8,4,2,0,-8)
+		-8
+
+
+		var Math_ = {}
+		undefined
+		Math_.max = function(num1,num2){
+		  return num1>num2?num1:num2 ;
+		}
+		(num1,num2){
+		  return num1>num2?num1:num2 ;
+		}
+		Math_.max(3,6)
+		6
+		function go(n1,n2){
+		  var result = n1>n2?n1:n2;
+		  alert(result);
+		}
+		undefined
+		go(34,56)
+		undefined
+		var total = 2*Math_.max(2,3);
+		undefined
+		total
+		6
+	</pre>
+</body>
+</html>

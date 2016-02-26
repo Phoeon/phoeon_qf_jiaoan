@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//push   用来给数组最后追加一个新的数组（元素）
+	var arr = [] ;
+	arr.push(1243);
+	arr.push(1);
+	arr.push(12);
+	document.write(arr);
+
+	//unshift 在数组的开头追加数据（元素）
+	arr.unshift(100);
+	arr.unshift(101);
+	arr.unshift(102);
+	document.write("<hr/>");
+	document.write(arr)
+	document.write("<hr/>")
+
+	// pop 获取（并且拿掉|删除）数组最后一个位置的元素
+	arr.pop();
+	arr.pop();
+	arr.pop();
+	document.write(arr)
+
+	document.write("<hr/>")
+
+	//获取（并且拿掉|删除）数组第一个位置的元素
+	arr.shift();
+	arr.shift();
+	arr.shift();
+	arr.shift();
+	document.write(arr);
+
+
+	//join（x） 把数组的每一个元素用x来连接成完整的字符串类型
+	var arr1 = ["hello","world",true,123];
+	document.write("<hr/> join: ")
+	document.write(arr1);
+	var resultJoin = arr1.join("*");
+	document.write("<br/>"+(typeof resultJoin));
+	document.write("<br/>"+resultJoin);
+
+	document.write("<hr/>  split :   <br/>")
+
+
+	//String : split
+	var str = "1#2#3#454";
+	var resultSplit = str.split("#");
+	document.write(typeof resultSplit);
+	document.write("<hr/>")
+	document.write(resultSplit.length);
+	document.write(resultSplit.constructor);
+
+
+	// var arr = [1,2,3,4,5,6,7,8]
+	// undefined
+	// arr.splice(2,2)
+	// [3, 4]
+	// arr
+	// [1, 2, 5, 6, 7, 8]
+	// //splice(x,y) //从数组的x下表位置开始 获取拿掉y个元素
+	// undefined
+	// arr.splice(1,0,12,23)
+	// []
+	// arr
+	// [1, 12, 23, 2, 5, 6, 7, 8]
+	// //splice(x,y,a,b,c,...) //把a,b,c插入到x下表位置
+	// undefined
+	// arr
+	// [1, 12, 23, 2, 5, 6, 7, 8]
+	// arr.splice(1,2,0,0,0,0)
+	// [12, 23]
+	// arr
+	// [1, 0, 0, 0, 0, 2, 5, 6, 7, 8]
+
+	
+</script>
+</html>

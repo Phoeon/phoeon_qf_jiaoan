@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	var arr = [12,23,2,4,65];
+	document.write(arr);
+	//
+	for(var i=0;i<arr.length-1;i++){
+		for(var j=0;j<arr.length-i-1;j++){
+			if(arr[j]>arr[j+1]){
+				var tmp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = tmp;
+			}
+		}
+	}
+	// for(var j=0;j<arr.length-0-1;j++){
+	// 		if(arr[j]>arr[j+1]){
+	// 			var tmp = arr[j];
+	// 			arr[j] = arr[j+1];
+	// 			arr[j+1] = tmp;
+	// 		}
+	// 	}
+
+	// 	for(var j=0;j<arr.length-1-1;j++){
+	// 		if(arr[j]>arr[j+1]){
+	// 			var tmp = arr[j];
+	// 			arr[j] = arr[j+1];
+	// 			arr[j+1] = tmp;
+	// 		}
+	// 	}
+
+	// 	for(var j=0;j<arr.length-2-1;j++){
+	// 		if(arr[j]>arr[j+1]){
+	// 			var tmp = arr[j];
+	// 			arr[j] = arr[j+1];
+	// 			arr[j+1] = tmp;
+	// 		}
+	// 	}
+
+
+
+
+	// 	for(var j=0;j<arr.length-3-1;j++){
+	// 		if(arr[j]>arr[j+1]){
+	// 			var tmp = arr[j];
+	// 			arr[j] = arr[j+1];
+	// 			arr[j+1] = tmp;
+	// 		}
+	// 	}
+
+
+	document.write("<br/>")
+	document.write(arr)
+	// for(var i=0;i<arr.length-1;i++){
+	//   if(arr[i]>arr[i+1]){
+	//     var tmp = arr[i];
+	//     arr[i] = arr[i+1];
+	//     arr[i+1] = tmp ;
+	//   }
+	// }
+
+</script>
+</html>

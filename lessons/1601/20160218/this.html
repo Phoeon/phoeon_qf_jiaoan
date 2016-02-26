@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">GO</button>
+	<script>
+		
+		// console.log(1,this)//全局
+		var btn = document.getElementById("btn");
+		//第一阶段 结论  
+		//如果在函数里边的话，this表示该函数的主人 （master）
+		//记住否？？？？？？
+
+		btn.onclick = function(){
+			 // console.log(2,this);//who 
+			 this.className = "fy";
+			 alert(this.id);
+		}
+
+		// btn.onclick = null;
+
+		// btn = "123";
+
+
+
+
+		//
+
+		
+
+	</script>
+</body>
+</html>

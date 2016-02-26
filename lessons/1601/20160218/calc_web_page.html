@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="num1" value ="123">
+	<br/>
+	<input type="text" id="num2" value ="">
+	<br/>
+
+	<!-- 
+	<button onclick="fnPlus()" id="btn">加等于</button>
+	<button onclick="fnMultiple()" id="btn">乘等于</button> 
+	-->
+
+	<button id="plus">加等于</button>
+	<button id="multiple">乘等于</button>
+</body>
+<script>
+	var ip1 = document.getElementById("num1");
+	var ip2 = document.getElementById("num2");
+	var btnAdd = document.getElementById("plus");
+	function fnPlus(){
+		var result = (+ip1.value)+(+ip2.value);
+		alert(result);
+	}
+
+	function fnMultiple(){
+		var result = (+ip1.value)*(+ip2.value);
+		alert(result);
+	}
+
+	btnAdd.onclick = fnPlus;
+
+
+
+</script>
+</html>
