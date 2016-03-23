@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- <link rel="stylesheet" href="./index.css" type="text/css">	 -->
+    <link rel="stylesheet" href="../../phoeon_qf_tpl/index.css" type="text/css">    
+	<style>
+		.nav .nav-item a:before{
+			content : "jQuery";
+		}
+	</style>
+</head>
+<body>
+    <div class="page h">
+        <div class="left h">
+        	<a href="javascript:void(0);" class="toggleSide"></a>
+            <div class="nav-wrap h">
+            	<h3 class="nav-bar">jQuery </h3>
+                <ul class="nav">
+                	
+                    <!-- <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="introduce.html" title="讲解的大概内容概括" target="iframe">&nbsp;&nbsp;内容概括</a>
+                    </li> -->
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="introduce.html" title="jQuery 介绍" target="iframe">&nbsp;&nbsp;内容概要</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="test.html" data-href="test.html" title="案例" target="_blank">&nbsp;&nbsp;案例</a>
+                    </li>
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="online-note.html" title="在线笔记 记录" target="iframe">&nbsp;&nbsp;NOTE</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main h">
+            <div class="frame-wrap h">
+                <iframe id="iframe" name="iframe" class="iframe">
+                    &lt;/div&gt; &lt;/div&gt;
+                </iframe>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="./index.js"></script> -->
+<script src="../../phoeon_qf_tpl/index.js"></script>
+<script>
+    var dateMap = {
+        "29"    : "jquery 第一讲",
+        "1"     : "jquery 第二讲",
+        "2"     : "jquery 第三讲",
+        "3"     : "jquery 第四讲",
+        "4"     : "jquery 第五讲",
+
+        "7"     : "jquery 第六讲",
+        "8"     : "jquery 第七讲",
+        "9"     : "jquery 第八讲",
+        "10"    : "jquery 第九讲",
+        "11"    : "jquery 第十讲",
+
+        "14"    : "项目实训",
+        "15"    : "项目实训",
+        "16"    : "项目实训",
+        "17"    : "项目实训",
+        "18"    : "项目实训"
+    }
+    var day = new Date().getDate();
+    document.title = dateMap[day+""]||"自己练习";
+</script>
+</html>
