@@ -1,0 +1,5 @@
+Function ()  和 function  difference  
+
+Function.prototype.bind  
+
+Array.prototype.slice.call(items) 

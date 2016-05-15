@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.test{
+	width: 100px;
+	height: 50px;
+	background: #f00;
+
+}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+	
+
+	function animate(dom,cssRule,time,fn){
+		var cs = getComputedStyle(dom),
+			interval = 5,
+			ratio = interval/time;
+
+			var formatCss = {};
+			for(var k in cssRule){
+				formatCss[k] = [
+								cssRule[k],
+								parseFloat(cssRule[k]) - parseFloat(cs[k]),
+								cs[k].match(/^(\d*\.?\d*)([a-z]*)$/)[2]
+								]
+			}
+			// console.log(formatCss)
+			(function(){
+				//终止标记
+				var stop = (time-=interval)<=0;
+
+				for(var i in formatCss){
+					var css = formatCss[i];
+					dom.style[i] = stop?css[0]:(parseFloat(cs[i])+css[1]*ratio + css[2]);
+				}
+				stop&&fn&&fn();
+				!stop&&setTimeout(arguments.callee,interval)
+			})()
+	}
+
+	
+    
+	</script>
+</head>
+<body>
+	<div class="test"></div>
+</body>
+</html>

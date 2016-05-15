@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			position: relative;
+			font-size: 0px;
+			display: inline-block;
+		}
+		.box img{
+			width:300px;
+		}
+		.box .flag{
+			width:50px;
+			height: 50px;
+			background: #000;
+			opacity: 0.3;
+			position: absolute;
+		}
+		.preview{
+			width: 300px;
+		    height: 300px;
+		    overflow: hidden;
+		}
+		.box:hover .flag{
+		    display:block;
+		}
+		.box .flag{
+		    display:none;
+		}
+
+		.box:hover + .preview{
+		    display:block;
+		}
+		.box + .preview{
+		    display:none;
+		}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+
+</head>
+<body>
+	<div class="box">
+		<img src="desktop.png"/>
+		<div class="flag"></div>
+	</div>
+	<div class="preview">
+		<img src="desktop.png"/>
+	</div>
+</body>
+<script>
+	
+	(function(){
+  var box = document.querySelector(".box");
+  box.onmousemove=function(e){
+       var flag = document.querySelector(".flag");
+       var left = Math.max(e.clientX - flag.offsetWidth/2,0);
+       var top = Math.max(e.clientY-flag.offsetHeight/2,0);
+       left = Math.min(left,box.offsetWidth-flag.offsetWidth);
+       top = Math.min(top,box.offsetHeight-flag.offsetHeight);
+       flag.style.left = left + "px";
+       flag.style.top  = top + "px";
+
+       var preview = document.querySelector(".preview img");
+
+       preview.style.marginLeft = -preview.offsetWidth*left/box.offsetWidth+"px";
+       preview.style.marginTop = -preview.offsetHeight*top/box.offsetHeight + "px";
+      
+  }
+})()
+</script>
+</html>

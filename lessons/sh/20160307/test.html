@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.test{
+	width: 100px;
+	height: 50px;
+	margin:3px;
+
+}
+.red{
+	background: #f00;
+}
+.green{
+	background: #0f0;
+}
+.blue{
+	background: #00f;
+}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script src="jq.js"></script>
+	
+	<script>
+	
+
+	function animate(dom,cssRule,time,fn){
+		// debugger
+		Array.prototype.slice.call(this).forEach(function(item){
+			var dom = item;
+			var cs = getComputedStyle(dom),
+			interval = 5,
+			ratio = interval/time;
+
+			var formatCss = {};
+			for(var k in cssRule){
+				formatCss[k] = [
+								cssRule[k],
+								parseFloat(cssRule[k]) - parseFloat(cs[k]),
+								cs[k].match(/^(\d*\.?\d*)([a-z]*)$/)[2]
+								]
+			}
+			// console.log(formatCss)
+			(function(){
+				//终止标记
+				var stop = (time-=interval)<=0;
+
+				for(var i in formatCss){
+					var css = formatCss[i];
+					dom.style[i] = stop?css[0]:(parseFloat(cs[i])+css[1]*ratio + css[2]);
+				}
+				stop&&fn&&fn();
+				!stop&&setTimeout(arguments.callee,interval)
+			})()
+		})
+		
+		
+	}
+
+	
+    jq.fn.animate  = animate;
+	</script>
+</head>
+<body>
+	<div class="test red"></div>
+	<div class="test green"></div>
+	<div class="test blue"></div>
+</body>
+</html>

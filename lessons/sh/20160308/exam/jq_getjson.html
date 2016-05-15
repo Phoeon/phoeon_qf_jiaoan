@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<script src="jquery-2.2.1.min.js"></script>
+</head>
+<body>
+	<script>
+      $.getJSON("json.txt",function(msg){
+		   for(var i=0;i<msg.length;i++){
+		     var item = msg[i];
+		     document.write("<p>姓名："+item.name+"</p>");
+		   }
+		})
+	</script>
+</body>
+</html>

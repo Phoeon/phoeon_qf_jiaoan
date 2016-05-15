@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.test{
+	width: 100px;
+	height: 50px;
+	background: #f00;
+
+}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+	window.onload = function(){
+		//宽度动画
+       var dom = document.querySelector(".test")
+       ,
+
+       widthTo = "500px",
+       timeLast = 5000,
+       interval = 10,
+       ratio = interval / timeLast ,
+       // 小的时间间隔/总动画时间  ==  span*ratio（xxx）(每10毫秒的宽度增量)/宽度差值（widthTo - dom 初始宽度）
+       cs = getComputedStyle(dom)
+       span  =  parseFloat(widthTo) - 0
+       ;
+
+       function go(){
+          var stop = (timeLast -= interval)<=0 ;
+          dom.style.width = stop?widthTo:(parseFloat(cs["width"])+span*ratio) + "px";
+          !stop&&setTimeout(go,interval);
+       }
+
+       go();
+
+       //透明度动画
+       // widthTo = "0",
+       // timeLast = 4000,
+       // interval = 10,
+       // ratio = 10 / timeLast ,
+       // cs = getComputedStyle(dom),
+       // span  =  parseFloat(widthTo) - parseFloat(cs["opacity"])
+       // ;
+
+       // function go(){
+       //    var stop = (timeLast -= interval)<=0 ;
+       //    dom.style.opacity = stop?widthTo:(parseFloat(cs["opacity"])+span*ratio);
+       //    !stop&&setTimeout(go,interval);
+       // }
+
+       // go();
+
+	}
+
+	
+
+	
+    
+	</script>
+</head>
+<body>
+	<div class="test"></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<style>
+			body{position:relative}
+			.dialog {
+			    position:absolute;
+			    width:60%;
+			    height:200px;
+			    left:20%;
+			    border:1px solid #ccc;
+			    border-top-left-radius:5px;
+			    border-top-right-radius:5px;
+			}
+
+			.move-handler {
+			    cursor:move;
+			    height:30px;
+			    background:#eee;
+			}
+			.content-zone{
+			    padding:5px 10px;
+			}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+      $(function(){
+      	  var moveHandler = $(".move-handler");
+      	  moveHandler.mousedown(function(e){
+      	  	var dialog = $(this).parent();
+      	  	$(this).data("pos",{
+      	  		x : e.clientX - dialog.prop("offsetLeft"),
+      	  		y : e.clientY - dialog.prop("offsetTop")
+      	  	})
+      	  })
+      	  $(document).mousemove(function(e){
+      	  	var pos = moveHandler.data("pos");
+      	  	if(pos){
+      	  		moveHandler.parent().css({
+      	  			left : e.clientX - pos.x+"px",
+      	  			top : e.clientY - pos.y +"px"
+      	  		})
+      	  	}
+      	  })
+      	  $(document).mouseup(function(){
+      	  	moveHandler.data("pos",null);
+      	  })
+      })
+	</script>
+</head>
+<body>
+	 <div class="dialog">
+	    <div class="move-handler"></div>
+	    <div class="content-zone">
+	      <label>laksjfddsalkjflkdsa</label>
+	      <label>laksjfddsalkjflkdsa</label>
+	      <label>laksjfddsalkjflkdsa</label>
+	      <label>laksjfddsalkjflkdsa</label>
+	    </div>
+	  </div>
+</body>
+</html>

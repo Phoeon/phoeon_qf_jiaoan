@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.test{
+	width: 100px;
+	height: 50px;
+	background: #f00;
+
+}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+	
+
+	function animate(dom,attr,vTo,time){
+		var cs = getComputedStyle(dom),
+			interval = 5,
+			ratio = interval/time,
+			span  =  parseFloat(vTo) - parseFloat(cs[attr]),
+			//属性单位
+			unit = cs[attr].match(/^(\d*\.?\d*)([a-z]*)$/)[2];
+
+			(function(){
+				//终止标记
+				var stop = (time-=interval)<=0;
+				dom.style[attr] = stop?vTo:(parseFloat(cs[attr])+span*ratio + unit);
+				!stop&&setTimeout(arguments.callee,interval)
+			})()
+	}
+
+	
+    
+	</script>
+</head>
+<body>
+	<div class="test"></div>
+</body>
+</html>

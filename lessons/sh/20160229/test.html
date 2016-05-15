@@ -1,13 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
+body {
+    background: red;
+    font-size: 50px;
+    padding: 30px;
+}
+
+pre {
+    background:#ccc;
+    font-size:15px;
+    border:4px solid green;
+}
 	</style>
 </head>
 <body>
-	
+<h1>jquery <label style="color:blue">base</label> introduce</h1>
+<pre>
+
+	原声
+	     dom  
+	     	 获取元素
+	     	 			document.getElementById
+	     	 					.getElementsByClassName
+	     	 					.getElementsByTagName
+	     	 					.getElementsByName
+
+						jquery 
+						// selector  符合css规则的语法都可以适应
+	     	 			$(selector)
+	     	 操作元素
+	     	 		   var dom = document.getXXX();
+	     	 		       dom.classNanme|id = ""
+	     	 		   //jquery
+	     	 		   var $dom = $(selector);
+	     	 		       $dom  [method  ]
+	     	 样式操作
+	     	 		  var dom = document.getxxx();
+	     	 		  dom.style[css rule] =  "";
+	     	 		  dom.className = ""
+
+	     	 		  //jquery  
+	     	 		  var $dom = $(selector);
+	     	 		  $dom.css("color","red");
+	     	 		  $dom.addClass("d2");
+	     	 		  $dom.removeClass("d2")
+
+	     	 属性操作
+					 var dom = document.getXXX();
+					 dom.value
+					 dom.innerHTML  
+					 //jquery
+					 var $dom = $();
+					 $dom.html()  //获取元素内部内容（包括标签）
+					 $dom.text()  //获取元素内部内容（单纯的文本）
+					 $dom.val()  //获取表单 value
+
+	     bom 
+	     	 window event
+	     	 浏览器navigator 特性监测
+	     	 浏览记录history 的东西
+		 
+	     <!-- RegExp -->
+	     动画效果
+	       		 setTimeout
+	       		 setInterval
+	       		 requestAnimationFrame
+	     ajax  
+</pre>
 </body>
 <script src="jquery-2.2.1.min.js"></script>
+
 </html>

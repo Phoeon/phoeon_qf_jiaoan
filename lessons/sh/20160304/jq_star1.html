@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{height: 100%}
+		body{margin: 0;background: #000;overflow: hidden;}
+		.box{
+			background: #f00;
+			overflow: hidden;
+			width: 500px;
+			height: 300px;
+			position: relative;
+		}
+		.star{color:#ff0;position: absolute;}
+	</style>
+	<script type="text/javascript" src="jquery-2.2.1.min.js"></script>
+	
+	<script>
+	$(function(){
+		$.fn.extend({
+			createStars : function(count){
+				var body = $(this);
+				while(count--){
+					var star = $("<div class='star'>★</div>");
+					var fontSize = 10 + Math.random()*30;
+					star.css({
+						"font-size" : fontSize +"px",
+						left : Math.random()*body.prop("offsetWidth") + "px",
+						top  : Math.random()*body.prop("offsetHeight") + "px"
+					})
+					//
+					// body.fontSize == {KEY :VALUE}
+					star.data("fontSize",fontSize);
+					body.append(star);
+				}
+				//jquery提供的事件代理方案
+
+
+				body.mousemove(function(e){
+					$(".star").each(function(i,star){
+						var $star  = $(star);
+
+						var ex = e.clientX,
+							ey = e.clientY,
+							xspan = ex - $star.prop("offsetLeft"),
+							yspan = ey - $star.prop("offsetTop");
+							var distance = Math.sqrt(xspan*xspan+yspan*yspan);
+							if(distance<=100)
+						$star.css("font-size",
+							+$star.data("fontSize")+100-Math.min(100,distance)+"px") ;
+					})
+				});
+				// body.delegate(".star","mousemove",function(e){
+				// 	var $star  = $(this);
+
+				// 	var ex = e.clientX,
+				// 		ey = e.clientY,
+				// 		xspan = ex - $star.prop("offsetLeft"),
+				// 		yspan = ey - $star.prop("offsetTop");
+				// 		var distance = Math.sqrt(xspan*xspan+yspan*yspan);
+				// 		if(distance<=100)
+				// 	$star.css("font-size",
+				// 		+$star.data("fontSize")+100-Math.min(100,distance)+"px") ;
+				// });
+			}
+		}) 
+		// $("body").createStars(40);
+		$("body").createStars(100);
+	})
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
