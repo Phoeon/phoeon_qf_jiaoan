@@ -60,8 +60,7 @@ var boxWidth = picBox.offsetWidth;
   var width = picBox.offsetWidth;
   if(width-- >0){
        picBox.style.width = width + "px";
-       // picBox.style.textIndent = width-boxWidth + "px";
-       picBox.scrollLeft
+       picBox.style.textIndent = width-boxWidth + "px";
   }else {
        picBox.parentNode.appendChild(picBox);
        picBox.style.width = boxWidth + "px";

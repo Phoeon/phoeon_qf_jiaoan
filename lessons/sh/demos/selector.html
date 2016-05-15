@@ -1,0 +1,167 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,body{height:100%;}
+        body{margin:0;}
+        .box{
+            width: 80%;
+            padding-top:20px;
+            margin: auto;
+        }
+        table {
+    width:100%;
+    table-layout:fixed;
+    border-collapse:collapse;
+    border:1px solid #ccc;
+}
+caption{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background:#eee;
+    padding:10px 0px;
+    text-align: left;
+    text-indent: 30px;
+    font-weight: bold;
+}
+th,td{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    border:1px dotted #666;
+    padding:5px;
+    text-indent:5px;
+    width:10%;
+}
+.index{
+    width:3%;
+    text-align: center;
+}
+
+    </style>
+
+<style type="text/css">
+   
+</style>
+<script src="jquery-2.2.1.min.js"></script>
+<script>
+    window.onload = function(){
+        var addBtn = document.getElementById("addBtn");
+        var removeBtn = document.getElementById("removeBtn");
+        removeBtn.onclick = function(){
+            var cks = document.querySelectorAll("td input:checked");
+            for(var i=0;i<cks.length;i++){
+                var ckBox = cks[i];
+                // ckBox.parentNode.parentNode.outerHTML = ""
+                var tr = ckBox.parentNode.parentNode;
+                tr.parentNode.removeChild(tr);
+            }
+        }
+        addBtn.onclick = function(){
+
+            var tr = document.createElement("tr");
+                for(var i=0;i<6;i++){
+                    var td = document.createElement("td");
+                    if(!i){
+                        td.className="index";
+                        td.innerHTML = "<input type='checkbox'>";
+                    }else 
+                    td.innerHTML = "TD "+i;
+                    tr.appendChild(td);
+                }
+
+            var tbody = document.getElementsByTagName("tbody")[0];
+                tbody.appendChild(tr);
+        }
+
+
+        var checkAll = document.getElementById("checkAll");
+        checkAll.onchange = function(){
+          var ckBoxs = document.getElementsByTagName("input");
+
+          for(var i=1;i<ckBoxs.length;i++){
+             ckBoxs[i].checked = this.checked;
+          }
+        }
+
+    }
+
+    // $(document).ready(function(){
+
+    // })
+    //$(callback)
+    /// 结构 ，dom树 结构生成之后就会触发  <img src="asdfdsaf" 
+    // $(function(){
+        
+    //     var addBtn = $("#addBtn");
+    //     var removeBtn = $("#removeBtn");
+    //     var checkAll = $("#checkAll");
+
+    //     addBtn.click(function(){
+    //         var tr = $("<tr></tr>");
+    //         for(var i=0;i<6;i++){
+    //     var td = (i==0)?$("<td class='index'><input type='checkbox'/></td>"):$("<td>td "+ i+"</td>");
+    //             tr.append(td);
+    //         }
+
+    //         $("tbody").append(tr);
+    //     })
+
+
+    //     checkAll.change(function(){
+    //         $("td input").prop("checked",$(this).prop("checked"));
+    //     })
+
+    //     removeBtn.click(function(){
+    //         $("td input:checked").each(function(i,item){
+    //             $(item).parents("tr").remove();//removeChild
+    //         })
+    //     })
+
+    // })
+
+// 内部标签  || 外链资源  图片 ok以后 触发  
+// iframe 
+// window.onload = function(){
+
+// alert(document.getElementById("checkAll").checked);
+// }
+</script>
+</head>
+<body>
+<div class="box">
+<table>
+    <caption>数据列表</caption>
+    <tbody>
+        <tr>
+                <th class="index">
+                    <input id="checkAll" type="checkbox"/>
+                </th>
+              <th>表头1</th>
+              <th>表头1</th>
+              <th>表头1</th>
+              <th>表头1</th>
+              <th>表头1</th>
+        </tr>
+    </tbody>
+    <tfoot>
+          <tr>
+
+              <td colspan="6">
+                  <button id="addBtn">添加</button>
+                  <button id="removeBtn">移除</button>
+
+              </td>
+          </tr>
+    </tfoot>
+</table>
+  
+
+</div>
+
+</body>
+<script>
+    
+
+</script>
+</html>

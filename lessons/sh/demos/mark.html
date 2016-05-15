@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {display:inline-block;overflow:hidden;}
+		.star{
+		    float:right;
+		    width:50px;
+		    height:50px;
+		    color:#ccc;
+		   margin-left:5px;
+		   font-size:50px;
+		}
+		.star:hover ~ .star,.star:hover
+		{
+		    color:#ff0;
+		}
+		.star.active,.star.active ~ .star{
+		    color:#ff0;
+		}
+	</style>
+	<script>
+	window.onload=function(){
+		 document.onclick = function(e){
+		 	var target = e.target;
+		 	if(target.className.indexOf("star")>-1){
+		 		var activeStar = document.querySelector(".active");
+
+		 		if(activeStar&&activeStar==target){
+		 			activeStar.className = "star" ;	
+		 		}else {
+		 			activeStar&&(activeStar.className = "star");
+		 			target.className = (target.className.indexOf("active")>-1)?"star":"star active";
+
+		 		}
+		 	}
+		 }
+	}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="star">★</div>
+	    <div class="star">★</div>
+	    <div class="star">★</div>
+	    <div class="star">★</div>
+	    <div class="star">★</div>
+  </div>
+</body>
+</html>
