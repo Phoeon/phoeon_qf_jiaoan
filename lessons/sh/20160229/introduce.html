@@ -36,39 +36,108 @@
 			<div class="code">
 				<b>核心方法</b>
 
-					jQuery([sel,[context]])
+					//获取jquery元素  内部包装了原生 dom元素
+					$(selector)
 
+					//context 用来指定查找元素的起始位置
+					jQuery(selector,context)
+
+					//$(callback)
+    				// 结构 ，dom树 结构生成之后就会触发  img src="asdfdsaf" 
 					jQuery(callback)
 
 				<b>对象访问</b>
 
+					//对于内部包装的每一个dom元素进行相同的操作
+					// 具体逻辑 由callback函数体决定
 					each(callback)
+					each(function(){
 
+					  //逻辑代码
+
+
+					})
+
+
+					//获取内部包装的原生dom元素的长度
+					$("h1").length  //属性
+					$("h1").size()  //方法，行为
 					size()
-
 					length
 
+
+
+					//获取jquery元素的选择器 （css规则名）
 					selector
 
+					//获取查找元素的起始位置
 					context
 
+					//获取指定位置（下标）的元素
 					get([index])
 
+					//获取dom元素所在jquery对象集合当中位置（从0开始计算）
 					index([selector|element])
 
 				<b>jquery 扩展插件</b>
 					
-					jQuery.fn.extend(object)
+					//表示jquery对象的原型 == jqery.prototype
+					eg:
+					var obj1 = {
+					  name : "fy",
+					  extend : function(obj){
+					    for(var k in obj){
+					      this[k] = obj[k];
+					    }
+					  }
+					}
+
+					console.log(obj1)
+
+					obj1.extend({age:123});
+
+					console.log(obj1)
+
+					//复制给定参数中的内容到jquery prototype
+					jQuery.fn  
+					//.extend({a:321,b:})
 
 			</div>
 		<label class="toggle">1.2.2 属性</label>
 			<div class="code hidden">
 
 				<b>属性</b>
+					//
+					一下方法都是通过$(selector). 去调用
 
+
+				    dom  内置 的属性 归类为 property
+				    dom  标签级别的属性 归类为 attribute
+
+
+
+					
+					//获取name对应的属性值
 					attr(name)
+					eg 
+					//$("h1:eq(0)").attr("age","akjdsfds") 
+					//设置（添加）$dom元素的属性name 为 value
+					attr(name,value)
 
+					//用来移除元素的属性名为name的属性
 					removeAttr(name)
+
+
+					eg :
+					$("h1:eq(0)").attr("age","1234") //attribute
+					​
+					$("h1:eq(0)").attr("age") //attribute
+					"1234"
+					$("h1:eq(0)").attr("age","akjdsfds") //attribute
+					​
+					$("h1:eq(0)").removeAttr("age") //attribute
+
+
 
 					prop(prop)
 
@@ -76,18 +145,22 @@
 
 				<b>CSS 类</b>
 					
+					//给选中的jquery元素追加类样式
 					addClass(class)
 
+					//移除class样式
 					removeClass(class)
 
+					//如果有，移除，没有，添加class样式
 					toggleClass(class)
 
 				<b>HTML代码/文本/值</b>
 
+					//获取或者重置jquery元素的内部标签和内容
 					html(val)
-
+					//获取或者重置jquery元素的内部文本
 					text(val)
-
+					//获取或者重置jquery表单元素的value
 					val(val)
 
 			</div>
@@ -104,6 +177,7 @@
 					返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。
 
 					position()
+					
 					获取匹配元素相对父元素的偏移。
 					返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。
 
@@ -127,16 +201,24 @@
 		<label for="" class="toggle">1.2.4 选择器</label>
 			<div class="code hidden">
 				<b>基本</b>
-
-					
+	
+					//id  选择器  $("#idName")
 					#id
 					
+					//标签名  选择器  $("div p span")
 					element
 					
+					//类样式  选择器  $(".box")
 					.class
 					
-					*
-					
+					*{
+						margin:0;
+						padding:0;
+					}
+					span,div,p{
+
+					}
+					//多项并列选择   选择器  $("div , p , span")
 					selector1,selector2,selectorN
 
 				<b>层级</b>
@@ -144,96 +226,153 @@
 					
 					ancestor descendant
 					
+					//$("h1 > p") 获取h1内部直接子元素p 
 					parent > child
-					
+					//$("h1 + p") 获取h1紧相邻的兄弟元素p
 					prev + next
-					
+					//$("h1 ~ p")获取h1后别的所有兄弟元素p
 					prev ~ siblings
+
 
 				<b>基本</b>
 
+					//$("h1:first")||$("h1:first-child")
+					//获取下表位置为0的h1
+					:first|:first-child
 					
-					:first
-					
+					//$("h1:not(.h1)") 获取h1元素当中不具有.h1类样式的元素
 					:not(selector)
 					
+					//$("h1:even")获取偶数小标的元素h1  下表从0开始
 					:even
-					
+
+					//$("h1:odd")获取基数小标的元素h1  下表从0开始
 					:odd
 					
+					//$("h1:eq(3)")获取下表为3的h1元素
 					:eq(index)
-					
+
+					//$("h1:gt(3)")获取下表大于3的h1元素
 					:gt(index)
 					
+					//$("h1:last")获取下表为最后一位的h1
 					:last
 					
+					//$("h1:lt(3)")获取下表小于3的h1元素
 					:lt(index)
 					
+					//定位处于焦点状态的元素
 					:focus
 					
 				<b>内容</b>
 
-					
+					//$("h1:empty")  获取空元素
 					:empty
 					
+					//$("pre:has(.abc)")  || $("pre:has(.abcd)")
+					//获取子元素满足has条件的父元素集合
+						eg :
+
+						$("pre:has(.abc)")
+						
+						$("pre:has(.abcd)")
+
 					:has(selector)
 					
+					//$("h1:parent") 获取非空元素
 					:parent
 
 				<b>可见性</b>
 
 					
+					//$("h1:hidden") 获取display为none的隐藏隐藏元素
 					:hidden
 					
+					//$("h1:visible")获取可见元素
 					:visible
 
 				<b>属性</b>
 
-					
+					eg :
+						  css :
+
+						    h1[class]{
+							    color:blue;
+							}
+
+							h1[class=abc]{
+							    color:yellow;
+							}
+
+							jq : 
+
+							$("h1[class]").html("h1[class]")
+							$("h1[class=cde]").html("h1[class=cde]")
+
+					//属性选择器 获取属性名为attribute的元素
 					[attribute]
-					
+					//属性选择器 获取属性名为attribute并且属性值为value的元素
 					[attribute=value]
 					
 
 				<b>子元素</b>
 
 					
+					//$("h1:first-child") 获取h1 位于父元素内部第一个位置的h1 
 					:first-child
 					
+					//$("h1:last-child") 获取h1 位于父元素内部最后一个位置的h1
 					:last-child
+
 
 				<b>表单</b>
 					
-					:input
+
+					 //$("input:input")  获取表单类型为  input 的元素
+					 :input
 					
-					:text
+					 //$("input:text")  获取表单类型为  text 的元素
+					 :text
 					
-					:password
+					 //$("input:password")  获取表单类型为  password 的元素
+					 :password
 					
-					:radio
+					 //$("input:radio")  获取表单类型为  radio 的元素
+					 :radio
 					
-					:checkbox
+					 //$("input:checkbox")  获取表单类型为  checkbox 的元素
+					 :checkbox
 					
-					:submit
+					 //$("input:submit")  获取表单类型为  submit 的元素
+					 :submit
 					
-					:image
+					 //$("input:image")  获取表单类型为  image 的元素
+					 :image
 					
-					:reset
+					 //$("input:reset")  获取表单类型为  reset 的元素
+					 :reset
 					
-					:button
+					 //$("input:button")  获取表单类型为  button 的元素
+					 :button
 					
-					:file
+					 //$("input:file")  获取表单类型为  file 的元素
+					 :file
 					
-					:hidden
+					 //$("input:hidden")  获取表单类型为  hidden 的元素
+					 :hidden
 
 				<b>表单对象属性</b>
 					
+					// $(":enabled")  获取enabled的元素
 					:enabled
-					
+
+					// $(":disabled")  获取disabled的元素
 					:disabled
-					
+
+					// $(":checked")  获取checked的元素 针对于单选和复选框
 					:checked
-					
+
+					// $(":selected")  获取selected的元素 获取被选中的select 元素下的option
 					:selected
 			
 			</div>
@@ -241,32 +380,55 @@
 			<div class="code hidden">
 				<b>内部插入</b>
 					
+					//$("body").append("<h1 style='color:red'>i am h1</h1>")
+					//给body元素内部追加h1元素
 					append(content|fn)
 					
+					//h1.appendTo($("body"))
+					//把h1追加到body内部
 					appendTo(content)
 					
+					//$("body").prepend("<p>prepend p </p>");
+					//给body元素开始标签之后添加p元素
 					prepend(content|fn)
 					
+					//$("<h1>h1 prependTo</h1>").prependTo($("body"))
+					//把h1追加到body的开始标签之后
 					prependTo(content)
 					
 				<b>外部插入</b>
-					
+					//$(".box").after("<button>after</button>")
+					//在已经存在的box元素之后添加兄弟节点button
 					after(content|fn)
 					
+					//$(".box").before("<button>before</button>")
+					////在已经存在的box元素之前添加兄弟节点button
 					before(content|fn)
-					
+
+					//$("<button>insertAfter</button>").insertAfter($(".box"))
+					//把新的button元素添加到兄弟节点box之后
 					insertAfter(content)
-					
+
+					//$("<button>insertBefore</button>").insertBefore($(".box"))
+					//把新的button元素添加到兄弟节点box之前
 					insertBefore(content)
 					
 				<b>删除</b>
 					
+					//$(".box").empty()
+					//清空选中元素的内容 （innerHTML）
 					empty()
 					
+					//$("button").remove()
+					//把选中元素本身移除
 					remove()
 					
 				<b>复制</b>
-					
+					//$("#wrap").clone()
+					// ===
+					//isDeepCopy 是否深度复制 逻辑布尔值
+					//wrap.cloneNode(isDeepCopy)
+					//复制原生
 					clone(isDeep)
 
 			</div>
@@ -274,42 +436,68 @@
 			<div class="code hidden">
 				
 				<b>过滤</b>
-				
+					//过滤是指在初步选择的元素集合当中进行筛选
+
+					// $("h1").eq(3) 在已经选择的h1集合当中寻找指定下表3的h1元素
 					eq(index)
-				
+					
+					// $("h1").first() 在已经选择的h1集合当中寻找指定下表0的h1元素
 					first()
 				
+					// $("h1").last() 在已经选择的h1集合当中寻找最后一位h1元素
 					last()
 				
+					// $("h1").hasClass("blue")
+					//判断在已经选择的h1集合元素当中是否存在包含blue类样式的元素
 					hasClass(class)
 				
+					// $("h1").filter(selector) 
+					//在已经选择的h1集合当中寻找包含指定css选择器的h1元素
 					filter(expr|obj|ele|fn)
-
+					
+					//同选择器  :has
 					has(expr|ele)
-				
+					
+					//同选择器  :not
 					not(expr|ele|fn)
 				
 				
 				<b>查找</b>
 				
+					//$(".wrap").children()
+					//获取选中元素的直接子元素集合
 					children([expr])
 				
+					//$("body").find(".item")
+					//获取选中元素所有满足.item 的子和孙元素
 					find(e|o|e)
 				
+					//$(".item:eq(0)").next() 获取选择元素的下一个兄弟节点
 					next([expr])
 				
-					nextall([expr])
-				
+					//$(".item:eq(0)").nextAll() 获取选择元素的接下来的所有兄弟节点
+					nextAll([expr])
+					
+					//$(".item:eq(0)").offsetParent() 
+					//获取选择元素的直接父元素或者
+					//根元素（配合css定位）节点
 					offsetParent()
 				
+					//$(".item:eq(0)").parent() //获取选择元素的直接父元素
 					parent([expr])
-				
+					
+
+					//$(".item:eq(0)").parent() //获取选择元素的所有父元素集合
 					parents([expr])
-				
+					
+					//$(".item:eq(0)").next() 获取选择元素的前一个兄弟节点
 					prev([expr])
 				
-					prevall([expr])
-				
+					//$(".item:eq(0)").prevAll() 获取选择元素的之前的所有兄弟节点
+					prevAll([expr])
+					
+					//$(".item:eq(0)").nextAll() 
+					//获取选择元素的之前和之后（所有）的所有兄弟节点
 					siblings([expr])
 			
 			</div>
@@ -318,74 +506,154 @@
 					
 				<b>页面载入</b>
 					
+					//保证安全操作dom元素
+					$(function(){
+					   //逻辑代码
+					})
+
+					$(document).ready(function(){
+
+					})
 					ready(fn)
 					
 				<b>事件处理</b>
 					
+					//document.onclick = fn
+					//document.attachEvent("onclick",fn)
+					//document.addEventListener("click",fn,useCapture)
+
+					//document.onclick = null;
+					//document.detachEvent("onclick")
+					//document.removeEventListener()
+
+
+					//$("body").on("click",function(){alert(123)})
+					//$("body").on("click",function(){alert(456)})
+					//给body绑定点击事件 绑定结果会累加
 					on(eve,[sel],[data],fn)1.7+
 					
+					//解绑事件 $("body").off("click")
 					off(eve,[sel],[fn])1.7+
 					
+					//$("body").bind("click",function(){alert(123)})
+					//$("body").bind("click",function(){alert(456)})
+					//给body绑定点击事件 绑定结果会累加
 					bind(type,[data],fn)
 					
+					//解绑事件  $("body").unbind("click")
 					unbind(t,[d|f])
 					
 				<b>事件委派</b>
-					
+					//等同于dom原生的事件代理
+					//$("body").delegate("span","click",fn)
+					//body代理body里边的span标签的点击事件
 					delegate(sel,etype,fn)
-					
+					//接触事件代理
 					undelegate() 
 					
 				<b>事件切换</b>
 					
+					//$("body").hover(enterFn,leaveFn)
+					//同时绑定mouseenter事件，和mouseleave事件
 					hover([over,]out)
 					
 				<b>事件 ------ 对应于 d o m  事件</b>
 					
+					//使用方法
+					$("input").blur(fn)
+					//input表单失去焦点的时候，触发fn函数
 					blur([[data],fn])
 					
+					//$("input").change(fn)
+					//input表单里边的值改变的时候
 					change([[data],fn])
 					
+					//$("body").click(fn)
+					//当body被点击的时候
 					click([[data],fn])
 					
+					//$("body").dblclick(fn)
+					//当body被双击的时候
 					dblclick([[data],fn])
 					
+					//ajax 
+					//图片
+					//css
+					//js
+					//等等文件加载失败的时候
 					error([[data],fn])
 					
+					//$("input").focus(fn)
+					//当input元素聚焦的时候
 					focus([[data],fn])
 					
+					//$("input").focusin(fn)
+					//当鼠标聚焦进入表单的时候
 					focusin([data],fn)
 					
+					//$("input").focusout(fn)
+					//当表单失去焦点的时候,于focusin相对
 					focusout([data],fn)
 					
+					//$(document).keydown(fn)
+					//当键盘被按下的那一刻
 					keydown([[data],fn])
-					
+
+					//$(document).keypress(fn)
+					//当键盘处于按下状态的时候
 					keypress([[data],fn])
 					
+					//$(document).keyup(fn)
+					//当键盘抬起的时候
 					keyup([[data],fn])
 					
+					//$(document).mousedown(fn)
+					//当鼠标按下的一刻
 					mousedown([[data],fn])
 					
+					//$("div").mouseenter(fn)
+					//当鼠标进入div的那一刻
 					mouseenter([[data],fn])
 					
+					//$("div").mouseleave(fn)
+					//当鼠标离开div的那一刻
 					mouseleave([[data],fn])
 					
+					//$("div").mousemove(fn)
+					//当鼠标在div上移动的时候
 					mousemove([[data],fn])
 					
+					//$("div").mouseout(fn)
+					//当鼠标离开div以后
 					mouseout([[data],fn])
 					
+					//$("div").mouseover(fn)
+					//当鼠标在div之上的时候
 					mouseover([[data],fn])
 					
+					//$(document).mouseup(fn)
+					//当鼠标按键抬起的时候
 					mouseup([[data],fn])
 					
+					//$(window).resize(fn)
+					//当窗口尺寸改变的时候
 					resize([[data],fn])
 					
+					//$(window)||$("div").scroll(fn)
+					//当窗体或者元素发生滚动的时候
 					scroll([[data],fn])
 					
+					$(input).select(fn)
+					//当表单中的内容被鼠标选择的时候
 					select([[data],fn])
 					
+					//当type=submit按钮被点击的时候
+					//该方法属于form标签
+					//$("form").submit(fn)
 					submit([[data],fn])
 					
+
+					//???????
 					unload([[data],fn])
 
 			</div>
@@ -394,28 +662,66 @@
 					
 				<b>基本</b>
 					
+					//$(".test").show()
+					//不带参数显示元素 display ：block
+					//$(".test").show(time,fn)
+					//time 动画的时间，fn 动画结束后的回调
 					show([s,[e],[fn]])
 					
+					//$(".test").hide()
+					//不带参数隐藏元素 display none
+					//$(".test").hide(time,fn)
+					//time 动画的时间，fn 动画结束后的回调
 					hide([s,[e],[fn]])
 					
 				<b>滑动</b>
 					
+					//$(".test").slideDown()
+					//从上而下显示元素，改变元素的height样式属性 height : 自定义
+					//$(".test").slideDown(time,fn)
+					//time 动画的时间，fn 动画结束后的回调
+
 					slideDown([s],[e],[fn])
 					
+					//$(".test").slideUp()
+					//从下而上显示元素，改变元素的height样式属性 height : 0px
+					//$(".test").slideUp(time,fn)
+					//time 动画的时间，fn 动画结束后的回调
+
 					slideUp([s,[e],[fn]])
 					
+					//切换以上俩个滑动方法
+					//$(".test").slideToggle()
+					//$(".test").slideToggle(time,fn)
+
 					slideToggle([s],[e],[fn])
 					
 				<b>淡入淡出</b>
-					
+					增加元素的透明度opacity
+					//$(".test").fadeIn()
+					//$(".test").fadeIn(time,fn)
+					//time 动画的过渡时间 ，动画结束后的回调
 					fadeIn([s],[e],[fn])
-					
+
+
+					降低元素的透明度opacity
+					//$(".test").fadeOut()
+					//$(".test").fadeOut(time,fn)
+					//time 动画的过渡时间 ，动画结束后的回调
 					fadeOut([s],[e],[fn])
 					
+					//切换以上俩个淡入 淡出方法的结果
+					$(".test").fadeToggle()
+					$(".test").fadeToggle(time,fn)
 					fadeToggle([s,[e],[fn]])
 					
 				<b>自定义</b>
 					
+					//多属性动画
+					//$(".test").animate({width:"100px",height:"100px"},time,fn)
+					//参数一 css规则对象
+					//参数二 动画过渡时间
+					//参数三 动画结束后的回调
 					animate(p,[s],[e],[fn])1.8*
 					
 			</div>
@@ -423,7 +729,7 @@
 			<div class="code hidden">
 					
 				<b>ajax 请求</b>
-					
+					//
 					$.ajax(url,[settings])
 
 						eg:

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+body{position:relative}
+.dialog {
+    position:absolute;
+    width:60%;
+    height:200px;
+    left:20%;
+    border:1px solid #ccc;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+.move-handler {
+    cursor:move;
+    height:30px;
+    background:#eee;
+}
+.content-zone{
+    padding:5px 10px;
+}
+	</style>
+	<script>
+
+window.onload = function(){
+	var moveHandler = document.querySelector(".move-handler");
+      moveHandler.onmousedown = function(e){
+        var dialog = this.parentNode;
+        this.pos = {
+           x : e.clientX - dialog.offsetLeft,
+           y : e.clientY - dialog.offsetTop
+        }
+      }
+
+      document.onmousemove = function(e){
+         if(moveHandler.pos){
+            var dialog = moveHandler.parentNode;
+            dialog.style.left = e.clientX - moveHandler.pos.x + "px";
+            dialog.style.top = e.clientY - moveHandler.pos.y + "px";
+         }
+      }
+      document.onmouseup = function(){moveHandler.pos=null}
+}
+	</script>
+</head>
+<body>
+	<div class="dialog">
+    <div class="move-handler"></div>
+    <div class="content-zone">
+      <label>laksjfddsalkjflkdsa</label>
+      <label>laksjfddsalkjflkdsa</label>
+      <label>laksjfddsalkjflkdsa</label>
+      <label>laksjfddsalkjflkdsa</label>
+    </div>
+  </div>
+</body>
+</html>

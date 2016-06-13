@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html,body {height:100%}
+body{margin:0;background: -webkit-linear-gradient(287deg,#aaa,#000,#000);overflow:hidden;}
+
+.item{color:#ff0;position:absolute;};
+
+
+
+.moon {
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#ff0;
+    position:absolute;
+    top:100px;
+    left:100px;
+}
+
+.moon {
+    width: 100px;
+    height:100px;
+    border-radius:50%;
+    background: #ff0;
+    position:absolute;
+    top:100px;
+    left:100px;
+    box-shadow: 0px 0px 100px 40px #ff0;
+}
+	</style>
+</head>
+<body>
+	<div class="moon"></div>
+</body>
+<script>
+	(function(){
+		  
+		  var body = document.body;
+		  var items = [];
+		  !function go(){
+		　　　　　for(var i=0;i<50;i++){
+		            var item = document.createElement("div");
+		            item.innerHTML = "★";
+		            item.className = "item";
+		            items.push(item);
+
+		            item.style.top = body.offsetHeight*Math.random()+"px";
+		            item.style.left = body.offsetWidth*Math.random()+"px";
+		            var fontSize = 10+Math.random()*40;
+		            item.style.fontSize = fontSize;
+		            item.fontSize__ = fontSize;
+		            body.appendChild(item);
+		         }
+		　}();
+
+		  document.onmousemove = function(e){
+		    var ex = e.clientX,
+		        ey = e.clientY;
+
+		    for(var i=0;i<items.length;i++){
+		      var item = items[i];
+		      var xp = ex - item.offsetLeft,
+		          yp = ey - item.offsetTop;
+
+		      var dis = Math.sqrt(xp*xp+yp*yp);
+
+		      item.style.fontSize = item.fontSize__+100-Math.min(100,dis) + "px";
+		      
+		    }
+		  }
+  
+})()
+</script>
+</html>

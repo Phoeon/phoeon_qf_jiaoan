@@ -22,7 +22,9 @@
 		    cursor:pointer
 		}
 		.items{
-			/*transition:all 0.3s;*/
+
+      overflow: hidden;
+
 		}
 	</style>
 </head>
@@ -117,6 +119,7 @@
 
 
 //事件代理
+
 // document.getElementsByClassName("wrap")[0].addEventListener("click",function(e){
 //   e||(e=window.event);
 //   var target = e.target||e.srcElement;
@@ -129,15 +132,46 @@
 //   }
 // },false)
 
+document.getElementsByClassName("wrap")[0].addEventListener("click",function(e){
+  e||(e=window.event);
+  var target = e.target||e.srcElement;
+
+  if(target.className == "group-head"){
+     var sibling = target.nextElementSibling,
+         display = sibling.style.display;
+
+     // sibling.style.display = display=="none"?"block":"none";
+     animate(sibling[0],"height","0px",500);
+  }
+},false)
 
 
 //jquery version
+
+function animate(dom,attr,vTo,time){
+    var cs = getComputedStyle(dom),
+      interval = 5,
+      ratio = interval/time,
+      span  =  parseFloat(vTo) - parseFloat(cs[attr]),
+      //属性单位
+      unit = cs[attr].match(/^(\d*\.?\d*)([a-z]*)$/)[2];
+
+      (function(){
+        //终止标记
+        var stop = (time-=interval)<=0;
+        dom.style[attr] = stop?vTo:(parseFloat(cs[attr])+span*ratio + unit);
+        !stop&&setTimeout(arguments.callee,interval)
+      })()
+  }
 
 // $(".group .group-head").click(function(){
 //   var sibling = $(this).next(),
 //       display = sibling.css("display") ;
 
 //   sibling.css("display",(display=="none")?"block":"none");
+
+//   // animate(sibling[0],"height","0px",500);
+
 // })
 </script>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+	window.onload = function(){
+		var script = document.createElement("script");
+		script.src="http://192.168.86.94:85/text.txt";
+		script.type="text/javascript";
+		document.body.appendChild(script);
+	}
+
+	 function go(arr){
+	 	var str = [];
+	 	for(var i=0;i<arr.length;i++){
+	 		str.push("<hr>"+arr[i])
+	 	}
+
+	 	document.body.innerHTML = str.join("")
+	 }
+	</script>
+	<script src=""></script>
+</head>
+<body>
+	website 1
+</body>
+</html>

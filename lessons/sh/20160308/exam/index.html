@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-2.2.1.min.js"></script>
+	<style>
+		textarea#area {
+		    width: 100%;
+		    height: 300px;
+		}
+	</style>
+	<script>
+	$(function(){
+		$("#load").click(function(){
+			$.ajax({
+				url : "text.txt",
+				type : "get",
+				success : function(msg){
+                   $("#area").val(msg);
+				}
+			})
+		})
+	})
+     // window.onload = function function_name (argument) {
+     // 	document.querySelector("#load").onclick = function(){
+     // 		loadData();
+     // 	}
+     // 	function loadData(){
+	    //  	var xhr = new XMLHttpRequest();
+	    //  	    xhr.onreadystatechange = function(){
+	    //  	    	if(xhr.readyState==4&&xhr.status==200){
+	    //  	    		document.getElementById("area").value = xhr.responseText;
+	    //  	    	}
+	    //  	    }
+	    //  	    xhr.open("get","text.txt",true);
+	    //  	    xhr.send();
+     // 	}
+     // }
+	</script>
+</head>
+<body>
+<textarea name="" id="area" cols="30" rows="10"></textarea>
+<button id="load">GO</button>
+</body>
+</html>

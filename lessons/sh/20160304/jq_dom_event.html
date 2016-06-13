@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		overflow: auto;
+	}
+	.editor{
+		width:300px;
+		height:200px;
+		border:1px solid #ccc;
+	}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+        $(function(){
+        	//blur
+        	document.querySelector("#ip_blur").onblur = function(){
+        		this.style.background = "red";
+        	}
+        	// $("#ip_blur").blur(function(){
+        	// 	this.style.border="1px solid green";
+        	// 	this.style.background = "green";
+        	// })
+
+
+            //keyup
+            // $("#ip_keyup").keyup(function(){
+            // 	$("#ip_blur").val(this.value);
+            // })
+	        document.querySelector("#ip_keyup").onkeyup=function(){
+	        	if(this.value == "12345"){
+	        		document.querySelector("#ip_blur").value = this.value;
+	        	}
+	        }
+
+
+
+	        //dblclick
+	        $(".editor").dblclick(function(){
+	        	this.contentEditable = true;
+	        })
+
+	        //focus
+
+	        $("#ip_focus").focus(function(){
+	        	this.style.border="3px solid red";
+	        })
+	        $("#ip_focus").blur(function(){
+	        	this.style.border="3px solid #ff0";
+	        })
+
+	        //focusin
+
+	        $("#ip_focus_in").focusin(function(){
+	        	this.style.background = "#69f";
+	        })
+
+	        //focusout
+	        $("#ip_focus_out").focusout(function(){
+	        	this.style.background = "#f0f";
+	        })
+
+
+		
+			//keydown
+			$("#ip_keydown").keydown(function(){
+				alert("keydown")
+			})
+
+			//keypress
+			$("#ip_keypress").keypress(function(){
+				alert("keypress")
+			})
+
+			//keyup
+			$("#ip_keyup").keyup(function(){
+				alert("keyup")
+			})
+
+		
+			$("#keyevent").keyup(function(){console.log("keyup")})
+			$("#keyevent").keydown(function(){console.log("keydown")})
+			$("#keyevent").keypress(function(){console.log("keypress")})
+
+			//resize
+			window.onresize = function(){
+				document.querySelector("#ip_blur").value = Math.random();
+			}
+			$(window).resize(function(){
+				console.log(Math.random());
+			})
+
+
+			// $("#ip_blur").resize(function(){
+			// 	this.value = Math.random();
+			// })
+			
+			//scroll
+			// $(window).scroll(function(){
+				
+			// 	document.querySelector("#ip_blur").value = Math.random();
+
+			// })
+			
+			// ？？？？？？？？？？？？？？？？？？？？？body scroll 不起作用
+			// $("body").scroll(function(){
+			// 	// alert()
+			// 	window.alert(Math.random())
+			// })
+
+			// document.body.onscroll = function(){
+			// }
+
+			//select
+			//select 用于表单元素的选中触发
+			$("#ip_blur").select(function(){
+				alert(Math.random());
+			})
+
+			//同上
+			$("#ip_select").blur(function(){
+				this.select();
+			})
+
+			//submit 该方法属于form 标签 dom
+			//当该form标签内部的type为submit的按钮input被点击的时候
+			//触发该回调
+			$("#form").submit(function(){
+				alert("submit");
+			})
+
+			window.onbeforeunload = function(){alert("unload")}
+        })
+
+        function errorHandler(){
+        	// alert("出错了")
+        	// debugger
+        	// console.log(arguments)
+        }
+	</script>
+</head>
+<body>
+	<pre>
+		
+		<h1>blur</h1>
+		<textarea name="" id="tt_select" cols="30" rows="10"></textarea>
+		<textarea id="ip_blur"></textarea>
+		<h1>keyup</h1>
+		<input type="text" id="ip_keyup">
+		<h1>dblclick</h1>
+		<div class="editor"></div>
+		<h1>error</h1>
+		<img src="asfddsa" onerror = "errorHandler()"/>
+		<h1>focus</h1>
+		<input type="text" id="ip_focus">
+		<h1>focusin</h1>
+		<input type="text" id="ip_focus_in">
+		<h1>focusout</h1>
+		<input type="text" id="ip_focus_out">
+		<h1>keydown</h1>
+		<input type="text" id="ip_keydown">
+		<h1>keypress</h1>
+		<input type="text" id="ip_keypress">
+		<h1>keyup</h1>
+		<input type="text" id="ip_keyup">
+		<h1>key event 优先级别</h1>
+		<input type="text" id="keyevent">
+ 	</pre>
+ 	<div class="overflow" style="height:300px;overflow:auto;border:1px solid pink">
+ 		<div class="content" style="height:500px"></div>
+ 	</div>
+
+ 	<h1>select</h1>
+ 	<input type="text" id="ip_select">
+
+ 	<form action="" id="form"  >
+
+ 	input name value 
+ 	input  vaue
+ 	input value
+ 	<input type="submit" id="submitBtn" value="GO">
+ 	</form>
+</body>
+</html>

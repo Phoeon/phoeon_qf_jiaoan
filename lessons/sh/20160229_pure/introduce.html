@@ -1,0 +1,502 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>introduce disabled</title>
+	<link rel="stylesheet" href="../../phoeon_qf_tpl/content.css" type="text/css">
+</head>
+<body>
+<pre spellcheck="false">
+
+	<!-- jquery-2.2.1.min.js -->
+	<!-- http://hemin.cn/jq/ 在线帮助文档 -->
+	<h1>1.0 jquery 获取</h1>
+		<label for="" class=""> https://jquery.com/download/</label>
+	<h1 class="">1.1 jquery 介绍</h1><div class="quote">
+
+		<label> jQuery 库包含以下特性：</label>
+
+			<label> HTML 元素选取</label>
+
+			<label> HTML 元素操作</label>
+
+			<label> CSS 操作</label>
+
+			<label> HTML 事件函数</label>
+
+			<label> JavaScript 特效和动画</label>
+
+			<label> HTML DOM 遍历和修改</label>
+
+			<label> AJAX</label>
+
+		</div>
+	<h1 class="toggle">1.2 jquery 内容</h1><div class="quote">
+		<label class="toggle">1.2.1 jquery 核心</label>
+			<div class="code">
+				<b>核心方法</b>
+
+					jQuery([sel,[context]])
+
+					jQuery(callback)
+
+				<b>对象访问</b>
+
+					each(callback)
+
+					size()
+
+					length
+
+					selector
+
+					context
+
+					get([index])
+
+					index([selector|element])
+
+				<b>jquery 扩展插件</b>
+					
+					jQuery.fn.extend(object)
+
+			</div>
+		<label class="toggle">1.2.2 属性</label>
+			<div class="code hidden">
+
+				<b>属性</b>
+
+					attr(name)
+
+					removeAttr(name)
+
+					prop(prop)
+
+					removeProp(name)
+
+				<b>CSS 类</b>
+					
+					addClass(class)
+
+					removeClass(class)
+
+					toggleClass(class)
+
+				<b>HTML代码/文本/值</b>
+
+					html(val)
+
+					text(val)
+
+					val(val)
+
+			</div>
+		<label for="" class="toggle">1.2.3 css</label>
+			<div class="code hidden">
+				<b>CSS</b>
+
+					css(name|pro|[,val|fn])
+
+				<b>位置</b>
+					
+					offset()
+					获取匹配元素在当前视口的相对偏移。
+					返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。
+
+					position()
+					获取匹配元素相对父元素的偏移。
+					返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。
+
+					scrollTop([val])
+					获取匹配元素相对滚动条顶部的偏移。
+					此方法对可见和隐藏元素均有效。
+
+					scrollLeft([val])
+					获取匹配元素相对滚动条左边的偏移。
+					此方法对可见和隐藏元素均有效。
+
+				<b>尺寸</b>
+					
+					height([val|fn])
+					取得第一个匹配元素当前计算的高度值（px）。
+					
+					width([val|fn])
+					取得第一个匹配元素当前计算的宽度值（px）。
+
+			</div>
+		<label for="" class="toggle">1.2.4 选择器</label>
+			<div class="code hidden">
+				<b>基本</b>
+
+					
+					#id
+					
+					element
+					
+					.class
+					
+					*
+					
+					selector1,selector2,selectorN
+
+				<b>层级</b>
+
+					
+					ancestor descendant
+					
+					parent > child
+					
+					prev + next
+					
+					prev ~ siblings
+
+				<b>基本</b>
+
+					
+					:first
+					
+					:not(selector)
+					
+					:even
+					
+					:odd
+					
+					:eq(index)
+					
+					:gt(index)
+					
+					:last
+					
+					:lt(index)
+					
+					:focus
+					
+				<b>内容</b>
+
+					
+					:empty
+					
+					:has(selector)
+					
+					:parent
+
+				<b>可见性</b>
+
+					
+					:hidden
+					
+					:visible
+
+				<b>属性</b>
+
+					
+					[attribute]
+					
+					[attribute=value]
+					
+
+				<b>子元素</b>
+
+					
+					:first-child
+					
+					:last-child
+
+				<b>表单</b>
+					
+					:input
+					
+					:text
+					
+					:password
+					
+					:radio
+					
+					:checkbox
+					
+					:submit
+					
+					:image
+					
+					:reset
+					
+					:button
+					
+					:file
+					
+					:hidden
+
+				<b>表单对象属性</b>
+					
+					:enabled
+					
+					:disabled
+					
+					:checked
+					
+					:selected
+			
+			</div>
+		<label for="" class="toggle">1.2.5 文档处理</label>
+			<div class="code hidden">
+				<b>内部插入</b>
+					
+					append(content|fn)
+					
+					appendTo(content)
+					
+					prepend(content|fn)
+					
+					prependTo(content)
+					
+				<b>外部插入</b>
+					
+					after(content|fn)
+					
+					before(content|fn)
+					
+					insertAfter(content)
+					
+					insertBefore(content)
+					
+				<b>删除</b>
+					
+					empty()
+					
+					remove()
+					
+				<b>复制</b>
+					
+					clone(isDeep)
+
+			</div>
+		<label for="" class="toggle">1.2.6 筛选</label>
+			<div class="code hidden">
+				
+				<b>过滤</b>
+				
+					eq(index)
+				
+					first()
+				
+					last()
+				
+					hasClass(class)
+				
+					filter(expr|obj|ele|fn)
+
+					has(expr|ele)
+				
+					not(expr|ele|fn)
+				
+				
+				<b>查找</b>
+				
+					children([expr])
+				
+					find(e|o|e)
+				
+					next([expr])
+				
+					nextall([expr])
+				
+					offsetParent()
+				
+					parent([expr])
+				
+					parents([expr])
+				
+					prev([expr])
+				
+					prevall([expr])
+				
+					siblings([expr])
+			
+			</div>
+		<label for="" class="toggle">1.2.7 jquery 事件</label>
+			<div class="code hidden">
+					
+				<b>页面载入</b>
+					
+					ready(fn)
+					
+				<b>事件处理</b>
+					
+					on(eve,[sel],[data],fn)1.7+
+					
+					off(eve,[sel],[fn])1.7+
+					
+					bind(type,[data],fn)
+					
+					unbind(t,[d|f])
+					
+				<b>事件委派</b>
+					
+					delegate(sel,etype,fn)
+					
+					undelegate() 
+					
+				<b>事件切换</b>
+					
+					hover([over,]out)
+					
+				<b>事件 ------ 对应于 d o m  事件</b>
+					
+					blur([[data],fn])
+					
+					change([[data],fn])
+					
+					click([[data],fn])
+					
+					dblclick([[data],fn])
+					
+					error([[data],fn])
+					
+					focus([[data],fn])
+					
+					focusin([data],fn)
+					
+					focusout([data],fn)
+					
+					keydown([[data],fn])
+					
+					keypress([[data],fn])
+					
+					keyup([[data],fn])
+					
+					mousedown([[data],fn])
+					
+					mouseenter([[data],fn])
+					
+					mouseleave([[data],fn])
+					
+					mousemove([[data],fn])
+					
+					mouseout([[data],fn])
+					
+					mouseover([[data],fn])
+					
+					mouseup([[data],fn])
+					
+					resize([[data],fn])
+					
+					scroll([[data],fn])
+					
+					select([[data],fn])
+					
+					submit([[data],fn])
+					
+					unload([[data],fn])
+
+			</div>
+		<label for="" class="toggle">1.2.8 jquery ui效果</label>
+			<div class="code hidden">
+					
+				<b>基本</b>
+					
+					show([s,[e],[fn]])
+					
+					hide([s,[e],[fn]])
+					
+				<b>滑动</b>
+					
+					slideDown([s],[e],[fn])
+					
+					slideUp([s,[e],[fn]])
+					
+					slideToggle([s],[e],[fn])
+					
+				<b>淡入淡出</b>
+					
+					fadeIn([s],[e],[fn])
+					
+					fadeOut([s],[e],[fn])
+					
+					fadeToggle([s,[e],[fn]])
+					
+				<b>自定义</b>
+					
+					animate(p,[s],[e],[fn])1.8*
+					
+			</div>
+		<label for="" class="toggle">1.2.9 jquery ajax</label>
+			<div class="code hidden">
+					
+				<b>ajax 请求</b>
+					
+					$.ajax(url,[settings])
+
+						eg:
+
+							$.ajax({
+
+							   type: "POST",
+
+							   url: "some.xxx",
+
+							   data: "name=John&location=Boston",
+		
+							   success: function(msg){
+
+							     alert( "Data Saved: " + msg );
+
+							   },
+
+							   error : function(){}
+
+							});
+					
+					load(url,[data],[callback])
+						
+						eg :
+
+							$ele.load(url);
+
+					$.get(url,[data],[fn],[type])
+						
+						eg :
+
+							$.get("test.php", function(data){
+							  alert("Data Loaded: " + data);
+							});
+
+					$.getJSON(url,[data],[fn])
+					
+						eg :
+
+							$.get("test.php", function(data){
+							  alert("Data Loaded: " + data);
+							});
+							
+					$.getScript(url,[callback])
+						
+						eg :
+
+						$.getScript("test.js", function(){
+						  alert("Script loaded and executed.");
+						});
+
+					$.post(url,[data],[fn],[type])
+					
+						eg : 
+
+						$.post("test.php", { name: "John", time: "2pm" },
+						   function(data){
+						     alert("Data Loaded: " + data);
+						   });
+
+					
+				<b>其它</b>
+					
+					serialize()
+					
+					serializearray()
+			</div>
+	</div>	
+
+</pre>
+
+</body>
+
+<script src="../../phoeon_qf_tpl/content.js"></script>
+</html>

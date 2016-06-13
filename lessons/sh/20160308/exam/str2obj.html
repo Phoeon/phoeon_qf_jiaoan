@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-2.2.1.min.js"></script>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	$.ajax({
+		   url : "abc.txt",
+		   //dataType : "json",
+		   success : function(msg){
+		      //way1
+		      //var arr = JSON.parse(msg);
+		      //way2
+		      //var arr = eval(msg);
+		      //Function
+		      //way3
+		      var arr = Function("return "+msg)();
+		      for(var i=0;i<arr.length;i++){
+		         document.write("<hr/>"+(arr[i]*2));
+		      }
+		      //console.log(msg,typeof msg,msg.constructor)
+		   }
+		})
+</script>
+</html>

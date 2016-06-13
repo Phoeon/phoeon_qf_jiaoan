@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{height:100%;}
+		body{margin:0;overflow: hidden;background: #000}
+		.star{
+			position: absolute;
+			color:#ff0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			//创建星星
+			var body = document.body;
+			var stars = [];
+			function createStars(count){
+				for(var i=0;i<(count||30);i++){
+					var star = document.createElement("div");
+					star.innerHTML = "★";
+					star.className = "star";
+					star.style.left = Math.random()*body.offsetWidth + "px";
+					star.style.top  = Math.random()*body.offsetHeight + "px";
+					var fontSize = 10+Math.random()*30;
+					star.style.fontSize = fontSize+"px";
+					star.fontSize__  =  fontSize ;
+					body.appendChild(star);
+					stars.push(star);
+				}
+			}
+
+			createStars(40);
+
+			document.onmousemove = function(e){
+				e||(e=window.event);
+				var ex = e.clientX ,
+				    ey = e.clientY ;
+				
+				for(var i=0;i<stars.length;i++){
+					var star = stars[i];
+
+					var xspan = ex - star.offsetLeft ,
+					    yspan = ey - star.offsetTop ,
+					    distance = Math.sqrt(xspan*xspan+yspan*yspan);
+
+					star.style.fontSize =  star.fontSize__ + 
+										   100 - Math.min(100,distance) + "px";
+				}   
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

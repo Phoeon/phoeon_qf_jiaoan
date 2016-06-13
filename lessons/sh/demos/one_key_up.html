@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    html,body{height: 100%}
+	    body{
+	    	margin:0;
+	    }
+		.one-key-up {
+		    position:fixed;
+		    display:none;
+		    bottom:150px;
+		    right:50px;
+		    border:1px solid #ccc;
+		    border-radius:5px;
+		    width:50px;
+		    height:50px;
+		    background:#ccc;
+		}
+		.one-key-up:before{
+		    text-align:center;
+		    content:"￣";
+		    position:absolute;
+		    top:0;
+		    left:0;
+		    width:100%;
+		    height:50%;
+		    line-height: 49px;
+		}
+		.one-key-up:after{
+		    text-align:center;
+		    content:"↑";
+		    position:absolute;
+		    bottom:0;
+		    left:0;
+		    width:100%;
+		    height:50%;
+		    line-height: 11px;
+		}
+		.one-key-up:hover{
+		    background:#666;
+		    color:#fff;
+		}
+		.one-key-up:hover:before{
+		    content:"返回";
+		     font-size: 10px;
+		    line-height: 35px;
+		}
+		.one-key-up:hover:after{
+		    content:"顶部";
+		    font-size: 10px;
+		    line-height: 15px;
+		}
+		.one-key-up.show{
+		    display:block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" style="height:3000px">
+	  <div class="one-key-up"></div>
+	</div>
+	<script>
+		window.onscroll = function(e){
+			  var pageHeight = document.body.offsetHeight;
+			  var scrollTop = document.body.scrollTop||document.documentElement.scrollTop;
+			  if(scrollTop>pageHeight){
+			     document.querySelector(".one-key-up").style.display = "block";
+			  }
+			  else document.querySelector(".one-key-up").style.display = "none";
+		}
+
+		document.querySelector(".one-key-up").onclick = function(){
+		  var scrollTop = document.body.scrollTop||document.documentElement.scrollTop;
+
+		  function goTop(){
+		     window.scrollTo(0,scrollTop-=50);
+
+			(scrollTop>0)&&setTimeout(arguments.callee,10);
+		  }
+
+		  goTop();
+		}
+	</script>
+</body>
+</html>

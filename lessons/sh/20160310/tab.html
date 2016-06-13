@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		button.tab.active {
+		    color:#0f0;
+		}
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+</head>
+<body>
+	<div class="tab-box">
+		<div class="tab-header">
+			<button class="tab" >tab1</button>
+			<button class="tab">tab2</button>
+			<button class="tab">tab3</button>
+		</div>
+		<div class="tab-content">
+			init
+		</div>
+	</div>
+	<script>
+      		
+			$(".tab").click(function(){
+				loadData($(this));
+			})
+
+			function loadData($btn){
+				var index = $btn.index();
+				$(".active").removeClass("active");
+				$btn.addClass("active");
+				$.ajax({
+	      			url : "tab"+(index+1)+".html",
+	      			success : function(htmlStr){
+						$(".tab-content").html(htmlStr);
+					}
+      			})
+			}
+
+
+			loadData($(".tab:eq(0)"));
+
+     		// $(".tab:eq(0)").click();
+	</script>
+</body>
+</html>

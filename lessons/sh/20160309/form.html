@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	html,body{height: 100%}
+	body{marign:0;}
+	.form-zone {
+		    position:relative;
+		    width:80%;
+		    margin:auto;
+		}
+		.fieldset{
+		    border:1px dotted #888;
+		    border-top-left-radius:5px;
+		    border-top-right-radius:5px;
+		}
+
+
+		legend {
+		    margin-left:50px;
+		}
+		.form-group{
+		  /* background:#eee; */
+		}
+		.form-group .form-item{
+		    position: relative;
+		    width: 100%;
+		    line-height: 40px;
+		}
+		.form-label{display: inline-block;position: relative;text-align: right;width: 20%;}
+		.form-input{text-indent:10px;width: 70%;border: 1px solid #ccc;border-radius: 3px;line-height: 25px;}
+		.form-input:focus{
+		  outline:none;
+		  border-color:#69f;
+		  box-shadow:0px 0px 7px 0px #69f;
+		}
+		.form-item.error .form-input{
+		  border-color:#955;
+		  box-shadow:0px 0px 7px 0px #f55 inset;
+		}
+		.form-input.btn{
+		  width: 85%;
+		  color: #fff;
+		  border-radius: 7px;
+		  line-height: 34px;
+		  background: -webkit-linear-gradient(top,#9cf,#69f);
+		}
+		.form-input.btn:hover{
+		  background: -webkit-linear-gradient(top,#69f,#9cf);
+		}
+		.form-error{line-height: 20px;text-indent: 23%;font-size: 10px;color: #c33;}
+		.form-error:before{content:"\200B"}
+
+		h1 {}
+
+		h1:before{
+		  content:"BEFORE --";
+		  color:red;
+		  background:yellow;
+		  font-size:50px;
+		}
+		h1:after{
+		  content:"--   AFTER";
+		  color:blue;
+		  background:green
+		}
+
+
+		.bg:active{
+		  transform:rotate(360deg)
+		}
+		.bg{
+		  transition:all 4s;
+		  box-shadow:0px 0px 15px 3px #000;
+		  box-sizing:border-box;
+		  width:200px;
+		  height:200px;
+		  border:1px solid #ccc;
+		  position:relative;
+		  margin:auto;
+		  overflow:hidden;
+		    border-radius:50%;
+		  background:-webkit-linear-gradient(left,#fff 50%,#000 50%)
+		}
+		.bg:before{
+		  content:"";
+		  position:absolute;
+		  border-radius:50%;
+		  width:50%;
+		  height:50%;
+		  left:25%;
+		  top:0;
+		  background:-webkit-radial-gradient(#fff 25%,#000 30%);
+		}
+		.bg:after{
+		  content:"";
+		  border-radius:50%;
+		  position:absolute;
+		  width:50%;
+		  height:50%;
+		  left:25%;
+		  bottom:0;
+		  background:-webkit-radial-gradient(#000 25%,#fff 30%);
+		}
+
+		.form-item.btn {
+		    text-align: center;
+		}
+</style>
+</head>
+<body>
+	<div class="container" style="padding-top: 20px;">
+      <div class="form-zone">
+	   	  <form action="" class="form">
+	   	  	 <fieldset class="fieldset">
+	   	  	 	<legend>信息录入</legend>
+	   	  	 	
+				<div class="form-group">
+	   	  	 		<div class="form-item">
+	   	  	 			<label class="form-label">用户名 :</label>
+	   	  	 			<input type="text" class="form-input" placeholder="请输入用户名length（8++）">
+	   	  	 		</div>
+	   	  	 		<div class="form-error"></div>
+	   	  	 	</div>
+				<div class="form-group">
+	   	  	 		<div class="form-item">
+	   	  	 			<label class="form-label">邮箱 :</label>
+	   	  	 			<input type="text" class="form-input" placeholder="邮箱 163@fy.com">
+	   	  	 		</div>
+	   	  	 		<div class="form-error"></div>
+	   	  	 	</div>
+				<div class="form-group">
+	   	  	 		<div class="form-item error">
+	   	  	 			<label class="form-label">年龄 :</label>
+	   	  	 			<input type="text" class="form-input" placeholder="0-120 的数字">
+	   	  	 		</div>
+	   	  	 		<div class="form-error">非法年龄</div>
+	   	  	 	</div>
+				<div class="form-group">
+	   	  	 		<div class="form-item">
+	   	  	 			<label class="form-label">身份证 :</label>
+	   	  	 			<input type="text" class="form-input" placeholder="15-18位（末尾可为字母X）">
+	   	  	 		</div>
+	   	  	 		<div class="form-error"></div>
+	   	  	 	</div><div class="form-group">
+	   	  	 		<div class="form-item error">
+	   	  	 			<label class="form-label">手机 :</label>
+	   	  	 			<input type="text" class="form-input" placeholder="11位数字">
+	   	  	 		</div>
+	   	  	 		<div class="form-error">非法输入</div>
+	   	  	 	</div>
+	   	  	 <div class="form-group">
+	   	  	 		<div class="form-item">
+	   	  	 			<label class="form-label">价格 :</label>
+	   	  	 			<input type="text" class="form-input" placeholder="123.45">
+	   	  	 		</div>
+	   	  	 		<div class="form-error"></div>
+	   	  	 	</div><div class="form-group">
+	   	  	 		<div class="form-item">
+	   	  	 			<label class="form-label">性别 :</label>
+	   	  	 			<input type="text" class="form-input" placeholder="男|女">
+	   	  	 		</div>
+	   	  	 		<div class="form-error"></div>
+	   	  	 	</div><div class="form-group">
+	   	  	 		<div class="form-item btn">
+	   	  	 			
+	   	  	 			<input type="button" value="register" class="form-input btn">
+	   	  	 		</div>
+	   	  	 		<div class="form-error"></div>
+	   	  	 	</div>
+	   	  	 	</fieldset>
+	   	  </form>
+      </div>
+   </div>
+</body>
+</html>
