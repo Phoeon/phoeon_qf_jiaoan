@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html,body{height: 100%}
+body{margin:0;background: -webkit-linear-gradient(-125deg,#666,#000,#000);overflow:hidden;position:relative;}
+span{color:yellow;position: absolute;
+	/*transition:all 0.3s;*/
+	display: block;
+}
+.moon {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#ff0;
+    box-shadow: 0px 0px 200px 30px #ff0;
+    position:absolute;
+    right:100px;
+    top:100px;
+}
+
+
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	for(var i=0;i<100;i++){
+		document.write("<span>*</span>")
+	}
+	var spans = document.querySelectorAll("span");
+	for(var i=0;i<spans.length;i++){
+		var span = spans[i];
+		var fontSize = Math.floor(Math.random()*20)+10;
+		span.style.left = Math.floor(Math.random()*document.body.offsetWidth) + "px";
+		span.style.top = Math.floor(Math.random()*document.body.offsetHeight) + "px";
+		span.style.fontSize = fontSize +"px";
+		span.cfg = {
+			fontSize : fontSize
+		}
+	}
+
+	document.onmousemove = function(e){
+			for(var i=0;i<spans.length;i++){
+				var span = spans[i];
+				var xspan = Math.abs(e.clientX - span.offsetLeft);
+				var yspan = Math.abs(e.clientY - span.offsetTop);
+				var distance = Math.sqrt(xspan*xspan+yspan*yspan);
+				
+				var go = 100 - Math.min(100,distance);
+				span.style.fontSize = span.cfg.fontSize+go +"px";	
+			}
+			
+	}
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="currentTime"></div>
+	<div id="stillTime"></div>
+</body>
+<script>
+	var currentTimeBox = document.getElementById("currentTime"),
+		stillTimeBox   = document.getElementById("stillTime");
+	var date = new Date();
+	function currentTime(){
+		var date = new Date();
+		var arr = [];
+		arr.push(date.getFullYear());
+		arr.push(date.getMonth()+1);
+		arr.push(date.getDate());
+		arr.push(date.getHours());
+		arr.push(date.getMinutes());
+		arr.push(date.getSeconds());
+
+		currentTimeBox.innerHTML = "当前系统时间 ： "+arr[0]+"-"+arr[1]+"-"+arr[2]+" "+arr[3]+":"+arr[4]+":"+arr[5];
+		return date.getTime();
+	}
+	function go(){
+		//逗留的时间 毫秒
+		var time = (currentTime() - date.getTime())/1000;
+		stillTimeBox.innerHTML = "当前页面已停留时间 ：" + Math.floor(time/3600)+"小时"+Math.floor(time/60)+"分"+Math.floor(time%60)+"秒";
+		setTimeout(go,1000);
+	}
+
+	go();
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.mark-box{
+			overflow: hidden;
+			display: inline-block;
+		}
+		.mark-box .star{
+			display: inline-block;
+			float: right;
+		    color:#ccc;
+		    cursor: default;
+		}
+
+		.mark-box .star.active,
+		.mark-box .star:hover{
+		    color:#ff0;
+		}
+		.mark-box .star.active ~ .star,
+		.mark-box .star:hover ~ .star{
+		    color:#ff0;
+		}
+
+	</style>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+     	$(function(){
+     		$.fn.extend({
+     			createMark : function(fn){
+     				var $el = $(this);
+     				var arr = [
+     					'<div class="mark-box">',
+							'<div class="star" data-score="5">★</div>',
+							'<div class="star" data-score="4">★</div>',
+							'<div class="star" data-score="3">★</div>',
+							'<div class="star" data-score="2">★</div>',
+							'<div class="star" data-score="1">★</div>',
+						'</div>'
+     				];
+     				$el.append(arr.join(""));
+     				// $el.delegate(".star","click",function(e){
+     				// 	var $star = $(this);
+
+     				// 	$star.siblings(".active").removeClass("active");
+     				// 	$star.toggleClass("active");
+
+     				// 	var scored = $star.hasClass("active");
+     				// 	fn&&fn(scored?+$star.attr("data-score"):0);
+
+     				// })
+     			}
+     		});
+
+     		var Mark = $("body").createMark(function(score){
+     			alert(score?score+"星评价":"糟糕透了");
+     		});
+
+     	    document.addEventListener("click",function(e){
+     	    	var target = e.target;
+     	    	if(target.className.indexOf("star")>-1){
+     	    		
+     	    		var active = document.querySelector(".star.active");
+     	    		
+     	    			active&&(active.className = "star");
+     	    		
+     	    			active!=target&&(target.className = "star active");
+     	    		
+     	    	}
+     	    },false)
+     	})
+	</script>
+</head>
+<body>
+	
+</body>
+
+</html>

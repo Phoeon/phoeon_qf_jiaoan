@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.wrap{
+		    padding-top:30px;
+		}
+		.group {
+		    width:80%;
+		    border:1px solid #ccc;
+		    border-radius:3px;
+		    margin:auto;
+		    text-indent:20px;
+		    margin-bottom: 5px;
+		}
+
+		.group-head{
+		    line-height:30px;
+		    background:#eee;
+		    cursor:pointer
+		}
+		.items{
+			/*transition:all 0.3s;*/
+		}
+	</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="group">
+      <div class="group-head">group header</div>
+      <div class="items" style="display: block;">
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+      
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-head">group header</div>
+      <div class="items" style="display: block;">
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+      
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-head">group header</div>
+      <div class="items" style="display: block;">
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+      
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-head">group header</div>
+      <div class="items" style="display: block;">
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+        <p>alsdkflkdsajfldsakjfkdsajf</p>
+      
+      </div>
+    </div>
+  </div>
+	<script src="jquery-2.2.1.min.js"></script>
+
+</body>
+<script type="text/javascript">
+	// var groupHead = document.getElementsByClassName("group-head")[0];
+	// groupHead.onclick = function(){
+	//   var sibling = this.nextElementSibling,
+	//       display = sibling.style.display;
+
+	//   sibling.style.display =  (display=="none")?"block":"none";
+	// }
+
+
+//jquery
+
+// var $groupHead = $(".group-head");
+// $groupHead.click(function(){
+//    var sibling = $(this).next(),
+//        display = sibling.css("display");
+
+//    sibling.css("display",(display=="none")?"block":"none");
+// });
+
+
+// 多个点击原生
+// var heads = document.getElementsByClassName("group-head");
+
+// for(var i=0;i<heads.length;i++){
+//   var groupHead = heads[i];
+//   groupHead.onclick = function(){
+//     var sibling = this.nextElementSibling,
+//         display = sibling.style.display;
+
+//     sibling.style.display = display=="none"?"block":"none";
+//   }
+// }
+
+
+//事件代理
+// document.getElementsByClassName("wrap")[0].addEventListener("click",function(e){
+//   e||(e=window.event);
+//   var target = e.target||e.srcElement;
+
+//   if(target.className == "group-head"){
+//      var sibling = target.nextElementSibling,
+//          display = sibling.style.display;
+
+//      sibling.style.display = display=="none"?"block":"none";
+//   }
+// },false)
+
+
+
+//jquery version
+
+// $(".group .group-head").click(function(){
+//   var sibling = $(this).next(),
+//       display = sibling.css("display") ;
+
+//   sibling.css("display",(display=="none")?"block":"none");
+// })
+</script>
+</html>

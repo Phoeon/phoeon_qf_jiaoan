@@ -1,0 +1,131 @@
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{height:100%;}
+		body{margin:0;padding-top:30px;}
+		
+		.wrap {
+		    overflow:hidden;
+		    box-shadow:0px 0px 5px #666;
+		    width:300px;
+		    white-space:nowrap;
+		    margin:auto;
+		    font-size: 0;
+		}
+		.item{
+		    display:inline-block;
+		    overflow: hidden;
+		}
+		.item img{border-radius: 3px;margin:5px 0px 5px 5px}
+	</style>
+</head>
+<body>
+  
+<div class="wrap">
+	<div class="item">
+	  <img src="imgs/bg1.png">
+	</div>
+	<div class="item">
+	  <img src="imgs/bg1.png">
+	</div>
+	<div class="item">
+	  <img src="imgs/bg1.png">
+	</div>
+</div>
+
+<script src="jquery-2.2.1.min.js"></script>
+<script>
+	
+// var items = document.getElementsByClassName("item"),
+//     item = items[0],
+//     itemWidth = item.offsetWidth
+//     ;
+// !function(){
+//   item||(item=items[0]);
+//   var width = item.offsetWidth;
+//   if(width-->0){
+//     item.style.width = width + "px";
+//     item.style.textIndent = width-itemWidth + "px";
+//   }else {
+//     item.parentNode.appendChild(item);
+//     item.style.width = itemWidth + "px";
+//     item.style.textIndent = 0;
+//     item = null;
+//   }
+
+//   setTimeout(arguments.callee,10);
+// }();
+
+// document.body.scrollLeft
+// var items = document.getElementsByClassName("item"),
+//     item = items[0],
+//     itemWidth = item.offsetWidth
+//     ;
+// !function(){
+//   item||(item=items[0]);
+//   var width = item.offsetWidth;
+//   if(width-->0){
+//     item.style.width = width + "px";
+//     item.scrollLeft = itemWidth-width+10;
+//   }else {
+//     item.parentNode.appendChild(item);
+//     item.style.width = itemWidth + "px";
+//     item.scrollLeft = 0;
+//     item = null;
+//   }
+
+//   setTimeout(arguments.callee,10);
+// }();
+
+var items = document.getElementsByClassName("item"),
+    item = $(".item:eq(0)"),
+    itemWidth = item.width()
+    ;
+!function(){
+  item||(item=$(".item:eq(0)"));
+  var width = item.width();
+  if(width-->0){
+    item.css("width",width+"px")
+    item.scrollLeft(itemWidth-width);
+  }else {
+    item.parent().append(item);
+    item.css("width",itemWidth+"px");
+    item.scrollLeft(0);
+    item = null;
+  }
+
+  setTimeout(arguments.callee,10);
+}
+// ();
+
+// var item = $(".item:eq(0)")//document.getElementsByClassName("item")[0],
+//     itemWidth = item.width();
+// !function(){
+//   item||(item=$(".item:eq(0)"));
+//   var width = item.width();
+//   if(width-->0){
+//     // item.style.width = width + "px";
+//     // item.style.textIndent = width-itemWidth + "px";
+//     item.css({
+//     	width:width+"px",
+//     	"text-indent" : width - itemWidth + "px"
+//     })
+//   }else {
+//   	item.parent().append(item);
+
+//   	item.css({
+//     	width:itemWidth+"px",
+//     	"text-indent" : 0
+//     })
+//     // item.parentNode.appendChild(item);
+//     // item.style.width = itemWidth + "px";
+//     // item.style.textIndent = 0;
+//     item = null;
+//   }
+
+//   setTimeout(arguments.callee,10);
+// }();
+
+</script>
+</body></html>

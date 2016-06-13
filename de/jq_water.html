@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      .wrap{position: relative;}
+      .item{position: absolute;width: 100px;border-radius: 3px;transition:all 0.5s;}
+	</style>
+</head>
+<body>
+	<div class="wrap"></div>
+	<script>
+	  var wrap = document.querySelector(".wrap");
+	  function create16Color(){
+	  	return "#"+Math.floor(Math.random()*9)+Math.floor(Math.random()*9)+Math.floor(Math.random()*9);
+	  }
+      function initFall(){
+      	var items = [];
+      	for(var i=0;i<30;i++){
+      		items.push("<div class='item'></div>");
+      	}
+      	wrap.innerHTML = items.join("");
+      	var items = document.querySelectorAll(".item");
+      	for(var i=0;i<items.length;i++){
+      		var item = items[i];
+      		item.style.height = Math.floor(Math.random()*200)+10+"px";
+      		item.style.background = create16Color();
+      	}
+      	createFall();
+      }
+
+      function createFall(){
+      	var items = document.querySelectorAll(".item");
+      	
+        var xgap = 5,
+        	ygap = 5,
+        	wrapWidth = wrap.offsetWidth,
+        	itemWidth = items[0].offsetWidth + xgap *2,
+        	cols = Math.floor(wrapWidth / itemWidth);
+        var colsArr = [];
+        for(var i=0;i<cols;i++)colsArr.push(0);
+
+        for(var i=0;i<items.length;i++){
+        	var minInfo = getMin(colsArr);
+        	var item = items[i];
+      			item.style.left = (wrapWidth-itemWidth*cols)/2 +itemWidth*(minInfo[0]%cols)+xgap +"px";
+      		if(i<cols){
+      			item.style.top = ygap+"px";
+      			colsArr[minInfo[0]] = ygap*2+item.offsetHeight;
+      		}else {
+      			item.style.top = ygap+minInfo[1]+"px";
+      			colsArr[minInfo[0]] = 2*ygap+minInfo[1]+ item.offsetHeight;
+      		}
+      	}	
+      }
+
+
+      function getMin(arr){
+      	var mid = arr.length-1;
+      	var min = arr[mid];
+      	for(var i=arr.length-2;i>-1;i--){
+      		if(arr[i]<min){
+      			min = arr[i];
+      			mid = i ;
+      		}
+      	}
+      	return [mid,min];
+      }
+
+
+      initFall();
+      window.onresize = function (argument) {
+      	 createFall();
+      }
+	</script>
+</body>
+</html>
