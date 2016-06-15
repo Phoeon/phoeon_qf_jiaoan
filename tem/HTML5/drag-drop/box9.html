@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.box-wrap {
+    position:relative;
+    font-size:0px;
+    width: 332px;
+    border:1px solid #f00;
+    margin:30px auto;
+}
+
+.box-wrap .box{
+    background:#eee;
+    width: 108px;
+    height: 108px;
+    display:inline-block;
+    border:1px solid #fff; 
+}
+.box-wrap .box .img{
+	margin:-1px 0 0 -1px;
+}
+	</style>
+</head>
+<body>
+	<div class="box-wrap">
+		<div class="box"><img src="imgs/box1.png" class="img"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+	<script>
+		document.ondragenter=document.ondragover=document.ondrop=function(e){
+		   e.preventDefault();
+		};
+		document.ondragstart = function(e){
+		    var target = e.target;
+		　　 if(target.className=="img"){
+		      e.dataTransfer.setData("flag",target.className);
+		   }
+		}
+		document.ondrop=function(e){
+		   e.preventDefault();
+		   var target = e.target;
+		   if(target.className=="box"){
+		      var data = e.dataTransfer.getData("flag");
+		      data&&target.appendChild(document.querySelector("."+data));
+		   }
+		};
+	</script>
+</body>
+</html>

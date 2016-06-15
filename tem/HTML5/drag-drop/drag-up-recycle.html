@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.container {
+    width:90%;
+    height:300px;
+    background:#eee;
+    box-shadow:0px 0px 3px 2px #ccc inset;
+    text-align: center;
+    border-radius:10px;
+    margin:auto;
+    overflow-x:hidden;
+    overflow-y: auto;
+    position:relative;
+}
+.container:before{
+    content:"拖拽上传到该区域";
+    position:absolute;
+    width:100%;
+    color:#69f;
+    font-weight: bold;
+    line-height:300px;
+    text-align:center;
+    font-size:50px;
+    left:0;
+}
+
+.container .pic-wrap{
+    /* z-index: 1; */
+    display:inline-block;
+    width:100px;
+    height:100px;
+    overflow: hidden;
+    margin: 10px;
+    border-radius: 7px;
+    position: relative;
+}
+.pic-wrap img{width:100%;}
+.recycle{
+      width: 90%;
+    background: #000;
+    margin: 20px auto;
+    height: 50px;
+    color:#fff;
+}
+.recycle .pic-wrap{display: none;}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+  <div class="recycle">
+    <span>recycled <strong id="items">0</strong> items</span>
+    <button class="clear">clear</button><button class="restore">restore</button>
+  </div>
+	<script>
+
+document.ondragenter=document.ondragover=document.ondrop=function(e){
+   e.preventDefault();
+};
+var container = document.querySelector(".container");
+container.ondrop = function(e){
+  var files = e.dataTransfer.files;
+  [].forEach.call(files,function(file){
+       var reader = new FileReader;
+　　　　reader.readAsDataURL(file);
+       reader.onload = function(){
+　　　　　　　var imgWrap = document.createElement("div");
+                 imgWrap.className = "pic-wrap";
+             var img = new Image();
+                 img.className = "img";
+                 img.src=reader.result;
+                 imgWrap.appendChild(img);
+                 container.appendChild(imgWrap);
+　　　　}
+  });
+}
+
+    document.ondragstart = function(e){
+        var target = e.target;
+    　　 if(target.className=="img"){
+          target.setAttribute("data-id","id_"+new Date().getTime());
+          e.dataTransfer.setData("flag",target.getAttribute("data-id"));
+       }
+    }
+    document.ondrop=function(e){
+       e.preventDefault();
+       var target = e.target;
+       if(target.className=="recycle"){
+          var data = e.dataTransfer.getData("flag");
+          if(data){
+            target.appendChild(document.querySelector("[data-id="+data+"]").parentNode);
+            target.querySelector("#items").innerHTML = target.querySelectorAll(".pic-wrap").length;
+          }
+       }
+    };
+
+    document.querySelector(".restore").onclick=function(){
+       if(confirm("restore all ok ?")){
+           var parentNode = this.parentNode;
+    　　　　var items = parentNode.querySelectorAll(".pic-wrap");
+           for(var i=0;i<items.length;i++){container.appendChild(items[i])};
+           parentNode.querySelector("#items").innerHTML = 0;
+       }
+    }
+
+    document.querySelector(".clear").onclick=function(){
+       if(confirm("clear all ok ?")){
+           var parentNode = this.parentNode;
+    　　　　var items = parentNode.querySelectorAll(".pic-wrap");
+           for(var i=0;i<items.length;i++){parentNode.removeChild(items[i])};
+           parentNode .querySelector("#items").innerHTML = 0;
+       }
+    }
+	</script>
+</body>
+</html>

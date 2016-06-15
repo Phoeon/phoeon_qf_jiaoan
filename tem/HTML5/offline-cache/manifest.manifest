@@ -1,0 +1,14 @@
+CACHE MANIFEST
+#V1.0.10
+
+CACHE:
+	css2.css
+
+NETWORK:
+	cacheoffline.html
+	css.css
+
+
+FALLBACK:
+	css2.css 404.html
+

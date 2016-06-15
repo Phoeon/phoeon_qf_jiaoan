@@ -1,0 +1,21 @@
+<!doctype html>
+<html manifest="manifest.manifest">
+<head>
+	<meta charset="UTF-8">
+	<title>离线缓存案例</title>
+	<link rel="stylesheet" href="css.css" type="text/css">
+	<link rel="stylesheet" href="css2.css" type="text/css">
+</head>
+<body>
+	离线缓存案例
+	<script>
+      applicationCache.addEventListener("updateready",function(){
+      	console.log(applicationCache.status,applicationCache.UPDATEREADY)
+      	  if(applicationCache.status==applicationCache.UPDATEREADY){
+      	  	applicationCache.swapCache();
+      	  	// location.reload();
+      	  }
+      })
+	</script>
+</body>
+</html>
